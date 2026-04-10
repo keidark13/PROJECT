@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local SEO Playbook — Keyvin Abillon</title>
+  <meta name="description" content="A battle-tested system for dominating local search — from Google Business Profile to citations, reviews, and beyond." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0F0D;
+      --surface: #111A16;
+      --surface-2: #1A2E1F;
+      --primary: #10B981;
+      --cta: #F59E0B;
+      --text: #D1D5DB;
+      --text-muted: #9CA3AF;
+      --border: rgba(16, 185, 129, 0.2);
+      --border-hover: rgba(16, 185, 129, 0.5);
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Archivo', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 15, 35, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo:hover { color: var(--cta); }
+
+    .nav-divider {
+      color: var(--border);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .nav-title {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-back {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .nav-back:hover { color: var(--text); border-color: var(--border-hover); }
+
+    .nav-back:focus-visible,
+    .nav-logo:focus-visible { outline: 2px solid #10B981; outline-offset: 3px; }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--primary);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.3rem 0.9rem;
+      border-radius: 100px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #E2E8F0 0%, #10B981 60%, #F59E0B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--cta);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-cta:hover { background: #e11d48; transform: translateY(-1px); }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* ── SECTION ── */
+    .playbook-section {
+      margin-bottom: 4rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-num {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, #10B981, #F59E0B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      flex-shrink: 0;
+      min-width: 60px;
+    }
+
+    .section-meta { flex: 1; }
+
+    .section-meta h2 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .section-meta p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── TIP CARDS ── */
+    .tips-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .tip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .tip-card:hover {
+      border-color: var(--border-hover);
+      border-left-color: var(--cta);
+      background: var(--surface-2);
+    }
+
+    .tip-card strong {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .tip-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .tip-card .mono-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--primary);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 0.1rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    /* ── CHECKLIST ── */
+    #checklist {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    #checklist h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.3px;
+    }
+
+    #checklist .checklist-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .checklist-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .checklist-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .checklist-group-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .checklist-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .checklist-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .checklist-items li::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      border: 2px solid rgba(16, 185, 129, 0.5);
+      border-radius: 4px;
+      margin-top: 1px;
+      background: rgba(16, 185, 129, 0.05);
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--cta); }
+
+    /* ── MAP PIN PULSE BACKGROUND ── */
+    .map-pins-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .map-pin {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.2);
+    }
+
+    .map-pin::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      transform: translate(-50%, -50%) scale(1);
+      animation: pin-pulse 3s ease-out infinite;
+      animation-delay: inherit;
+    }
+
+    @keyframes pin-pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(6.67);
+        opacity: 0;
+      }
+    }
+
+    nav, .hero, main, #checklist, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .map-pin:nth-child(3),
+      .map-pin:nth-child(5),
+      .map-pin:nth-child(7) {
+        display: none;
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 3.5rem 1.25rem 3rem; }
+      main { padding: 0 1.25rem 3rem; }
+      .section-num { font-size: 2rem; min-width: 48px; }
+      .section-meta h2 { font-size: 1.25rem; }
+      #checklist { padding: 1.25rem; }
+      .nav-title { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MAP PIN PULSE BACKGROUND -->
+<div class="map-pins-bg" aria-hidden="true">
+  <div class="map-pin" style="top: 12%; left: 18%;"></div>
+  <div class="map-pin" style="top: 8%; left: 75%; animation-delay: 0.8s;"></div>
+  <div class="map-pin" style="top: 35%; left: 8%; animation-delay: 1.6s;"></div>
+  <div class="map-pin" style="top: 40%; left: 85%; animation-delay: 2.4s;"></div>
+  <div class="map-pin" style="top: 62%; left: 22%; animation-delay: 0.4s;"></div>
+  <div class="map-pin" style="top: 70%; left: 78%; animation-delay: 1.2s;"></div>
+  <div class="map-pin" style="top: 88%; left: 50%; animation-delay: 2.0s;"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">K.</a>
+    <span class="nav-divider">/</span>
+    <span class="nav-title">Local SEO Playbook</span>
+    <a href="../index.html" class="nav-back">← Back to Portfolio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-tag">Free Resource · Local SEO</span>
+  <h1>Local SEO Playbook</h1>
+  <p>A battle-tested system for dominating local search — from Google Business Profile to citations, reviews, and beyond.</p>
+  <a href="#checklist" class="btn-cta">
+    <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    Get the Checklist
+  </a>
+</section>
+
+<!-- MAIN CONTENT -->
+<main>
+
+  <!-- SECTION 01: GBP -->
+  <div class="playbook-section">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-meta">
+        <h2>Google Business Profile</h2>
+        <p>Your most powerful free local SEO asset — and most businesses use less than 40% of it.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <strong>Choose the right primary category — and add secondaries</strong>
+        <p>Your primary category is the single biggest ranking factor in GBP. Use Google's exact category names (not custom ones). Add up to 9 secondary categories that accurately describe your services — a plumber can also be a "water heater installer" and "drainage contractor." Never add categories for services you don't offer just to rank broader.</p>
+        <span class="mono-tag">High Impact</span>
+      </div>
+      <div class="tip-card">
+        <strong>Fill every attribute — especially "From the Business" and service-specific ones</strong>
+        <p>Attributes like "LGBTQ+ friendly," "women-owned," "free Wi-Fi," and "outdoor seating" filter searches directly. Service-specific attributes (e.g., "online appointments," "in-store pickup") are surfaced in Google's local panels and affect click-through rate significantly.</p>
+        <span class="mono-tag">Quick Win</span>
+      </div>
+      <div class="tip-card">
+        <strong>Post weekly — mix offers, updates, and events</strong>
+        <p>GBP Posts expire after 7 days (Offers and Events have custom dates). Regular posting signals an active business and gives Google fresh content to surface in the Knowledge Panel. Use UTM parameters on post links to track traffic in GA4. Minimum cadence: one post every 5–7 days.</p>
+        <span class="mono-tag">Ongoing</span>
+      </div>
+      <div class="tip-card">
+        <strong>Seed Q&amp;A with your own questions</strong>
+        <p>Anyone can ask — and anyone can answer — questions on your profile. Get ahead of it: ask your own most common FAQs and answer them authoritatively. This directly populates the Q&amp;A section and reduces the chance of wrong information appearing there from a competitor or troll.</p>
+        <span class="mono-tag">Underused Tactic</span>
+      </div>
+      <div class="tip-card">
+        <strong>Upload 10+ photos at launch, then add new ones monthly</strong>
+        <p>Profiles with 100+ photos get 520% more calls than the average (Google's own data). Prioritize: exterior (so customers recognize the location), interior, team in action, and product/service shots. Geotag images before upload using a tool like GeoImgr — it's a small signal but every bit counts in competitive maps.</p>
+        <span class="mono-tag">High Impact</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 02: Citation Building -->
+  <div class="playbook-section">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-meta">
+        <h2>Citation Building</h2>
+        <p>NAP consistency is the bedrock. One wrong phone number on 50 directories quietly kills rankings.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <strong>Lock down your NAP format — and never deviate</strong>
+        <p>Name, Address, Phone must be identical everywhere: same abbreviation style (St. vs Street), same suite format (#200 vs Suite 200), same phone format. Create a "NAP master document" and share it with anyone who ever touches your business listings. Google reconciles conflicting signals by averaging — inconsistency means weaker rankings.</p>
+        <span class="mono-tag">Foundation</span>
+      </div>
+      <div class="tip-card">
+        <strong>Priority directories: build these first</strong>
+        <p>Google Business Profile, Apple Maps, Bing Places, Yelp, Facebook, BBB, Foursquare, Yellow Pages, Hotfrog, and your industry-specific directories (Zocdoc for doctors, Houzz for contractors, Avvo for lawyers). These feed the data aggregators (Neustar Localeze, Data Axle, Foursquare) that then push your data to hundreds of smaller sites.</p>
+        <span class="mono-tag">Priority List</span>
+      </div>
+      <div class="tip-card">
+        <strong>Use data aggregators to amplify your NAP at scale</strong>
+        <p>Services like BrightLocal, Moz Local, or Yext push your NAP to aggregators and suppress duplicates. A one-time submission covers hundreds of citations you'd otherwise never build manually. The ROI is strongest in months 3–6 as the data propagates. One-time cost beats ongoing agency fees for this specific task.</p>
+        <span class="mono-tag">Scalable</span>
+      </div>
+      <div class="tip-card">
+        <strong>Hunt and kill duplicate listings</strong>
+        <p>If your business moved, rebranded, or changed numbers, old listings persist for years. Search "[Business Name] + city" on Google and Maps. Check Whitepages, YP.com, and Manta. Claim and merge or delete duplicates — Google will often show both in local results, splitting click equity and confusing the algorithm.</p>
+        <span class="mono-tag">Maintenance</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 03: Review Strategy -->
+  <div class="playbook-section">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-meta">
+        <h2>Review Strategy</h2>
+        <p>Review velocity, recency, and response rate all factor into local pack rankings — not just star rating.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <strong>Ask at the peak moment — not the invoice</strong>
+        <p>The best time to request a review is immediately after the customer's "wow moment" — when they just saw results, received the service, or expressed satisfaction verbally. Create a short link to your GBP review form (use the Place ID generator in your GBP dashboard) and text or email it within 2 hours of the positive experience.</p>
+        <span class="mono-tag">High Impact</span>
+      </div>
+      <div class="tip-card">
+        <strong>Build a review request cadence — never a one-time ask</strong>
+        <p>One automated request isn't a system. Build a 3-touch sequence: SMS immediately after service → email 48 hours later → final SMS 5 days out (only if no review yet). Most reviews come from the second or third touchpoint. Use GHL, Birdeye, or even a Google Form shortlink in your team's phone signatures.</p>
+        <span class="mono-tag">System Build</span>
+      </div>
+      <div class="tip-card">
+        <strong>Respond to every review within 24 hours</strong>
+        <p>Google explicitly says owner responses are a ranking signal. More importantly: 89% of consumers read business responses before deciding to visit. Thank positive reviewers and use a keyword naturally ("Thank you for trusting [Business Name] for your AC repair in [City]"). For negatives, respond publicly with empathy, take it offline for resolution — never get defensive.</p>
+        <span class="mono-tag">Ongoing</span>
+      </div>
+      <div class="tip-card">
+        <strong>Aim for review velocity, not just volume</strong>
+        <p>A burst of 50 reviews in one week followed by silence looks suspicious to Google and competitors can report it. Aim for a consistent 2–5 reviews per week over months. Google's algorithm weights recency heavily — a business with 10 reviews from last month often outranks one with 200 reviews from 3 years ago in competitive markets.</p>
+        <span class="mono-tag">Strategy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 04: Local Keyword Research -->
+  <div class="playbook-section">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-meta">
+        <h2>Local Keyword Research</h2>
+        <p>The right local keywords blend service + geography + intent. Most businesses target too few of them.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <strong>Build a city × service matrix as your keyword foundation</strong>
+        <p>Take every service you offer and pair it with every city, neighborhood, and district you serve. [Service] + [City], [City] + [Service] + "near me", "best [service] in [city]" — these are your primary landing page targets. A roofing company serving 5 cities with 8 services has 40 core local keyword clusters to target.</p>
+        <span class="mono-tag">Foundation</span>
+      </div>
+      <div class="tip-card">
+        <strong>Mine Google Suggest and People Also Ask</strong>
+        <p>Type your service + city into Google and screenshot the autocomplete — these are real queries with real search volume. Hit Enter, then scrape the "People Also Ask" box and the "Related Searches" at the bottom. These clusters reveal long-tail intent that keyword tools often miss because volume is too low to show up, but conversion rates are higher.</p>
+        <span class="mono-tag">Free Research</span>
+      </div>
+      <div class="tip-card">
+        <strong>Spy on the top 3 local pack competitors</strong>
+        <p>Use Ahrefs, Semrush, or even the free Ubersuggest to pull the top organic keywords for your top 3 local competitors. Filter by keywords that include city names or "near me" variants. This is the fastest way to find gaps — keywords they rank for that you haven't even targeted yet. Run this audit quarterly.</p>
+        <span class="mono-tag">Competitor Gap</span>
+      </div>
+      <div class="tip-card">
+        <strong>"Near me" is a signal, not just a keyword</strong>
+        <p>You can't control who searches "near me" — Google resolves it based on the user's GPS location. But you can capture it by fully optimizing GBP, building strong local citations, and using "near me" naturally in page copy (e.g., "Find the best HVAC repair near you in Austin"). The real goal is proximity + relevance + prominence.</p>
+        <span class="mono-tag">Nuance</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 05: On-Page Local SEO -->
+  <div class="playbook-section">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-meta">
+        <h2>On-Page Local SEO</h2>
+        <p>Your website needs to speak to Google's crawlers and local searchers simultaneously.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <strong>Implement LocalBusiness schema on every page</strong>
+        <p>JSON-LD structured data is the clearest signal you can send Google about your business. Include: @type (e.g., Plumber, Dentist, Restaurant), name, address (PostalAddress), phone, URL, geo coordinates, opening hours, and priceRange. Use Google's Rich Results Test to validate. Add Service schema for individual service pages and AggregateRating if you have reviews on-site.</p>
+        <span class="mono-tag">Technical SEO</span>
+      </div>
+      <div class="tip-card">
+        <strong>Create dedicated location pages — one per city you serve</strong>
+        <p>A single "Areas We Serve" page listing 10 cities is weak. Build individual pages: /plumber-austin/, /plumber-round-rock/, etc. Each page needs: unique intro mentioning the city, services offered there, testimonials from local customers, embedded Google Map, local phone number if you have one, and internal links to related service pages. Thin pages hurt — add 400+ words of genuine local content.</p>
+        <span class="mono-tag">High Impact</span>
+      </div>
+      <div class="tip-card">
+        <strong>Title tags: [Service] in [City] | [Brand] — always</strong>
+        <p>Local title tag formula that works: "Emergency Plumber in Austin, TX | [Business Name]". Include the city + state in every page title that targets a local keyword. The meta description should reinforce geography and include a call to action. Keep title under 60 characters. Google rewrites title tags ~60% of the time — the closer your title matches search intent, the less likely it gets rewritten.</p>
+        <span class="mono-tag">Quick Win</span>
+      </div>
+      <div class="tip-card">
+        <strong>Internal link from service pages to location pages — and back</strong>
+        <p>Your site structure should create a mesh: homepage links to main service pages and main location pages, service pages link to each city where that service is offered, location pages link to all services in that city. This passes PageRank to thin local pages and helps Google understand your geographic service area without relying only on GBP.</p>
+        <span class="mono-tag">Architecture</span>
+      </div>
+      <div class="tip-card">
+        <strong>Embed a real Google Map on your contact and location pages</strong>
+        <p>Embed your actual GBP listing map (not just a generic map iframe). This creates a direct crawlable link between your website and your GBP listing. Use the Google Maps Embed API or the "Share → Embed a map" option from your GBP. Keep your address text on the page matching your GBP NAP exactly.</p>
+        <span class="mono-tag">Trust Signal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 06: Tracking & Reporting -->
+  <div class="playbook-section">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-meta">
+        <h2>Tracking &amp; Reporting</h2>
+        <p>You can't improve what you don't measure. Local SEO has its own metrics — know them.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <strong>Read GBP Performance metrics weekly — focus on search queries</strong>
+        <p>GBP Performance shows searches that triggered your profile: Direct (people searching your name), Discovery (searching a category or service), and Branded vs. unbranded. The "Queries used to find your business" report is gold — it shows you exact keywords Google is already surfacing you for. Use this to prioritize which pages to build or optimize next.</p>
+        <span class="mono-tag">Free Data</span>
+      </div>
+      <div class="tip-card">
+        <strong>Track local pack rankings separately from organic rankings</strong>
+        <p>Google Maps rankings vary by the user's physical location — a business can rank #1 in the pack for searchers 0.5 miles away and #7 for people 3 miles away. Use a local rank tracking tool (BrightLocal, Local Falcon, or GeoRanker) to get a grid-based view of your Maps visibility across your city. This is the only way to see your true local footprint.</p>
+        <span class="mono-tag">Advanced</span>
+      </div>
+      <div class="tip-card">
+        <strong>Set up GA4 goals for local conversion actions</strong>
+        <p>Track: phone number clicks (tel: link clicks), direction requests, contact form submissions, and click-to-call from GBP. In GA4, use Event-based conversions. Connect GA4 to Google Search Console to see which organic queries drive conversions — not just traffic. For GBP specifically, track the "Get directions" and "Call" metrics in GBP Performance as leading indicators of in-store visits.</p>
+        <span class="mono-tag">Analytics</span>
+      </div>
+      <div class="tip-card">
+        <strong>Build a monthly local SEO scorecard</strong>
+        <p>Track monthly: GBP impressions, GBP calls + direction requests, organic ranking for top 5 keywords, review count + average rating, citation health score (via BrightLocal), and organic traffic from GA4 to location/service pages. Review these 6 numbers monthly — if calls are up but website traffic is flat, your GBP is doing the heavy lifting. If both are flat, it's an on-page or link authority issue.</p>
+        <span class="mono-tag">Reporting</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <section id="checklist" aria-labelledby="checklist-heading">
+    <h2 id="checklist-heading">Master Checklist</h2>
+    <p class="checklist-sub">Run through this before you consider your local SEO "done." Come back to it quarterly.</p>
+
+    <div class="checklist-group">
+      <div class="checklist-group-label">Google Business Profile</div>
+      <ul class="checklist-items" role="list">
+        <li role="listitem">Primary category set to the most specific, accurate match</li>
+        <li role="listitem">All secondary categories added (up to 9 total)</li>
+        <li role="listitem">All available attributes filled out, especially service-specific ones</li>
+        <li role="listitem">Business description written (750 chars max) — includes primary keyword naturally</li>
+        <li role="listitem">10+ photos uploaded: exterior, interior, team, products/services</li>
+        <li role="listitem">Q&amp;A section seeded with your own questions and authoritative answers</li>
+        <li role="listitem">GBP Posts scheduled at least weekly</li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-label">Citations &amp; NAP</div>
+      <ul class="checklist-items" role="list">
+        <li role="listitem">NAP master document created and shared with the team</li>
+        <li role="listitem">Listed on all 10 priority directories (Google, Apple Maps, Bing, Yelp, Facebook, BBB, Foursquare, YP, Hotfrog + 1 industry-specific)</li>
+        <li role="listitem">Data aggregator submission completed (Neustar, Data Axle, Foursquare)</li>
+        <li role="listitem">Duplicate listings found and removed or merged</li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-label">Reviews</div>
+      <ul class="checklist-items" role="list">
+        <li role="listitem">Review request shortlink created and accessible to the team</li>
+        <li role="listitem">3-touch review request sequence active (SMS → email → SMS)</li>
+        <li role="listitem">All existing reviews have received a response</li>
+        <li role="listitem">Review monitoring set up (alerts for new reviews)</li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-label">On-Page SEO</div>
+      <ul class="checklist-items" role="list">
+        <li role="listitem">LocalBusiness JSON-LD schema implemented and validated in Rich Results Test</li>
+        <li role="listitem">Dedicated location pages built for every city/area served</li>
+        <li role="listitem">Title tags follow [Service] in [City, State] | [Brand] format</li>
+        <li role="listitem">NAP on website matches GBP exactly</li>
+        <li role="listitem">Google Map embed on contact page points to GBP listing</li>
+        <li role="listitem">Internal linking connects service pages ↔ location pages</li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-label">Tracking</div>
+      <ul class="checklist-items" role="list">
+        <li role="listitem">GA4 conversion events set up for calls, forms, and direction requests</li>
+        <li role="listitem">Google Search Console connected and verified</li>
+        <li role="listitem">Local rank tracking tool configured for top 5 keywords</li>
+        <li role="listitem">Monthly local SEO scorecard template created</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Keyvin · <a href="../index.html">Back to Portfolio</a></p>
+</footer>
+
+</body>
+</html>

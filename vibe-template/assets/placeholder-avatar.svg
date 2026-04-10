@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 600" fill="none">
+  <rect width="420" height="600" fill="#16162A"/>
+  <!-- Body -->
+  <ellipse cx="210" cy="480" rx="120" ry="90" fill="#1E1E40"/>
+  <!-- Head -->
+  <circle cx="210" cy="220" r="90" fill="#1E1E40"/>
+  <!-- Glow -->
+  <circle cx="210" cy="220" r="90" fill="url(#headGlow)" opacity="0.3"/>
+  <!-- Face placeholder -->
+  <circle cx="185" cy="210" r="10" fill="#7C3AED" opacity="0.6"/>
+  <circle cx="235" cy="210" r="10" fill="#7C3AED" opacity="0.6"/>
+  <path d="M185 255 Q210 275 235 255" stroke="#7C3AED" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <!-- Label -->
+  <text x="210" y="560" text-anchor="middle" font-family="monospace" font-size="14" fill="#4C1D95" letter-spacing="2">YOUR PHOTO HERE</text>
+  <defs>
+    <radialGradient id="headGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+</svg>

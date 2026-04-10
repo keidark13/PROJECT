@@ -1,0 +1,10 @@
+wing: legion
+rooms:
+- name: brain
+  description: Files from brain/
+- name: halls
+  description: Files from halls/
+- name: rooms
+  description: Files from rooms/
+- name: general
+  description: Files that don't fit other rooms

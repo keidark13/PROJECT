@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Space+Grotesk:wght@700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 794px;
+      font-family: 'Archivo', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .page {
+      padding: 48px 52px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 24px;
+      border-bottom: 2px solid #7C3AED;
+      margin-bottom: 28px;
+    }
+    .header-left {}
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #7C3AED;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #0F0F23;
+      line-height: 1.1;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    .badge {
+      background: #0F0F23;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+
+    /* Intro */
+    .intro {
+      background: #f5f3ff;
+      border-left: 3px solid #7C3AED;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 24px;
+      font-size: 12.5px;
+      color: #374151;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 20px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .section-num {
+      background: #7C3AED;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F0F23;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Items */
+    .items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 16px;
+    }
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 7px 10px;
+      background: #fafafa;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+    }
+    .checkbox {
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid #7C3AED;
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .item-text {}
+    .item-label {
+      font-weight: 600;
+      font-size: 12px;
+      color: #111827;
+      display: block;
+    }
+    .item-note {
+      font-size: 10.5px;
+      color: #6b7280;
+      display: block;
+    }
+
+    /* Full-width item */
+    .items.full .item {
+      grid-column: span 2;
+    }
+    .items.col1 {
+      grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-note {
+      font-size: 10.5px;
+      color: #9ca3af;
+    }
+    .footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #7C3AED;
+    }
+
+    /* Stat chips */
+    .stat {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-left">
+      <div class="brand">Keyvin Abillon · keyvin-abillon.netlify.app</div>
+      <div class="title">15-Point Landing Page<br>CRO Checklist</div>
+      <div class="subtitle">Audit any landing page in under 20 minutes</div>
+    </div>
+    <div class="badge">FREE RESOURCE</div>
+  </div>
+
+  <div class="intro">
+    Use this checklist before launching any campaign, landing page, or lead gen funnel. Each point maps to a proven conversion principle. Score 12+ out of 15 before you spend a peso on ads.
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">A</div>
+      <div class="section-title">Above the Fold (First 3 seconds)</div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Pain-first headline</span>
+          <span class="item-note">Leads with what they're losing, not what you offer</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Single clear CTA above fold</span>
+          <span class="item-note">One action — no competing links <span class="stat">+23% CVR</span></span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Outcome-led subheadline</span>
+          <span class="item-note">States the result, not the feature</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Mobile loads in &lt;2.5s</span>
+          <span class="item-note">Every 1s delay = 7% drop in conversions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">B</div>
+      <div class="section-title">Trust & Social Proof</div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Specific numbers, not vague claims</span>
+          <span class="item-note">"34% lift" beats "amazing results" every time</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Real testimonials with full name</span>
+          <span class="item-note">Photo + job title adds 40% more credibility</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Trust badges near CTA</span>
+          <span class="item-note">SSL, money-back, or relevant certifications</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Logos or "As seen in" strip</span>
+          <span class="item-note">Social proof from authority reduces friction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">C</div>
+      <div class="section-title">Friction & Form Optimization</div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Form fields ≤ 3 for cold traffic</span>
+          <span class="item-note">Each extra field drops CVR by ~11%</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">CTA button copy is action-specific</span>
+          <span class="item-note">"Get My Audit" beats "Submit" by up to 90%</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Privacy micro-copy below form</span>
+          <span class="item-note">"No spam" note increases opt-ins by 19%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">D</div>
+      <div class="section-title">Urgency & Scarcity</div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Genuine urgency signal present</span>
+          <span class="item-note">Deadline, limited slots, or expiring offer</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Loss-framed CTA variant tested</span>
+          <span class="item-note">"Don't miss out" vs "Get access" — test both</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">E</div>
+      <div class="section-title">Post-Submit Experience</div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Thank-you page with next step</span>
+          <span class="item-note">Don't leave them at a dead end — upsell or book</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="checkbox"></div>
+        <div class="item-text">
+          <span class="item-label">Conversion event fires in GA/GTM</span>
+          <span class="item-note">Can't optimize what you're not tracking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-note">v1.0 · 2026 · Free to share — please credit keyvin-abillon.netlify.app</div>
+    <div class="footer-brand">Keyvin · CRO Specialist</div>
+  </div>
+
+</div>
+</body>
+</html>

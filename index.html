@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Keyvin — Automation Specialist, SEO Specialist & CRO Specialist. Building systems that generate leads, rank on Google, and convert at scale.">
+  <meta property="og:title" content="Keyvin — Automation | SEO | CRO Specialist">
+  <meta property="og:description" content="Building systems that generate leads, rank on Google, and convert at scale.">
+  <meta property="og:image" content="https://keyvin-abillon.netlify.app/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://keyvin-abillon.netlify.app">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://keyvin-abillon.netlify.app/assets/og-image.png">
+  <title>Keyvin — Automation | SEO | CRO Specialist</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <!-- Anti-flash: apply theme before CSS paints -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Skip link for accessibility -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo" aria-label="Keyvin - Home">K.</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+      <!-- Sun icon (shown in dark mode) -->
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <!-- Moon icon (shown in light mode) -->
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <!-- hamburger SVG (3 lines) -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
+    <button class="mobile-nav-close" id="mobile-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-links" role="list">
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <canvas id="particle-mesh" aria-hidden="true"></canvas>
+  <main id="main">
+
+    <!-- HERO -->
+    <section id="hero" aria-label="Hero section">
+      <div class="aura" aria-hidden="true">
+        <div class="aura-blob aura-blob--primary"></div>
+        <div class="aura-blob aura-blob--rose"></div>
+        <div class="aura-blob aura-blob--deep"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <p class="hero-eyebrow">Your leads are leaking. Let's fix that.</p>
+            <h1 class="glitch-text" data-text="Keyvin.">Keyvin.</h1>
+            <span class="role-text" id="role-text" aria-live="polite" aria-label="Automation Specialist, SEO Specialist, CRO Specialist"></span>
+            <p class="hero-tagline">Hand me the follow-ups, the funnels, the ad accounts. Your business has bigger things to focus on.</p>
+            <div class="hero-stats" aria-label="Quick stats">
+              <div class="hero-stat">
+                <span class="hero-stat-number">3+</span>
+                <span class="hero-stat-label">Years in<br>Digital Marketing</span>
+              </div>
+              <div class="hero-stat-divider" aria-hidden="true"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-number">20+</span>
+                <span class="hero-stat-label">Clients<br>Served</span>
+              </div>
+              <div class="hero-stat-divider" aria-hidden="true"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-number">40%</span>
+                <span class="hero-stat-label">Avg ROAS<br>Improvement</span>
+              </div>
+            </div>
+            <div class="btn-group">
+              <a href="#contact" class="btn btn-primary">Let's Build Your System</a>
+              <a href="#projects" class="btn btn-outline">See Real Results</a>
+            </div>
+          </div>
+          <div class="hero-photo" aria-hidden="true">
+            <div class="hero-photo-frame">
+              <div class="todo-card todo-card--1" aria-hidden="true">
+                <div class="todo-item todo-done">✓ Automate client follow-ups</div>
+                <div class="todo-item todo-done">✓ Google Ads ROAS +40%</div>
+                <div class="todo-item">○ SEO content cluster</div>
+                <div class="todo-item todo-done">✓ GHL pipeline deployed</div>
+              </div>
+              <div class="todo-card todo-card--2" aria-hidden="true">
+                <div class="todo-item todo-done">✓ Landing page A/B test</div>
+                <div class="todo-item">○ Analytics dashboard</div>
+                <div class="todo-item todo-done">✓ Lead magnet live</div>
+              </div>
+              <div class="todo-card todo-card--3" aria-hidden="true">
+                <div class="todo-item todo-done">✓ Rank target keywords</div>
+                <div class="todo-item">○ Email sequence setup</div>
+                <div class="todo-item todo-done">✓ CRO audit — 3 clients</div>
+              </div>
+              <div class="todo-card todo-card--r1" aria-hidden="true">
+                <div class="todo-item todo-done">✓ SEO audit — 3 clients</div>
+                <div class="todo-item todo-done">✓ Keyword rankings up</div>
+                <div class="todo-item">○ Backlink outreach</div>
+                <div class="todo-item todo-done">✓ On-page fixes live</div>
+              </div>
+              <div class="todo-card todo-card--r2" aria-hidden="true">
+                <div class="todo-item todo-done">✓ Ad copy A/B test</div>
+                <div class="todo-item">○ Retargeting setup</div>
+                <div class="todo-item todo-done">✓ ROAS target hit</div>
+              </div>
+              <div class="todo-card todo-card--r3" aria-hidden="true">
+                <div class="todo-item todo-done">✓ Funnel conversion +18%</div>
+                <div class="todo-item">○ Checkout flow audit</div>
+                <div class="todo-item todo-done">✓ Heatmap review done</div>
+              </div>
+              <img src="assets/keyvin-headshot-nobg.png" alt="Keyvin Abillon" class="hero-avatar">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS MARQUEE -->
+    <section class="tools-strip" aria-label="Tools I use">
+      <div class="tools-track">
+        <!-- set 1 -->
+        <span class="tool-item"><img src="assets/icons/openai.svg" class="tool-icon" alt="">ChatGPT</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M13.5 2L4 13.5H11L9 22L20 10.5H13L13.5 2z" fill="#F9F64A"/></svg>GoHighLevel</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><circle cx="5" cy="18" r="4" fill="#4285F4"/><circle cx="12" cy="12" r="4" fill="#FBBC04"/><circle cx="19" cy="6" r="4" fill="#34A853"/></svg>Google Ads</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M12 2L2 22h5l1.5-4h7L17 22h5L12 2zm0 6.5l2.2 6h-4.4L12 8.5z" fill="#CC785C"/></svg>Claude AI</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><img src="assets/icons/python.svg" class="tool-icon" alt="">Python</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><img src="assets/icons/playwright.svg" class="tool-icon" alt="">Playwright</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6" stroke="#34D399" stroke-width="2"/><polyline points="8,6 2,12 8,18" stroke="#34D399" stroke-width="2"/><line x1="14" y1="3" x2="10" y2="21" stroke="#F472B6" stroke-width="1.5"/></svg>Vibe Coding</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#10B981" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Claude Code</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M12 12C10 8.8 7.5 7 5 7a5 5 0 0 0 0 10c2.5 0 5-1.8 7-5zm0 0c2 3.2 4.5 5 7 5a5 5 0 0 0 0-10c-2.5 0-5 1.8-7 5z" fill="none" stroke="#0866FF" stroke-width="2"/></svg>Meta Ads</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><rect x="2" y="13" width="5" height="9" rx="1" fill="#E37400"/><rect x="9.5" y="7" width="5" height="15" rx="1" fill="#F9AB00"/><rect x="17" y="2" width="5" height="20" rx="1" fill="#4285F4"/></svg>Google Analytics</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M4 4l6 16 3.5-7L20 9 4 4z" fill="currentColor"/><path d="M13.5 13l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Cursor</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M6 5l-4 7 4 7" stroke="#007808" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M18 5l4 7-4 7" stroke="#007808" stroke-width="2" fill="none" stroke-linecap="round"/><line x1="9" y1="12" x2="15" y2="12" stroke="#007808" stroke-width="2" stroke-linecap="round"/></svg>FFmpeg</span>
+        <span class="tool-sep">|</span>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <span class="tool-item"><img src="assets/icons/openai.svg" class="tool-icon" alt="">ChatGPT</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M13.5 2L4 13.5H11L9 22L20 10.5H13L13.5 2z" fill="#F9F64A"/></svg>GoHighLevel</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><circle cx="5" cy="18" r="4" fill="#4285F4"/><circle cx="12" cy="12" r="4" fill="#FBBC04"/><circle cx="19" cy="6" r="4" fill="#34A853"/></svg>Google Ads</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M12 2L2 22h5l1.5-4h7L17 22h5L12 2zm0 6.5l2.2 6h-4.4L12 8.5z" fill="#CC785C"/></svg>Claude AI</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><img src="assets/icons/python.svg" class="tool-icon" alt="">Python</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><img src="assets/icons/playwright.svg" class="tool-icon" alt="">Playwright</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6" stroke="#34D399" stroke-width="2"/><polyline points="8,6 2,12 8,18" stroke="#34D399" stroke-width="2"/><line x1="14" y1="3" x2="10" y2="21" stroke="#F472B6" stroke-width="1.5"/></svg>Vibe Coding</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#10B981" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Claude Code</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M12 12C10 8.8 7.5 7 5 7a5 5 0 0 0 0 10c2.5 0 5-1.8 7-5zm0 0c2 3.2 4.5 5 7 5a5 5 0 0 0 0-10c-2.5 0-5 1.8-7 5z" fill="none" stroke="#0866FF" stroke-width="2"/></svg>Meta Ads</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><rect x="2" y="13" width="5" height="9" rx="1" fill="#E37400"/><rect x="9.5" y="7" width="5" height="15" rx="1" fill="#F9AB00"/><rect x="17" y="2" width="5" height="20" rx="1" fill="#4285F4"/></svg>Google Analytics</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M4 4l6 16 3.5-7L20 9 4 4z" fill="currentColor"/><path d="M13.5 13l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Cursor</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M6 5l-4 7 4 7" stroke="#007808" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M18 5l4 7-4 7" stroke="#007808" stroke-width="2" fill="none" stroke-linecap="round"/><line x1="9" y1="12" x2="15" y2="12" stroke="#007808" stroke-width="2" stroke-linecap="round"/></svg>FFmpeg</span>
+        <span class="tool-sep">|</span>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="fade-section section-pad" aria-labelledby="skills-heading">
+      <div class="container">
+        <h2 id="skills-heading" class="section-heading">What I Do</h2>
+        <p class="section-subheading">Systems that generate leads, rank on Google, and convert at scale.</p>
+        <div class="skills-carousel-wrapper">
+          <button class="skills-arrow skills-arrow--prev" id="skills-prev" aria-label="Previous skills">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+          </button>
+          <div class="skills-track" id="skills-track">
+
+            <article class="skill-card">
+              <div class="skill-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 2L4 13.5H11L9 22L20 10.5H13L13.5 2z"/></svg>
+              </div>
+              <h3 class="skill-card-title">GHL Automation</h3>
+              <p class="skill-card-desc">CRM pipelines, follow-up sequences, and workflow automation built inside GoHighLevel so no lead falls through the cracks.</p>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <h3 class="skill-card-title">SEO Systems</h3>
+              <p class="skill-card-desc">Keyword strategy, on-page optimization, and content clusters engineered to compound rankings over time — not just quick wins.</p>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <h3 class="skill-card-title">Google &amp; Meta Ads</h3>
+              <p class="skill-card-desc">Campaign architecture, bidding strategy, and creative testing tuned for ROAS. Every dollar tracked from click to close.</p>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+              </div>
+              <h3 class="skill-card-title">CRO &amp; A/B Testing</h3>
+              <p class="skill-card-desc">Landing page audits, split tests, and funnel fixes that turn the traffic you already have into more conversions.</p>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="6" height="18" rx="1"/><rect x="9" y="8" width="6" height="13" rx="1"/><rect x="16" y="13" width="6" height="8" rx="1"/></svg>
+              </div>
+              <h3 class="skill-card-title">Analytics &amp; Reporting</h3>
+              <p class="skill-card-desc">GA4 setup, conversion tracking, and dashboards that surface what's actually working — so you stop guessing and start scaling.</p>
+            </article>
+
+            <article class="skill-card skill-card--vibe">
+              <div class="skill-icon skill-icon--vibe" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16,18 22,12 16,6" stroke="#34D399" stroke-width="2"/>
+                  <polyline points="8,6 2,12 8,18" stroke="#34D399" stroke-width="2"/>
+                  <line x1="14" y1="3" x2="10" y2="21" stroke="#F472B6" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3 class="skill-card-title">Vibe Coding</h3>
+              <p class="skill-card-desc">Claude Code, Cursor, and Python to ship tools, automations, and dashboards fast — without a dev team. If I can describe it, I can build it.</p>
+            </article>
+
+          </div>
+          <button class="skills-arrow skills-arrow--next" id="skills-next" aria-label="Next skills">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"/></svg>
+          </button>
+        </div>
+        <div class="skills-dots" id="skills-dots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade-section section-pad" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <h2 id="about-heading">About Me</h2>
+            <p>3+ years in digital marketing, long enough to know exactly where leads leak, rankings slip, and ad budgets disappear. Since then: GHL automation pipelines, Google Ads accounts, and SEO systems built to compound over time.</p>
+            <p style="margin-top: 1rem;">You get someone who has seen the problem firsthand and builds the fix — automations that still run, rankings that still hold, and conversions that keep climbing.</p>
+            <div class="skill-badges" role="list" aria-label="Skills">
+              <span class="skill-badge" role="listitem">GHL Automation</span>
+              <span class="skill-badge" role="listitem">SEO</span>
+              <span class="skill-badge" role="listitem">CRO</span>
+              <span class="skill-badge" role="listitem">Lead Generation</span>
+              <span class="skill-badge" role="listitem">Google Ads</span>
+              <span class="skill-badge" role="listitem">Analytics</span>
+            </div>
+          </div>
+          <div class="about-visual">
+            <img src="assets/keyvin-illustration.jpg" alt="Keyvin Abillon" class="avatar-photo">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="fade-section section-pad" aria-labelledby="projects-heading">
+      <div class="container">
+        <h2 id="projects-heading" class="section-heading">Projects</h2>
+        <p class="section-subheading">Real work, real results. Systems that still run and rankings that still hold.</p>
+        <div class="projects-grid">
+
+          <article class="project-card stagger-item" aria-label="SEO Audit Dashboard project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--browser">
+              <div class="browser-chrome"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">keyvin-abillon.netlify.app/seo-audit-dashboard</span></div>
+              <div class="card-screenshot"><img src="assets/screenshots/seo-audit-dashboard.png" alt="SEO Audit Dashboard preview" loading="lazy"></div>
+              <span class="card-label">TOOL / SEO</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>SEO Audit Dashboard</h3>
+              <p>A live dashboard that crawls any domain and surfaces critical SEO issues ranked by impact — from Core Web Vitals to keyword cannibalization.</p>
+              <div class="tags" aria-label="Technologies used">
+                <span class="tag">HTML/CSS/JS</span>
+                <span class="tag">SEO</span>
+                <span class="tag">Analytics</span>
+              </div>
+              <a href="seo-audit-dashboard/index.html" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View SEO Audit Dashboard">View Dashboard →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item" aria-label="Landing Page CRO Kit project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--browser">
+              <div class="browser-chrome"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">keyvin-abillon.netlify.app/landing-page-cro-kit</span></div>
+              <div class="card-screenshot"><img src="assets/screenshots/landing-page-cro-kit.png" alt="Landing Page CRO Kit preview" loading="lazy"></div>
+              <span class="card-label">TOOL / CRO</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>Landing Page CRO Kit</h3>
+              <p>A modular landing page framework built around proven conversion principles — social proof, scarcity signals, and frictionless CTAs baked in.</p>
+              <div class="tags">
+                <span class="tag">HTML/CSS</span>
+                <span class="tag">CRO</span>
+                <span class="tag">Copywriting</span>
+              </div>
+              <a href="landing-page-cro-kit/index.html" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Landing Page CRO Kit">View Kit →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item" aria-label="Vibe Portfolio Template project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--browser">
+              <div class="browser-chrome"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">keyvin-abillon.netlify.app/vibe-template</span></div>
+              <div class="card-screenshot"><img src="assets/screenshots/vibe-template.png" alt="Vibe Portfolio Template preview" loading="lazy"></div>
+              <span class="card-label">TEMPLATE / WEB</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>Vibe Portfolio Template</h3>
+              <p>An open-source personal site template with cinematic animations, dark neon aesthetics, and zero dependencies — just drop in your content.</p>
+              <div class="tags">
+                <span class="tag">HTML/CSS/JS</span>
+                <span class="tag">Design</span>
+                <span class="tag">Open Source</span>
+              </div>
+              <a href="vibe-template/index.html" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Vibe Portfolio Template">View Template →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item" aria-label="Keyword Rank Tracker project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--browser">
+              <div class="browser-chrome"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">keyvin-abillon.netlify.app/keyword-rank-tracker</span></div>
+              <div class="card-screenshot"><img src="assets/screenshots/keyword-rank-tracker.png" alt="Keyword Rank Tracker preview" loading="lazy"></div>
+              <span class="card-label">TOOL / SEO</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>Keyword Rank Tracker</h3>
+              <p>Track keyword positions across multiple domains over time. Visualizes ranking trends and surfaces volatility alerts before they become problems.</p>
+              <div class="tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">SEO</span>
+                <span class="tag">Data Viz</span>
+              </div>
+              <a href="keyword-rank-tracker/index.html" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Keyword Rank Tracker">View Tracker →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item" aria-label="GHL Snapshot project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--browser">
+              <div class="browser-chrome"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">keyvin-abillon.netlify.app/ghl-snapshot</span></div>
+              <div class="card-screenshot"><img src="assets/screenshots/ghl-snapshot.png" alt="GHL Lead Nurture Snapshot preview" loading="lazy"></div>
+              <span class="card-label">RESOURCE / GHL</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>GHL Lead Nurture Snapshot</h3>
+              <p>Download my battle-tested 7-workflow GoHighLevel snapshot — from first lead touch to closed deal. Import-ready, zero setup from scratch.</p>
+              <div class="tags">
+                <span class="tag">Go High Level</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Free Resource</span>
+              </div>
+              <a href="ghl-snapshot/index.html" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="Download GHL Snapshot">Download Snapshot →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item" aria-label="GHL Audit Tool project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--browser">
+              <div class="browser-chrome"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">keyvin-abillon.netlify.app/ghl-audit</span></div>
+              <div class="card-screenshot"><img src="assets/screenshots/ghl-audit.png" alt="GHL Account Audit Tool preview" loading="lazy"></div>
+              <span class="card-label">TOOL / GHL</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>GHL Account Audit Tool</h3>
+              <p>20 questions. Instant score. Find exactly what's missing in your GoHighLevel setup — CRM, automations, follow-up, booking, and reporting.</p>
+              <div class="tags">
+                <span class="tag">Go High Level</span>
+                <span class="tag">Audit</span>
+                <span class="tag">Free Tool</span>
+              </div>
+              <a href="ghl-audit/index.html" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="Take GHL Audit">Take the Audit →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item" aria-label="GHL Automation Services project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--browser">
+              <div class="browser-chrome"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">keyvin-abillon.netlify.app/ghl-services</span></div>
+              <div class="card-screenshot"><img src="assets/screenshots/ghl-services.png" alt="GHL Automation Services preview" loading="lazy"></div>
+              <span class="card-label">SERVICE / GHL</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>GHL Automation Services</h3>
+              <p>Speed-to-lead, appointment automation, review requests, and full pipeline setup — built to your business process, not a template.</p>
+              <div class="tags">
+                <span class="tag">Go High Level</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Lead Nurture</span>
+              </div>
+              <a href="ghl-services/index.html" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View GHL Automation Services">View Services →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item" aria-label="Solution13 Local Growth System project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--browser">
+              <div class="browser-chrome"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">solution13.online</span></div>
+              <div class="card-screenshot"><img src="assets/screenshots/solution13.png" alt="Solution13 website preview" loading="lazy"></div>
+              <span class="card-label">CLIENT / GHL</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>Solution13 — Local Growth System</h3>
+              <p>Built a full lead-gen and automation platform for local service businesses: Google Ads management, GHL automation (SMS/email follow-up, missed-call text-back), and Local SEO — all in one system.</p>
+              <div class="tags">
+                <span class="tag">Go High Level</span>
+                <span class="tag">Google Ads</span>
+                <span class="tag">Local SEO</span>
+              </div>
+              <a href="https://solution13.online" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="Visit Solution13 live site">Visit Live Site →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item" aria-label="GHL Lead Nurture System project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--glow">
+              <div class="aurora-blob aurora-blob--1"></div>
+              <div class="aurora-blob aurora-blob--2"></div>
+              <div class="aurora-blob aurora-blob--3"></div>
+              <div class="card-glow-spot"></div>
+              <div class="card-icon"><div class="card-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h4l2-5h2"/><path d="M13 12l2 5h2"/></svg></div></div>
+              <span class="card-label">AUTOMATION / GHL</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>GHL Lead Nurture System</h3>
+              <p>7-workflow automation pipeline built in GoHighLevel — from first lead touch to close. Covers new lead intake, follow-up, qualification, booking, no-show recovery, and a 30-day lost-lead recycling loop.</p>
+              <div class="tags">
+                <span class="tag">Go High Level</span>
+                <span class="tag">Automation</span>
+                <span class="tag">CRM</span>
+                <span class="tag">Lead Nurture</span>
+              </div>
+              <a href="#" class="card-link" id="open-ghl-modal" aria-label="View GHL workflow details">View Workflows →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item" aria-label="Local SEO Playbook project">
+            <div class="card-beam" aria-hidden="true"></div>
+            <div class="card-image card-image--browser">
+              <div class="browser-chrome"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">keyvin-abillon.netlify.app/local-seo-playbook</span></div>
+              <div class="card-screenshot"><img src="assets/screenshots/local-seo-playbook.png" alt="Local SEO Playbook preview" loading="lazy"></div>
+              <span class="card-label">RESOURCE / SEO</span>
+            </div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>Local SEO Playbook</h3>
+              <p>A comprehensive, battle-tested guide for dominating local search — from Google Business Profile optimization to citation building and review strategies.</p>
+              <div class="tags">
+                <span class="tag">SEO</span>
+                <span class="tag">Strategy</span>
+                <span class="tag">Local</span>
+              </div>
+              <a href="local-seo-playbook/index.html" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Local SEO Playbook">View Playbook →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade-section section-pad" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading" class="section-heading">Let's Build Your System</h2>
+        <p class="section-subheading">Pick one. Stack a few. Build a system that runs without you.</p>
+        <div class="contact-grid">
+          <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true" novalidate aria-label="Contact form">
+            <input type="hidden" name="form-name" value="contact">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your project..." required rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          </form>
+
+          <div class="social-dock" role="list" aria-label="Social media links">
+            <div class="social-dock__gradient" aria-hidden="true"></div>
+
+            <!-- GitHub -->
+            <a href="https://github.com/keidark13" class="social-dock__item" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <span class="social-dock__bg" aria-hidden="true"></span>
+              <span class="social-dock__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </span>
+              <span class="social-dock__bar" aria-hidden="true"></span>
+              <span class="social-dock__tooltip">GitHub<span class="social-dock__arrow" aria-hidden="true"></span></span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/keyvin-abillon-2527ac217/" class="social-dock__item" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <span class="social-dock__bg" aria-hidden="true"></span>
+              <span class="social-dock__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </span>
+              <span class="social-dock__bar" aria-hidden="true"></span>
+              <span class="social-dock__tooltip">LinkedIn<span class="social-dock__arrow" aria-hidden="true"></span></span>
+            </a>
+
+            <!-- Twitter/X -->
+            <a href="https://x.com/abillon13" class="social-dock__item" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+              <span class="social-dock__bg" aria-hidden="true"></span>
+              <span class="social-dock__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.213 5.567 5.95-5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </span>
+              <span class="social-dock__bar" aria-hidden="true"></span>
+              <span class="social-dock__tooltip">Twitter / X<span class="social-dock__arrow" aria-hidden="true"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <p>© 2026 Keyvin. Automation Specialist · SEO · CRO</p>
+    <a href="#hero" class="back-to-top" aria-label="Back to top">
+      ↑ Back to top
+    </a>
+  </footer>
+
+  <!-- GHL WORKFLOWS MODAL -->
+  <div class="modal-overlay" id="ghl-modal" role="dialog" aria-modal="true" aria-label="GHL Lead Nurture System">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>GHL Lead Nurture System</h3>
+        <button class="modal-close" id="modal-close" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <p class="modal-subtitle">7-workflow automation pipeline built in GoHighLevel for Solution13.online. Covers every stage of the lead lifecycle — from first contact to close and lost-lead recovery.</p>
+
+      <!-- Slideshow -->
+      <div class="wf-slideshow">
+        <div class="wf-slides">
+          <div class="wf-slide active">
+            <img src="assets/workflows/wf-001-new-lead.png" alt="Workflow 001 — New Lead" class="wf-img" loading="lazy">
+            <div class="wf-caption"><span class="workflow-num">001</span> New Lead</div>
+          </div>
+          <div class="wf-slide">
+            <img src="assets/workflows/wf-002-contacted.png" alt="Workflow 002 — Contacted" class="wf-img" loading="lazy">
+            <div class="wf-caption"><span class="workflow-num">002</span> Contacted</div>
+          </div>
+          <div class="wf-slide">
+            <img src="assets/workflows/wf-003-qualified.png" alt="Workflow 003 — Qualified" class="wf-img" loading="lazy">
+            <div class="wf-caption"><span class="workflow-num">003</span> Qualified</div>
+          </div>
+          <div class="wf-slide">
+            <img src="assets/workflows/wf-004-booked.png" alt="Workflow 004 — Strategy Booked" class="wf-img" loading="lazy">
+            <div class="wf-caption"><span class="workflow-num">004</span> Strategy Call Booked</div>
+          </div>
+          <div class="wf-slide">
+            <img src="assets/workflows/wf-004b-noshow.png" alt="Workflow 004b — No Show Recovery" class="wf-img" loading="lazy">
+            <div class="wf-caption"><span class="workflow-num">004b</span> No-Show Recovery</div>
+          </div>
+          <div class="wf-slide">
+            <img src="assets/workflows/wf-005-won.png" alt="Workflow 005 — Closed Won" class="wf-img" loading="lazy">
+            <div class="wf-caption"><span class="workflow-num">005</span> Closed Won</div>
+          </div>
+          <div class="wf-slide">
+            <img src="assets/workflows/wf-006-lost.png" alt="Workflow 006 — Closed Lost" class="wf-img" loading="lazy">
+            <div class="wf-caption"><span class="workflow-num">006</span> Closed Lost — Re-engagement</div>
+          </div>
+          <div class="wf-slide">
+            <img src="assets/workflows/wf-007-nuture.png" alt="Workflow 007 — Nurture" class="wf-img" loading="lazy">
+            <div class="wf-caption"><span class="workflow-num">007</span> Nurture Sequence</div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="wf-controls">
+          <button class="wf-btn" id="wf-prev" aria-label="Previous workflow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="wf-dots" id="wf-dots"></div>
+          <button class="wf-btn" id="wf-next" aria-label="Next workflow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

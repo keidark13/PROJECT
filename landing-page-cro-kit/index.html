@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page CRO Kit — Keyvin Abillon</title>
+  <meta name="description" content="A modular landing page framework built around proven conversion principles — social proof, scarcity signals, and frictionless CTAs baked in." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0F0D;
+      --surface: #111A16;
+      --surface-2: #1A2E1F;
+      --primary: #10B981;
+      --primary-light: #34D399;
+      --cta: #F59E0B;
+      --cta-glow: rgba(245,158,11,0.4);
+      --text: #D1D5DB;
+      --text-muted: #9CA3AF;
+      --text-faint: #475569;
+      --border: rgba(16,185,129,0.2);
+      --border-hover: rgba(16,185,129,0.6);
+      --green: #10B981;
+      --amber: #F59E0B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Archivo', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,15,35,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary-light);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-back {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 96px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cta);
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.3);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #E2E8F0 30%, var(--primary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 19px);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--cta);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 var(--cta-glow);
+      animation: pulse-glow 2.8s ease-in-out infinite;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--cta-glow);
+      animation: none;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 var(--cta-glow); }
+      50% { box-shadow: 0 0 0 12px rgba(245,158,11,0); }
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1px solid var(--border-hover);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(16,185,129,0.1);
+      border-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .trust-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-item .check { color: var(--green); font-size: 14px; }
+
+    /* ── SOCIAL PROOF STRIP ── */
+    .proof-strip {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .proof-strip p {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 28px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .fake-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text-faint);
+      letter-spacing: -0.5px;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      cursor: default;
+    }
+
+    .fake-logo:hover { opacity: 0.9; }
+    .fake-logo .dot { color: var(--primary); opacity: 1; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── COMPONENTS GRID ── */
+    #components {
+      padding: 96px 0;
+    }
+
+    .components-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .comp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .comp-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 32px rgba(16,185,129,0.12);
+    }
+
+    .comp-header {
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .comp-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .comp-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(16,185,129,0.15);
+      color: var(--primary-light);
+      letter-spacing: 0.5px;
+    }
+
+    .comp-demo {
+      padding: 20px;
+      min-height: 120px;
+    }
+
+    .comp-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .comp-desc {
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+
+    .copy-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 6px 12px;
+      background: rgba(16,185,129,0.15);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--primary-light);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .copy-btn:hover {
+      background: rgba(16,185,129,0.3);
+      border-color: var(--primary-light);
+    }
+
+    .copy-btn.copied {
+      background: rgba(16,185,129,0.15);
+      border-color: rgba(16,185,129,0.4);
+      color: var(--green);
+    }
+
+    /* ── DEMO: Urgency Timer ── */
+    .urgency-demo {
+      background: rgba(245,158,11,0.06);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .urgency-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--cta);
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .timer-display {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .timer-unit {
+      text-align: center;
+    }
+
+    .timer-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--cta);
+      line-height: 1;
+      display: block;
+      min-width: 44px;
+      transition: color 0.18s;
+    }
+
+    .timer-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-faint);
+      margin-top: 3px;
+      display: block;
+    }
+
+    .timer-sep {
+      font-size: 24px;
+      color: var(--cta);
+      font-weight: 700;
+      opacity: 0.5;
+      align-self: flex-start;
+      padding-top: 2px;
+    }
+
+    /* ── DEMO: Social Proof ── */
+    .proof-demo { display: flex; flex-direction: column; gap: 10px; }
+
+    .proof-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .proof-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--cta));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .proof-text { flex: 1; }
+
+    .proof-quote {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .proof-name {
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-top: 3px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .proof-stars { color: var(--amber); font-size: 11px; margin-bottom: 2px; }
+
+    /* ── DEMO: Risk Reversal ── */
+    .risk-demo {
+      background: rgba(16,185,129,0.06);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .risk-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--green);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .risk-body {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .risk-list {
+      margin-top: 10px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .risk-list li {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .risk-list li::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ── DEMO: Feature Benefit Grid ── */
+    .feature-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .feature-item {
+      background: var(--surface-2);
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    .feature-icon { font-size: 18px; margin-bottom: 4px; }
+
+    .feature-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .feature-desc {
+      font-size: 11px;
+      color: var(--text-faint);
+      line-height: 1.3;
+    }
+
+    /* ── DEMO: FAQ Accordion ── */
+    .faq-demo { display: flex; flex-direction: column; gap: 6px; }
+
+    .faq-item {
+      background: var(--surface-2);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 10px 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      gap: 8px;
+    }
+
+    .faq-q:hover { color: var(--primary-light); }
+
+    .faq-icon {
+      color: var(--primary-light);
+      font-size: 16px;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding: 0 14px;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+      padding: 0 14px 10px;
+    }
+
+    /* ── DEMO: Exit Intent CTA ── */
+    .exit-demo {
+      background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(245,158,11,0.08));
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .exit-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .exit-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .exit-input-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    .exit-input {
+      flex: 1;
+      padding: 8px 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 12px;
+      font-family: 'Archivo', sans-serif;
+      outline: none;
+    }
+
+    .exit-input:focus { border-color: var(--primary); }
+
+    .exit-submit {
+      padding: 8px 14px;
+      background: var(--cta);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .exit-submit:hover { opacity: 0.85; }
+
+    /* ── PRINCIPLES ── */
+    #principles {
+      padding: 96px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .principle-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .principle-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-hover);
+    }
+
+    .principle-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .principle-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .principle-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .principle-stat {
+      margin-top: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--primary-light);
+      padding: 4px 8px;
+      background: rgba(16,185,129,0.1);
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      padding: 96px 0;
+      text-align: center;
+    }
+
+    .final-cta-inner {
+      background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(245,158,11,0.08));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 72px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta-inner::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(16,185,129,0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(30px, 5vw, 50px);
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .final-cta p {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-faint);
+    }
+
+    .footer-link {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover { color: var(--primary-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 64px 0 56px; }
+      .btn-group { flex-direction: column; align-items: center; }
+      .trust-bar { flex-direction: column; gap: 10px; }
+      .logo-row { gap: 24px; }
+      .fake-logo { font-size: 15px; }
+      .components-grid { grid-template-columns: 1fr; }
+      .principles-grid { grid-template-columns: 1fr 1fr; }
+      .feature-demo { grid-template-columns: 1fr; }
+      .final-cta-inner { padding: 48px 24px; }
+      .exit-input-row { flex-direction: column; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 400px) {
+      .principles-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── FUNNEL CANVAS ── */
+    #funnel-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    nav, .hero, .proof-strip, #components, #principles, .final-cta, footer, .kit-modal {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="funnel-canvas" aria-hidden="true"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">K.</a>
+      <a href="../index.html" class="nav-back">&#8592; Back to Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">CRO KIT &#8212; FREE TEMPLATE</div>
+      <h1>Stop Losing Leads<br>at the First Click.</h1>
+      <p class="hero-sub">A modular landing page framework built around proven conversion principles &#8212; social proof, scarcity signals, and frictionless CTAs baked in.</p>
+      <div class="btn-group">
+        <a href="#" class="btn-primary" id="get-kit-btn">Get the Kit &#8599;</a>
+        <a href="#components" class="btn-outline">See Components &#8595;</a>
+      </div>
+      <div class="trust-bar">
+        <span class="trust-item"><span class="check">&#10003;</span> Instant access</span>
+        <span class="trust-item"><span class="check">&#10003;</span> Zero dependencies</span>
+        <span class="trust-item"><span class="check">&#10003;</span> Copy-paste ready</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF STRIP -->
+  <section class="proof-strip">
+    <div class="container">
+      <p>Trusted by 200+ marketers and conversion specialists</p>
+      <div class="logo-row">
+        <span class="fake-logo">PEAK<span class="dot">.</span>IO</span>
+        <span class="fake-logo">NOVA<span class="dot">X</span></span>
+        <span class="fake-logo">DRIFTLY</span>
+        <span class="fake-logo">FORM<span class="dot">&middot;</span>BASE</span>
+        <span class="fake-logo">ARC<span class="dot">&#9670;</span>LABS</span>
+        <span class="fake-logo">KOVA<span class="dot">_</span>HQ</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS SHOWCASE -->
+  <section id="components">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Components</span>
+        <h2 class="section-title">Every Piece Earns Its Place</h2>
+        <p class="section-sub">Each component is wired to a specific psychological trigger. No fluff &#8212; only elements that move the needle.</p>
+      </div>
+
+      <div class="components-grid">
+
+        <!-- 1. Urgency Timer -->
+        <div class="comp-card reveal">
+          <div class="comp-header">
+            <span class="comp-name">Urgency Timer</span>
+            <span class="comp-tag">FOMO</span>
+          </div>
+          <div class="comp-demo">
+            <div class="urgency-demo">
+              <div class="urgency-label">&#9889; Offer expires in</div>
+              <div class="timer-display">
+                <div class="timer-unit">
+                  <span class="timer-num" id="t-h">00</span>
+                  <span class="timer-label">hrs</span>
+                </div>
+                <span class="timer-sep">:</span>
+                <div class="timer-unit">
+                  <span class="timer-num" id="t-m">00</span>
+                  <span class="timer-label">min</span>
+                </div>
+                <span class="timer-sep">:</span>
+                <div class="timer-unit">
+                  <span class="timer-num" id="t-s">00</span>
+                  <span class="timer-label">sec</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-footer">
+            <span class="comp-desc">Reduces decision delay by ~23%</span>
+            <button class="copy-btn" data-copy>&#60;/&#62; Copy HTML</button>
+          </div>
+        </div>
+
+        <!-- 2. Social Proof Block -->
+        <div class="comp-card reveal">
+          <div class="comp-header">
+            <span class="comp-name">Social Proof Block</span>
+            <span class="comp-tag">TRUST</span>
+          </div>
+          <div class="comp-demo">
+            <div class="proof-demo">
+              <div class="proof-item">
+                <div class="proof-avatar">M</div>
+                <div class="proof-text">
+                  <div class="proof-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <div class="proof-quote">"Conversion rate jumped 34% in week one. This isn't theory &#8212; it works."</div>
+                  <div class="proof-name">&#8212; Marco V., Growth Lead @ Driftly</div>
+                </div>
+              </div>
+              <div class="proof-item">
+                <div class="proof-avatar" style="background: linear-gradient(135deg,#F59E0B,#10B981)">S</div>
+                <div class="proof-text">
+                  <div class="proof-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <div class="proof-quote">"Finally, a framework that treats CRO as psychology, not guesswork."</div>
+                  <div class="proof-name">&#8212; Sarah K., Founder @ PeakIO</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-footer">
+            <span class="comp-desc">Specific &gt; generic testimonials</span>
+            <button class="copy-btn" data-copy>&#60;/&#62; Copy HTML</button>
+          </div>
+        </div>
+
+        <!-- 3. Risk Reversal -->
+        <div class="comp-card reveal">
+          <div class="comp-header">
+            <span class="comp-name">Risk Reversal</span>
+            <span class="comp-tag">SAFETY</span>
+          </div>
+          <div class="comp-demo">
+            <div class="risk-demo">
+              <div class="risk-headline">&#128737; Zero-Risk Guarantee</div>
+              <div class="risk-body">If you don't see improvement after using the kit, we'll rebuild your landing page for free &#8212; no questions asked.</div>
+              <ul class="risk-list">
+                <li>30-day full refund window</li>
+                <li>Keep all assets regardless</li>
+                <li>No contract lock-in</li>
+              </ul>
+            </div>
+          </div>
+          <div class="comp-footer">
+            <span class="comp-desc">Eliminates #1 buyer objection</span>
+            <button class="copy-btn" data-copy>&#60;/&#62; Copy HTML</button>
+          </div>
+        </div>
+
+        <!-- 4. Feature Benefit Grid -->
+        <div class="comp-card reveal">
+          <div class="comp-header">
+            <span class="comp-name">Feature Benefit Grid</span>
+            <span class="comp-tag">VALUE</span>
+          </div>
+          <div class="comp-demo">
+            <div class="feature-demo">
+              <div class="feature-item">
+                <div class="feature-icon">&#9889;</div>
+                <div class="feature-title">Load Fast</div>
+                <div class="feature-desc">Under 1.2s TTI &#8212; no bounce from slow loads</div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">&#127919;</div>
+                <div class="feature-title">One Goal</div>
+                <div class="feature-desc">Single CTA per page &#8212; less choice, more action</div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">&#128202;</div>
+                <div class="feature-title">Trackable</div>
+                <div class="feature-desc">GA4-ready event hooks pre-wired in</div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">&#128241;</div>
+                <div class="feature-title">Mobile-First</div>
+                <div class="feature-desc">60%+ traffic is mobile &#8212; don't lose it</div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-footer">
+            <span class="comp-desc">Frame features as outcomes</span>
+            <button class="copy-btn" data-copy>&#60;/&#62; Copy HTML</button>
+          </div>
+        </div>
+
+        <!-- 5. FAQ Accordion -->
+        <div class="comp-card reveal">
+          <div class="comp-header">
+            <span class="comp-name">FAQ Accordion</span>
+            <span class="comp-tag">OBJECTIONS</span>
+          </div>
+          <div class="comp-demo">
+            <div class="faq-demo">
+              <div class="faq-item" data-faq>
+                <div class="faq-q" tabindex="0" role="button">
+                  Is this really free?
+                  <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-a">Yes &#8212; the base kit is free, forever. We make money on done-for-you CRO audits and implementation sprints.</div>
+              </div>
+              <div class="faq-item" data-faq>
+                <div class="faq-q" tabindex="0" role="button">
+                  What if I'm not a developer?
+                  <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-a">All components are plain HTML. Copy, paste, customize text. No build step, no npm, no frameworks needed.</div>
+              </div>
+              <div class="faq-item" data-faq>
+                <div class="faq-q" tabindex="0" role="button">
+                  Will this work on my platform?
+                  <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-a">Works on any HTML-capable platform &#8212; Webflow, WordPress, Framer, custom builds, GHL funnels, you name it.</div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-footer">
+            <span class="comp-desc">Address objections proactively</span>
+            <button class="copy-btn" data-copy>&#60;/&#62; Copy HTML</button>
+          </div>
+        </div>
+
+        <!-- 6. Exit Intent CTA -->
+        <div class="comp-card reveal">
+          <div class="comp-header">
+            <span class="comp-name">Exit Intent CTA</span>
+            <span class="comp-tag">RESCUE</span>
+          </div>
+          <div class="comp-demo">
+            <div class="exit-demo">
+              <div class="exit-headline">Wait &#8212; take this with you.</div>
+              <div class="exit-sub">Get the full CRO component library sent to your inbox. No spam, one email.</div>
+              <div class="exit-input-row">
+                <input class="exit-input" type="email" placeholder="you@company.com" aria-label="Your email address" />
+                <button class="exit-submit">Send It</button>
+              </div>
+            </div>
+          </div>
+          <div class="comp-footer">
+            <span class="comp-desc">Recovers 8&#8211;15% of exit traffic</span>
+            <button class="copy-btn" data-copy>&#60;/&#62; Copy HTML</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section id="principles">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Psychology</span>
+        <h2 class="section-title">The Science Behind the Kit</h2>
+        <p class="section-sub">Every component maps to a behavioral economics principle. This is why it converts &#8212; not luck.</p>
+      </div>
+
+      <div class="principles-grid">
+
+        <div class="principle-card reveal">
+          <div class="principle-icon">&#9878;&#65039;</div>
+          <div class="principle-title">Loss Aversion</div>
+          <div class="principle-body">People feel the pain of loss 2&#215; more intensely than the pleasure of gain. Frame your CTA around what they'll miss &#8212; not what they'll get.</div>
+          <span class="principle-stat">~2x more motivating than gain framing</span>
+        </div>
+
+        <div class="principle-card reveal">
+          <div class="principle-icon">&#128101;</div>
+          <div class="principle-title">Social Proof</div>
+          <div class="principle-body">Uncertain buyers default to what others have chosen. Specificity matters &#8212; "34% lift" outperforms "amazing results" by a wide margin.</div>
+          <span class="principle-stat">+270% conversions with reviews</span>
+        </div>
+
+        <div class="principle-card reveal">
+          <div class="principle-icon">&#129309;</div>
+          <div class="principle-title">Commitment &amp; Consistency</div>
+          <div class="principle-body">Once someone takes a small action (scroll, click, hover), they're primed to follow through. Micro-commitments lower friction to your main CTA.</div>
+          <span class="principle-stat">Small yes &#8594; Big yes pipeline</span>
+        </div>
+
+        <div class="principle-card reveal">
+          <div class="principle-icon">&#9203;</div>
+          <div class="principle-title">Scarcity</div>
+          <div class="principle-body">Limited availability &#8212; time or quantity &#8212; triggers urgency and reduces procrastination. Must be genuine or credibility erodes permanently.</div>
+          <span class="principle-stat">+332% CTR with real deadlines</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="final-cta-inner reveal">
+        <h2>Ready to Convert More?</h2>
+        <p>Grab the full kit, deploy in an afternoon, and watch your lead quality shift in the first week.</p>
+        <a href="#" class="btn-primary" id="final-cta-btn" style="font-size:16px; padding:16px 36px;">Get the Kit Free &#8599;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL GATE MODAL -->
+  <div id="kit-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,10,30,0.85);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px;">
+    <div style="background:#111A16;border:1px solid rgba(16,185,129,0.35);border-radius:16px;max-width:440px;width:100%;padding:40px 36px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.6);">
+      <button id="modal-close" aria-label="Close" style="position:absolute;top:16px;right:16px;background:none;border:none;color:#9CA3AF;font-size:22px;cursor:pointer;line-height:1;">&#215;</button>
+
+      <!-- Step 1: Form -->
+      <div id="modal-step-form">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#10B981;margin-bottom:12px;">Free Download</div>
+        <h2 id="modal-title" style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#D1D5DB;margin-bottom:8px;">15-Point CRO Checklist</h2>
+        <p style="font-size:14px;color:#9CA3AF;margin-bottom:28px;">The exact checklist used to audit landing pages for clients. Enter your email and get instant access.</p>
+
+        <form name="cro-kit-download" method="POST" data-netlify="true" id="kit-form" novalidate>
+          <input type="hidden" name="form-name" value="cro-kit-download">
+          <div style="margin-bottom:16px;">
+            <label for="kit-name" style="display:block;font-size:13px;font-weight:600;color:#CBD5E1;margin-bottom:6px;">First Name</label>
+            <input type="text" id="kit-name" name="name" required placeholder="e.g. Juan" style="width:100%;padding:12px 14px;background:#0A0F0D;border:1px solid rgba(16,185,129,0.3);border-radius:8px;color:#D1D5DB;font-size:15px;font-family:inherit;outline:none;">
+          </div>
+          <div style="margin-bottom:24px;">
+            <label for="kit-email" style="display:block;font-size:13px;font-weight:600;color:#CBD5E1;margin-bottom:6px;">Email Address</label>
+            <input type="email" id="kit-email" name="email" required placeholder="you@example.com" style="width:100%;padding:12px 14px;background:#0A0F0D;border:1px solid rgba(16,185,129,0.3);border-radius:8px;color:#D1D5DB;font-size:15px;font-family:inherit;outline:none;">
+          </div>
+          <button type="submit" id="kit-submit" style="width:100%;padding:14px;background:linear-gradient(135deg,#10B981,#F59E0B);border:none;border-radius:8px;color:#fff;font-size:16px;font-weight:700;font-family:'Space Grotesk',sans-serif;cursor:pointer;letter-spacing:0.02em;">Send Me the Checklist &#8599;</button>
+          <p style="font-size:12px;color:#475569;margin-top:12px;text-align:center;">No spam. Unsubscribe anytime.</p>
+        </form>
+      </div>
+
+      <!-- Step 2: Thank you + Download -->
+      <div id="modal-step-thanks" style="display:none;text-align:center;">
+        <div style="font-size:48px;margin-bottom:16px;">&#127881;</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#D1D5DB;margin-bottom:12px;">You're in!</h2>
+        <p style="font-size:15px;color:#9CA3AF;margin-bottom:28px;">Your checklist is ready. Click below to download it now.</p>
+        <a href="cro-checklist.pdf" download style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#10B981,#F59E0B);border-radius:8px;color:#fff;font-size:16px;font-weight:700;font-family:'Space Grotesk',sans-serif;text-decoration:none;">Download Checklist (PDF) &#8595;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&#169; 2026 Keyvin &middot; Landing Page CRO Kit</span>
+      <a href="../index.html" class="footer-link">&#8592; Back to Portfolio</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── Countdown Timer ──────────────────────────────────────
+    (function () {
+      var stored = sessionStorage.getItem('cro-deadline');
+      var deadline = stored ? parseInt(stored, 10) : Date.now() + (8 * 60 * 60 * 1000);
+      if (!stored) sessionStorage.setItem('cro-deadline', deadline);
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function tick() {
+        var diff = Math.max(0, deadline - Date.now());
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+
+        var elH = document.getElementById('t-h');
+        var elM = document.getElementById('t-m');
+        var elS = document.getElementById('t-s');
+
+        if (elH) elH.textContent = pad(h);
+        if (elM) elM.textContent = pad(m);
+        if (elS) {
+          var prev = elS.textContent;
+          elS.textContent = pad(s);
+          if (prev !== pad(s)) {
+            elS.style.color = '#fff';
+            setTimeout(function() { elS.style.color = ''; }, 180);
+          }
+        }
+
+        if (diff > 0) setTimeout(tick, 1000);
+      }
+
+      tick();
+    })();
+
+    // ── FAQ Accordion ────────────────────────────────────────
+    document.querySelectorAll('[data-faq]').forEach(function(item) {
+      var q = item.querySelector('.faq-q');
+      q.addEventListener('click', function() {
+        var isOpen = item.classList.contains('open');
+        var parent = item.closest('.faq-demo');
+        parent.querySelectorAll('.faq-item.open').forEach(function(el) {
+          el.classList.remove('open');
+        });
+        if (!isOpen) item.classList.add('open');
+      });
+      q.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); q.click(); }
+      });
+    });
+
+    // ── Copy Button ──────────────────────────────────────────
+    document.querySelectorAll('[data-copy]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var card = btn.closest('.comp-card');
+        var demo = card && card.querySelector('.comp-demo');
+        var html = demo ? demo.innerHTML : '';
+        navigator.clipboard.writeText(html).catch(function() {});
+        var original = btn.textContent;
+        btn.textContent = '\u2713 Copied!';
+        btn.classList.add('copied');
+        setTimeout(function() {
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    });
+
+    // ── Scroll Reveal ────────────────────────────────────────
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // ── Email Gate Modal ─────────────────────────────────────
+    var modal = document.getElementById('kit-modal');
+    var modalClose = document.getElementById('modal-close');
+    var kitForm = document.getElementById('kit-form');
+    var stepForm = document.getElementById('modal-step-form');
+    var stepThanks = document.getElementById('modal-step-thanks');
+
+    function openModal() {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      document.getElementById('kit-name').focus();
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    ['get-kit-btn', 'final-cta-btn'].forEach(function(id) {
+      var btn = document.getElementById(id);
+      if (btn) btn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    kitForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('kit-name').value.trim();
+      var email = document.getElementById('kit-email').value.trim();
+      if (!name || !email) return;
+
+      var submit = document.getElementById('kit-submit');
+      submit.textContent = 'Sending...';
+      submit.disabled = true;
+
+      var body = new URLSearchParams({ 'form-name': 'cro-kit-download', name: name, email: email });
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
+        .then(function() {
+          stepForm.style.display = 'none';
+          stepThanks.style.display = 'block';
+        })
+        .catch(function() {
+          stepForm.style.display = 'none';
+          stepThanks.style.display = 'block';
+        });
+    });
+  </script>
+
+  <!-- Funnel Particle Background -->
+  <script>
+    (function () {
+      var canvas = document.getElementById('funnel-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var MAX = window.innerWidth < 768 ? 20 : 45;
+      var EMERALD = [16, 185, 129];
+      var AMBER = [245, 158, 11];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', function () {
+        resize();
+        MAX = window.innerWidth < 768 ? 20 : 45;
+      });
+
+      function spawn() {
+        var w = canvas.width;
+        var h = canvas.height;
+        // Spawn across the top — full width spread
+        var x = Math.random() * w;
+        var color = Math.random() < 0.7 ? EMERALD : AMBER;
+        return {
+          x: x,
+          y: -4,
+          r: 1 + Math.random() * 2,
+          speed: 0.3 + Math.random() * 0.5,
+          color: color,
+          opacity: 0,
+          maxOpacity: 0.15 + Math.random() * 0.25,
+          drift: (Math.random() - 0.5) * 0.15
+        };
+      }
+
+      // Seed initial particles spread across the screen
+      for (var i = 0; i < MAX; i++) {
+        var p = spawn();
+        p.y = Math.random() * canvas.height;
+        // Position along funnel shape for initial seed
+        var progress = p.y / canvas.height;
+        var funnelWidth = canvas.width * (1 - progress * 0.7);
+        var cx = canvas.width / 2;
+        p.x = cx + (Math.random() - 0.5) * funnelWidth;
+        p.opacity = p.maxOpacity * (1 - Math.abs(progress - 0.4) / 0.6);
+        particles.push(p);
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var w = canvas.width;
+        var h = canvas.height;
+        var cx = w / 2;
+
+        // Faint funnel guide lines
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(cx - 40, h);
+        ctx.strokeStyle = 'rgba(16,185,129,0.04)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(w, 0);
+        ctx.lineTo(cx + 40, h);
+        ctx.stroke();
+
+        // Update and draw particles
+        for (var i = particles.length - 1; i >= 0; i--) {
+          var p = particles[i];
+          var progress = p.y / h;
+
+          // Funnel pull — particles drift toward center as they descend
+          var targetX = cx + (p.x - cx) * (1 - progress * 0.7);
+          p.x += (targetX - p.x) * 0.008 + p.drift;
+          p.y += p.speed;
+
+          // Fade in top 15%, fade out bottom 15%
+          if (progress < 0.15) {
+            p.opacity = Math.min(p.opacity + 0.008, p.maxOpacity);
+          } else if (progress > 0.85) {
+            p.opacity = Math.max(p.opacity - 0.008, 0);
+          }
+
+          // Remove if off screen or fully faded at bottom
+          if (p.y > h + 10) {
+            particles.splice(i, 1);
+            continue;
+          }
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + p.color[0] + ',' + p.color[1] + ',' + p.color[2] + ',' + p.opacity + ')';
+          ctx.fill();
+        }
+
+        // Replenish
+        while (particles.length < MAX) {
+          particles.push(spawn());
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      requestAnimationFrame(draw);
+    })();
+  </script>
+</body>
+</html>

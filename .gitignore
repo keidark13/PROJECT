@@ -1,0 +1,22 @@
+# Netlify local state
+.netlify/
+
+# Claude Code local config
+.claude/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Repomix output
+repomix-output.xml
+
+# Dev screenshots (not part of the site)
+check-*.png
+ghl-*-preview.png
+
+# MemPalace ChromaDB index
+legion/.mempalace/
+
+# Personal project (not part of site)
+meri jeia kaye/

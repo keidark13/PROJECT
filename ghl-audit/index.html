@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GHL Account Audit — Keyvin Abillon</title>
+  <meta name="description" content="Answer 20 questions. Get an instant score. Find out exactly what’s missing in your GoHighLevel setup." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0A0F0D;--primary:#10B981;--primary2:#34D399;--cta:#F59E0B;
+      --text:#D1D5DB;--muted:#9CA3AF;--surface:#111A16;--surface2:#1A2E1F;
+      --border:rgba(255,255,255,0.08);--radius:12px;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh}
+    /* NAV */
+    .nav{padding:20px 40px;border-bottom:1px solid var(--border);display:flex;align-items:center}
+    .nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+    .nav a:hover{color:var(--text)}
+    .nav a svg{width:16px;height:16px}
+    /* HERO */
+    .hero{max-width:760px;margin:0 auto;padding:80px 24px 60px;text-align:center}
+    .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--primary2);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);padding:4px 12px;border-radius:100px;margin-bottom:24px}
+    .hero h1{font-size:clamp(40px,7vw,64px);font-weight:800;line-height:1.1;letter-spacing:-.02em;background:linear-gradient(135deg,#fff 40%,var(--primary2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+    .hero p{font-size:18px;color:var(--muted);max-width:560px;margin:0 auto 36px;line-height:1.7}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--primary),var(--cta));color:#fff;font-weight:700;font-size:16px;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .2s;box-shadow:0 0 32px rgba(16,185,129,.35)}
+    .btn-primary:hover{opacity:.9;transform:translateY(-2px)}
+    .hero-stats{margin-top:48px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+    .hero-stat .num{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;background:linear-gradient(135deg,var(--primary2),var(--cta));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-stat .lbl{font-size:12px;color:var(--muted);margin-top:4px}
+    /* AUDIT */
+    #audit{max-width:800px;margin:0 auto;padding:20px 24px 80px}
+    .progress-wrap{margin-bottom:40px}
+    .progress-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .progress-label{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.05em}
+    .progress-count{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--primary2);font-weight:700}
+    .progress-bar-bg{height:6px;background:var(--surface2);border-radius:100px;overflow:hidden}
+    .progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--cta));border-radius:100px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%}
+    .category-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;display:none;animation:fadeUp .35s ease both}
+    .category-card.active{display:block}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    .cat-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+    .cat-icon{width:44px;height:44px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .cat-icon svg{width:20px;height:20px;color:var(--primary2)}
+    .cat-title{font-size:20px;font-weight:700}
+    .cat-step{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px}
+    .questions{display:flex;flex-direction:column;gap:20px}
+    .question-row{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;padding:20px;transition:border-color .2s}
+    .question-row.answered{border-color:rgba(16,185,129,.3)}
+    .question-text{font-size:15px;margin-bottom:14px;line-height:1.5}
+    .yn-buttons{display:flex;gap:10px}
+    .yn-btn{flex:1;padding:10px 0;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+    .yn-btn:hover{border-color:rgba(255,255,255,.2);color:var(--text)}
+    .yn-btn.yes.selected{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 0 16px rgba(16,185,129,.4)}
+    .yn-btn.no.selected{background:rgba(245,158,11,.15);border-color:var(--cta);color:var(--cta)}
+    .card-footer{margin-top:28px;display:flex;justify-content:flex-end}
+    .btn-next{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--primary),var(--cta));color:#fff;font-weight:700;font-size:15px;padding:12px 28px;border-radius:100px;border:none;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;box-shadow:0 0 24px rgba(16,185,129,.3)}
+    .btn-next.visible{opacity:1;pointer-events:auto}
+    .btn-next:hover{transform:translateY(-2px)}
+    /* RESULTS */
+    #results{display:none;max-width:800px;margin:0 auto;padding:0 24px 80px;animation:fadeUp .5s ease both}
+    #results.visible{display:block}
+    .results-top{text-align:center;padding:48px 0 40px}
+    .score-ring-wrap{position:relative;width:180px;height:180px;margin:0 auto 24px}
+    .score-ring-wrap svg{transform:rotate(-90deg)}
+    .score-ring-bg{fill:none;stroke:var(--surface2);stroke-width:10}
+    .score-ring-fill{fill:none;stroke-width:10;stroke-linecap:round;stroke:url(#ringGrad);stroke-dasharray:502;stroke-dashoffset:502;transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1)}
+    .score-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .score-number{font-family:'JetBrains Mono',monospace;font-size:48px;font-weight:700;line-height:1}
+    .score-max{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-top:2px}
+    .grade-label{font-size:22px;font-weight:700;margin-bottom:8px}
+    .grade-sub{font-size:15px;color:var(--muted);max-width:520px;margin:0 auto}
+    .breakdown-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px}
+    .breakdown-card h3{font-size:16px;font-weight:700;margin-bottom:20px}
+    .breakdown-row{margin-bottom:16px}
+    .breakdown-row:last-child{margin-bottom:0}
+    .breakdown-meta{display:flex;justify-content:space-between;margin-bottom:7px}
+    .breakdown-name{font-size:13px;color:var(--muted);font-weight:500}
+    .breakdown-pct{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700}
+    .breakdown-bar-bg{height:8px;background:var(--surface2);border-radius:100px;overflow:hidden}
+    .breakdown-bar-fill{height:100%;border-radius:100px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1)}
+    .recs-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:24px}
+    .recs-card h3{font-size:16px;font-weight:700;margin-bottom:20px}
+    .rec-item{display:flex;gap:14px;padding:16px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;margin-bottom:12px}
+    .rec-item:last-child{margin-bottom:0}
+    .rec-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--primary2);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .rec-title{font-size:14px;font-weight:600;color:var(--primary2);margin-bottom:4px}
+    .rec-body{font-size:13px;color:var(--muted);line-height:1.55}
+    .results-ctas{display:flex;gap:12px;flex-wrap:wrap}
+    .btn-cta-primary{flex:1;min-width:200px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--primary),var(--cta));color:#fff;font-weight:700;font-size:15px;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .2s;box-shadow:0 0 32px rgba(16,185,129,.3)}
+    .btn-cta-primary:hover{opacity:.9;transform:translateY(-2px)}
+    .btn-cta-secondary{flex:1;min-width:200px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--text);font-weight:600;font-size:15px;padding:14px 28px;border-radius:100px;border:1px solid var(--border);cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s}
+    .btn-cta-secondary:hover{border-color:rgba(255,255,255,.2);color:#fff}
+    .retake-wrap{text-align:center;margin-top:20px}
+    .btn-retake{background:none;border:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color .2s}
+    .btn-retake:hover{color:var(--text)}
+    footer{border-top:1px solid var(--border);text-align:center;padding:24px;font-size:13px;color:var(--muted)}
+    footer a{color:var(--muted);text-decoration:none}
+    footer a:hover{color:var(--text)}
+    @media(max-width:600px){
+      .nav{padding:16px 20px}.hero{padding:48px 20px 40px}
+      #audit,#results{padding-left:16px;padding-right:16px}
+      .category-card{padding:22px 18px}.hero-stats{gap:24px}
+      .results-ctas{flex-direction:column}.btn-cta-primary,.btn-cta-secondary{min-width:unset}
+    }
+    /* SONAR RING PULSE BACKGROUND */
+    .sonar-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+    .sonar-dot{position:absolute;left:50%;top:35%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:rgba(16,185,129,0.15);box-shadow:0 0 12px rgba(16,185,129,0.2)}
+    .sonar-ring{position:absolute;left:50%;top:35%;width:100px;height:100px;margin:-50px 0 0 -50px;border-radius:50%;border:1px solid rgba(16,185,129,0.08);opacity:0;animation:sonar-expand 6s cubic-bezier(0.25,0.46,0.45,0.94) infinite}
+    .sonar-ring:nth-child(2){animation-delay:0s}
+    .sonar-ring:nth-child(3){animation-delay:1.5s}
+    .sonar-ring:nth-child(4){animation-delay:3s}
+    .sonar-ring:nth-child(5){animation-delay:4.5s}
+    @keyframes sonar-expand{
+      0%{transform:scale(1);opacity:0}
+      10%{opacity:1}
+      80%{opacity:0}
+      100%{transform:scale(12);opacity:0}
+    }
+    .nav,.hero,#audit,#results,footer{position:relative;z-index:1}
+    @media(max-width:768px){
+      .sonar-ring{width:80px;height:80px;margin:-40px 0 0 -40px}
+      @keyframes sonar-expand{
+        0%{transform:scale(1);opacity:0}
+        10%{opacity:1}
+        80%{opacity:0}
+        100%{transform:scale(8);opacity:0}
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sonar-bg" aria-hidden="true">
+  <div class="sonar-dot"></div>
+  <div class="sonar-ring"></div>
+  <div class="sonar-ring"></div>
+  <div class="sonar-ring"></div>
+  <div class="sonar-ring"></div>
+</div>
+
+<nav class="nav">
+  <a href="../index.html">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+    </svg>
+    Back to Portfolio
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="badge">FREE TOOL</div>
+  <h1>GHL Account Audit</h1>
+  <p>Answer 20 questions. Get an instant score. Find out exactly what&#39;s missing in your GoHighLevel setup.</p>
+  <a href="#audit" class="btn-primary">
+    Start My Audit
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </a>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">20</div><div class="lbl">Questions</div></div>
+    <div class="hero-stat"><div class="num">5</div><div class="lbl">Categories</div></div>
+    <div class="hero-stat"><div class="num">&lt;3 min</div><div class="lbl">To complete</div></div>
+  </div>
+</section>
+
+<section id="audit">
+  <div class="progress-wrap">
+    <div class="progress-meta">
+      <span class="progress-label">AUDIT PROGRESS</span>
+      <span class="progress-count" id="progressCount">0 / 5 categories</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+  </div>
+  <div id="categoryCards"></div>
+</section>
+
+<section id="results">
+  <div class="results-top">
+    <div class="score-ring-wrap">
+      <svg width="180" height="180" viewBox="0 0 180 180">
+        <defs>
+          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#10B981"/>
+            <stop offset="100%" stop-color="#F59E0B"/>
+          </linearGradient>
+        </defs>
+        <circle class="score-ring-bg" cx="90" cy="90" r="80"/>
+        <circle class="score-ring-fill" id="scoreRing" cx="90" cy="90" r="80"/>
+      </svg>
+      <div class="score-center">
+        <div class="score-number" id="scoreDisplay">0</div>
+        <div class="score-max">/ 100</div>
+      </div>
+    </div>
+    <div class="grade-label" id="gradeLabel"></div>
+    <div class="grade-sub" id="gradeSub"></div>
+  </div>
+  <div class="breakdown-card">
+    <h3>Category Breakdown</h3>
+    <div id="breakdownRows"></div>
+  </div>
+  <div class="recs-card">
+    <h3>Your Top Fixes</h3>
+    <div id="recsList"></div>
+  </div>
+  <div class="results-ctas">
+    <a href="../index.html#contact" class="btn-cta-primary">
+      Want me to build this for you?
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+    <a href="../ghl-snapshot/index.html" class="btn-cta-secondary">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M7 10l5 5 5-5M12 15V3"/>
+      </svg>
+      Download Free GHL Snapshot
+    </a>
+  </div>
+  <div class="retake-wrap">
+    <button class="btn-retake" id="retakeBtn">Retake the audit</button>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 <a href="../index.html">Keyvin Abillon</a> &middot; keyvin-abillon.netlify.app</p>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var CATEGORIES=[
+  {id:'crm',title:'CRM & Pipeline Setup',step:'Category 1 of 5',questions:[
+    {id:'crm1',text:'Do you have a pipeline with defined stages?'},
+    {id:'crm2',text:'Are your contacts tagged by lead source?'},
+    {id:'crm3',text:'Do you use custom fields to capture lead info?'},
+    {id:'crm4',text:'Does your pipeline stage change automatically via workflows?'}
+  ]},
+  {id:'capture',title:'Lead Capture',step:'Category 2 of 5',questions:[
+    {id:'cap1',text:'Do you have a form connected to a GHL funnel or website?'},
+    {id:'cap2',text:'Is your form submission linked to a workflow?'},
+    {id:'cap3',text:'Do you have a lead magnet or offer to capture emails?'},
+    {id:'cap4',text:'Are new leads automatically added to your pipeline?'}
+  ]},
+  {id:'followup',title:'Follow-up Automation',step:'Category 3 of 5',questions:[
+    {id:'fu1',text:'Do you have an instant follow-up message (within 5 min of lead capture)?'},
+    {id:'fu2',text:'Do you use SMS in your follow-up sequence?'},
+    {id:'fu3',text:'Do you have a missed-call text-back set up?'},
+    {id:'fu4',text:'Do you have a nurture sequence of 5+ follow-up messages?'}
+  ]},
+  {id:'booking',title:'Booking & Appointments',step:'Category 4 of 5',questions:[
+    {id:'bk1',text:'Do you have a GHL calendar set up for discovery calls?'},
+    {id:'bk2',text:'Is booking confirmation sent automatically?'},
+    {id:'bk3',text:'Do you have appointment reminders (24hr + 1hr before)?'},
+    {id:'bk4',text:'Do you have a no-show recovery workflow?'}
+  ]},
+  {id:'reporting',title:'Reporting & Optimization',step:'Category 5 of 5',questions:[
+    {id:'rp1',text:'Do you review your pipeline value and conversion rate weekly?'},
+    {id:'rp2',text:'Do you track which lead source generates the most revenue?'},
+    {id:'rp3',text:'Do you have a re-engagement sequence for lost or cold leads?'},
+    {id:'rp4',text:'Do you use GHL reporting to identify drop-off points in your funnel?'}
+  ]}
+];
+var CAT_ICONS={
+  crm:'M12 2C8.13 2 5 3.34 5 5v14c0 1.66 3.13 3 7 3s7-1.34 7-3V5c0-1.66-3.13-3-7-3zm0 2c3.31 0 5 .9 5 1s-1.69 1-5 1-5-.9-5-1 1.69-1 5-1zm0 14c-3.31 0-5-.9-5-1V5.24C8.08 5.72 9.96 6 12 6s3.92-.28 5-.76V17c0 .1-1.69 1-5 1z',
+  capture:'M12 2a10 10 0 100 20A10 10 0 0012 2zm0 2a8 8 0 110 16A8 8 0 0112 4zm0 2a6 6 0 100 12A6 6 0 0112 6zm0 4a2 2 0 100 4 2 2 0 000-4z',
+  followup:'M13 10V3L4 14h7v7l9-11h-7z',
+  booking:'M8 7V3M16 7V3M3 11h18M5 5h14a2 2 0 012 2v13a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z',
+  reporting:'M3 3v18h18M7 16l4-4 4 4 5-5'
+};
+var REC_MAP={
+  fu1:{title:'Set up an instant lead response workflow',body:'Speed-to-lead wins deals. Build a GHL workflow that fires an SMS + email within 5 minutes of every form submission. Leads responded to in under 5 minutes are 9x more likely to convert.'},
+  fu3:{title:'Enable missed-call text-back',body:'Every missed call is a missed lead. GHL built-in missed-call text-back fires an SMS automatically when a call goes unanswered. Takes 10 minutes to set up, runs forever.'},
+  fu2:{title:'Add SMS to your follow-up sequence',body:'SMS gets 98% open rates vs 20% for email. Add at least 2-3 SMS touchpoints in your nurture sequence. Keep them short, personal, and action-oriented.'},
+  fu4:{title:'Build a 5-step nurture sequence',body:'Most leads convert after 5-7 touchpoints. Map out: Day 0 intro, Day 1 value, Day 3 social proof, Day 5 objection handling, Day 7 booking push.'},
+  cap1:{title:'Connect a GHL form to a landing funnel',body:'Your leads need a front door. Build a simple opt-in funnel in GHL with a form attached. Every traffic source should feed directly into your CRM.'},
+  cap2:{title:'Link form submissions to a workflow',body:'A form without a workflow is a dead end. Every GHL form should trigger: create contact, add tag, assign to pipeline, send confirmation.'},
+  cap3:{title:'Create a lead magnet to grow your list',body:'Cold traffic needs a reason to opt in. A free checklist, mini-audit, or template converts cold visitors into warm leads. Host it in GHL and trigger a delivery workflow automatically.'},
+  cap4:{title:'Auto-add new leads to your pipeline',body:'Contacts stuck in limbo cost you deals. Use a workflow trigger on form submission to automatically create an opportunity in Stage 1 of your pipeline.'},
+  crm1:{title:'Build a defined sales pipeline',body:'Without stages, deals go dark. Create a GHL pipeline with 5-7 stages: New Lead, Contacted, Qualified, Proposal, Closed. Visibility drives follow-through.'},
+  crm2:{title:'Tag contacts by lead source',body:'You cannot double down on what is working if you cannot see it. Auto-tag contacts by source (FB Ad, Google, Referral) via workflow triggers.'},
+  crm3:{title:'Add custom fields for lead qualification',body:'Generic contacts kill personalization. Add fields like budget range, service type, and timeline. Use them to segment, score, and prioritize leads automatically.'},
+  crm4:{title:'Automate pipeline stage progression',body:'Manual stage updates break pipelines. Set workflow conditions that move deals forward automatically when key events occur.'},
+  bk1:{title:'Set up a GHL discovery call calendar',body:'A booking link is your fastest path to revenue. Create a GHL calendar, embed it in your funnel, and add a booking CTA to every follow-up message.'},
+  bk2:{title:'Send automatic booking confirmations',body:'Confirmation reduces no-shows by 30%+. Set up a post-booking workflow: confirmation email + SMS immediately, with all call details included.'},
+  bk3:{title:'Add 24hr and 1hr appointment reminders',body:'No-shows kill your schedule. Enable a 24-hour email reminder and a 1-hour SMS reminder for every appointment type in GHL calendar.'},
+  bk4:{title:'Build a no-show recovery workflow',body:'No-shows are not lost -- they are just paused. Trigger a 3-step re-booking sequence when marked no-show: SMS 30 min after, email 24 hrs, final SMS 3 days later.'},
+  rp1:{title:'Schedule a weekly pipeline review',body:'What does not get reviewed does not get improved. Block 30 minutes every Monday to review pipeline value, conversion rate by stage, and stale deals older than 14 days.'},
+  rp2:{title:'Track revenue by lead source',body:'ROI clarity changes how you spend. Use GHL source tagging + opportunity value fields to build a source-to-revenue view. Double down on what works.'},
+  rp3:{title:'Create a re-engagement sequence for cold leads',body:'Your lost leads list is a gold mine. Run a 3-email re-engagement campaign every 90 days targeting closed-lost contacts with a fresh angle or new offer.'},
+  rp4:{title:'Use GHL reporting to find drop-off points',body:'Funnel leaks are silent revenue killers. Review pipeline stage conversion rates monthly. Any stage below 30% conversion to next stage is your biggest leverage point.'}
+};
+var PRIORITY=['fu1','fu3','fu2','fu4','cap1','cap2','cap3','cap4','crm1','crm2','crm3','crm4','bk1','bk2','bk3','bk4','rp1','rp2','rp3','rp4'];
+var answers={},currentCat=0;
+
+function buildCards(){
+  var c=document.getElementById('categoryCards');
+  c.textContent='';
+  CATEGORIES.forEach(function(cat,ci){
+    var card=document.createElement('div');
+    card.className='category-card'+(ci===0?' active':'');
+    card.id='cat-'+cat.id;
+    /* header */
+    var hdr=document.createElement('div');hdr.className='cat-header';
+    var ico=document.createElement('div');ico.className='cat-icon';
+    var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');
+    svg.setAttribute('stroke-width','1.8');svg.setAttribute('stroke-linecap','round');
+    svg.setAttribute('stroke-linejoin','round');svg.setAttribute('viewBox','0 0 24 24');
+    var pth=document.createElementNS('http://www.w3.org/2000/svg','path');
+    pth.setAttribute('d',CAT_ICONS[cat.id]);svg.appendChild(pth);ico.appendChild(svg);
+    var tw=document.createElement('div');
+    var te=document.createElement('div');te.className='cat-title';te.textContent=cat.title;
+    var se=document.createElement('div');se.className='cat-step';se.textContent=cat.step;
+    tw.appendChild(te);tw.appendChild(se);hdr.appendChild(ico);hdr.appendChild(tw);
+    card.appendChild(hdr);
+    /* questions */
+    var qc=document.createElement('div');qc.className='questions';
+    cat.questions.forEach(function(q,qi){
+      var row=document.createElement('div');row.className='question-row';row.id='qrow-'+q.id;
+      var qt=document.createElement('div');qt.className='question-text';qt.textContent=(qi+1)+'. '+q.text;
+      var yw=document.createElement('div');yw.className='yn-buttons';
+      var yb=document.createElement('button');yb.className='yn-btn yes';yb.textContent='Yes';
+      var nb=document.createElement('button');nb.className='yn-btn no';nb.textContent='No';
+      (function(qid,y,n,idx){
+        y.addEventListener('click',function(){setAns(qid,true,y,idx);});
+        n.addEventListener('click',function(){setAns(qid,false,n,idx);});
+      })(q.id,yb,nb,ci);
+      yw.appendChild(yb);yw.appendChild(nb);row.appendChild(qt);row.appendChild(yw);qc.appendChild(row);
+    });
+    card.appendChild(qc);
+    /* footer */
+    var ft=document.createElement('div');ft.className='card-footer';
+    var nx=document.createElement('button');nx.className='btn-next';nx.id='next-'+cat.id;
+    nx.textContent=(ci===CATEGORIES.length-1)?'See My Results':'Next →';
+    (function(idx){nx.addEventListener('click',function(){nextCat(idx);});})(ci);
+    ft.appendChild(nx);card.appendChild(ft);c.appendChild(card);
+  });
+}
+
+function setAns(qid,val,btn,ci){
+  answers[qid]=val;
+  var row=document.getElementById('qrow-'+qid);
+  row.classList.add('answered');
+  row.querySelectorAll('.yn-btn').forEach(function(b){b.classList.remove('selected');});
+  btn.classList.add('selected');
+  checkDone(ci);
+}
+
+function checkDone(ci){
+  var done=CATEGORIES[ci].questions.every(function(q){return answers[q.id]!==undefined;});
+  if(done)document.getElementById('next-'+CATEGORIES[ci].id).classList.add('visible');
+}
+
+function nextCat(ci){
+  document.getElementById('cat-'+CATEGORIES[ci].id).classList.remove('active');
+  var nx=ci+1;
+  if(nx<CATEGORIES.length){
+    currentCat=nx;
+    document.getElementById('cat-'+CATEGORIES[nx].id).classList.add('active');
+    setProgress(nx);
+    document.getElementById('audit').scrollIntoView({behavior:'smooth',block:'start'});
+  } else {
+    setProgress(CATEGORIES.length);showResults();
+  }
+}
+
+function setProgress(n){
+  document.getElementById('progressFill').style.width=(n/CATEGORIES.length*100)+'%';
+  document.getElementById('progressCount').textContent=n+' / '+CATEGORIES.length+' categories';
+}
+
+function showResults(){
+  document.getElementById('audit').style.display='none';
+  var r=document.getElementById('results');r.classList.add('visible');
+  r.scrollIntoView({behavior:'smooth',block:'start'});
+  var total=calcTotal();
+  animateScore(total);renderGrade(total);renderBreakdown();renderRecs();
+}
+
+function calcTotal(){
+  var y=0;Object.keys(answers).forEach(function(k){if(answers[k])y++;});return y*5;
+}
+
+function scoreColor(s){
+  if(s<=30)return'#F59E0B';if(s<=60)return'#F59E0B';if(s<=80)return'#A3E635';return'#22D3A5';
+}
+
+function animateScore(target){
+  var ring=document.getElementById('scoreRing'),num=document.getElementById('scoreDisplay');
+  setTimeout(function(){ring.style.strokeDashoffset=502-(target/100)*502;},200);
+  var cur=0,step=Math.max(target/60,0.1);
+  var iv=setInterval(function(){
+    cur=Math.min(cur+step,target);num.textContent=Math.round(cur);
+    if(cur>=target){num.textContent=target;clearInterval(iv);}
+  },16);
+  num.style.color=scoreColor(target);
+}
+
+function renderGrade(s){
+  var g,sub,col;
+  if(s<=30){g='Needs Work';col='#F59E0B';sub='Your GHL setup has significant gaps. The good news -- every fix below is actionable today.';}
+  else if(s<=60){g='Getting There';col='#F59E0B';sub='You have the basics, but key automations are missing. Plugging these gaps will compound fast.';}
+  else if(s<=80){g='Solid Setup';col='#A3E635';sub='Your GHL is working for you. Fine-tuning the gaps below will push your conversion rate to the next level.';}
+  else{g='GHL Pro';col='#22D3A5';sub='Impressive setup. You are using GHL the way it was meant to be used. Keep optimizing and testing.';}
+  var ge=document.getElementById('gradeLabel');ge.textContent=g;ge.style.color=col;
+  document.getElementById('gradeSub').textContent=sub;
+}
+
+function renderBreakdown(){
+  var c=document.getElementById('breakdownRows');c.textContent='';
+  CATEGORIES.forEach(function(cat){
+    var yes=cat.questions.filter(function(q){return answers[q.id]===true;}).length;
+    var pct=(yes/4)*100;
+    var col=pct>=75?'#22D3A5':pct>=50?'#F59E0B':'#F59E0B';
+    var row=document.createElement('div');row.className='breakdown-row';
+    var meta=document.createElement('div');meta.className='breakdown-meta';
+    var nm=document.createElement('span');nm.className='breakdown-name';nm.textContent=cat.title;
+    var pt=document.createElement('span');pt.className='breakdown-pct';pt.style.color=col;pt.textContent=Math.round(pct)+'%';
+    meta.appendChild(nm);meta.appendChild(pt);
+    var bg=document.createElement('div');bg.className='breakdown-bar-bg';
+    var fill=document.createElement('div');fill.className='breakdown-bar-fill';fill.style.background=col;
+    bg.appendChild(fill);row.appendChild(meta);row.appendChild(bg);c.appendChild(row);
+    requestAnimationFrame(function(){setTimeout(function(){fill.style.width=pct+'%';},300);});
+  });
+}
+
+function renderRecs(){
+  var noIds=PRIORITY.filter(function(id){return answers[id]===false;}).slice(0,3);
+  var c=document.getElementById('recsList');c.textContent='';
+  if(!noIds.length){
+    var p=document.createElement('p');p.style.cssText='color:var(--muted);font-size:14px';
+    p.textContent='No gaps found -- perfect score! Keep monitoring your setup monthly.';
+    c.appendChild(p);return;
+  }
+  noIds.forEach(function(id,i){
+    var rec=REC_MAP[id];if(!rec)return;
+    var item=document.createElement('div');item.className='rec-item';
+    var num=document.createElement('div');num.className='rec-num';num.textContent='0'+(i+1);
+    var tw=document.createElement('div');
+    var te=document.createElement('div');te.className='rec-title';te.textContent=rec.title;
+    var be=document.createElement('div');be.className='rec-body';be.textContent=rec.body;
+    tw.appendChild(te);tw.appendChild(be);item.appendChild(num);item.appendChild(tw);c.appendChild(item);
+  });
+}
+
+function retake(){
+  answers={};currentCat=0;
+  document.getElementById('progressFill').style.width='0%';
+  document.getElementById('progressCount').textContent='0 / 5 categories';
+  buildCards();
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('audit').style.display='';
+  document.getElementById('audit').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+document.getElementById('retakeBtn').addEventListener('click',retake);
+buildCards();
+})();
+</script>
+</body>
+</html>

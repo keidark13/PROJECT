@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free GHL Lead Nurture Snapshot — Keyvin Abillon</title>
+  <meta name="description" content="7 pre-built GoHighLevel workflows ready to import. From first lead touch to closed deal — fully automated. Download free." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #0A0F0D;
+      --surface:       #111A16;
+      --surface-2:     #1A2E1F;
+      --primary:       #10B981;
+      --primary-light: #34D399;
+      --cta:           #F59E0B;
+      --cta-glow:      rgba(245,158,11,0.38);
+      --text:          #D1D5DB;
+      --text-muted:    #9CA3AF;
+      --text-faint:    #475569;
+      --border:        rgba(255,255,255,0.08);
+      --border-purple: rgba(16,185,129,0.25);
+      --border-hover:  rgba(16,185,129,0.55);
+      --green:         #10B981;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,15,35,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-light);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-back {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .nav-back:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 0 86px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 720px;
+      height: 720px;
+      background: radial-gradient(ellipse, rgba(16,185,129,0.13) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(245,158,11,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--cta);
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.3);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(36px, 5.5vw, 62px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, #E2E8F0 30%, var(--primary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 19px);
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--cta);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: pulse-glow 2.8s ease-in-out infinite;
+      box-shadow: 0 0 0 0 var(--cta-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px var(--cta-glow);
+      animation: none;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 var(--cta-glow); }
+      50%       { box-shadow: 0 0 0 14px rgba(245,158,11,0); }
+    }
+
+    .trust-line {
+      margin-top: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-faint);
+      letter-spacing: 0.04em;
+    }
+
+    .trust-line span {
+      color: var(--green);
+      margin-right: 4px;
+    }
+
+    /* ── WHAT'S INSIDE ── */
+    #inside {
+      padding: 96px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .workflows-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .wf-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid transparent;
+      border-image: linear-gradient(180deg, var(--primary) 0%, var(--cta) 100%) 1;
+      border-radius: 0 12px 12px 0;
+      padding: 24px 26px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* override border-image for left-only trick */
+    .wf-card {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: 12px;
+    }
+
+    .wf-card:nth-child(even) {
+      border-left-color: var(--cta);
+    }
+
+    .wf-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      border-color: var(--border-purple);
+      border-left-color: var(--primary-light);
+    }
+
+    .wf-card:nth-child(even):hover {
+      border-left-color: var(--cta);
+    }
+
+    .wf-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: rgba(16,185,129,0.12);
+      border: 1px solid var(--border-purple);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wf-card:nth-child(even) .wf-icon {
+      background: rgba(245,158,11,0.09);
+      border-color: rgba(245,158,11,0.2);
+    }
+
+    .wf-icon svg {
+      color: var(--primary-light);
+    }
+
+    .wf-card:nth-child(even) .wf-icon svg {
+      color: var(--cta);
+    }
+
+    .wf-body { flex: 1; min-width: 0; }
+
+    .wf-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--primary-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .wf-card:nth-child(even) .wf-num {
+      color: var(--cta);
+    }
+
+    .wf-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .wf-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── HOW IT WORKS ── */
+    #how-it-works {
+      padding: 96px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+      position: relative;
+    }
+
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(33.33% - 12px);
+      width: calc(33.33%);
+      height: 1px;
+      background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .steps-row::after {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(66.66% - 12px);
+      width: calc(33.33% - 16px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .step {
+      text-align: center;
+      padding: 36px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-purple);
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--cta));
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 20px rgba(16,185,129,0.35);
+    }
+
+    .step-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .step-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .step-code {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--primary-light);
+      background: rgba(16,185,129,0.1);
+      border: 1px solid var(--border-purple);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* ── FINAL CTA BAND ── */
+    .cta-band {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-band-inner {
+      background: linear-gradient(135deg, rgba(16,185,129,0.12) 0%, rgba(245,158,11,0.07) 100%);
+      border: 1px solid var(--border-purple);
+      border-radius: 20px;
+      padding: 64px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(16,185,129,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-band-inner h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      margin-bottom: 14px;
+    }
+
+    .cta-band-inner p {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--text-faint);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--primary-light); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(10,10,28,0.88);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border-purple);
+      border-radius: 18px;
+      max-width: 460px;
+      width: 100%;
+      padding: 44px 40px;
+      position: relative;
+      box-shadow: 0 28px 80px rgba(0,0,0,0.65), 0 0 0 1px rgba(16,185,129,0.12);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .modal-close:hover { color: var(--text); background: var(--surface-2); }
+
+    .modal-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 10px;
+    }
+
+    .modal-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .modal-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+
+    .form-field {
+      margin-bottom: 16px;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .form-field input {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-field input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(16,185,129,0.15);
+    }
+
+    .form-field input::placeholder { color: var(--text-faint); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--cta);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .modal-privacy {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-top: 12px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── THANK YOU STATE ── */
+    .modal-thanks {
+      display: none;
+      text-align: center;
+    }
+
+    .thanks-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .thanks-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .thanks-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--primary), #5B21B6);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      margin-bottom: 24px;
+    }
+
+    .btn-download:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .import-instructions {
+      text-align: left;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-top: 4px;
+    }
+
+    .import-instructions p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--primary-light);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .import-instructions ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .import-instructions li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.45;
+    }
+
+    .import-instructions li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary-light);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      .workflows-grid { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr; }
+      .steps-row::before, .steps-row::after { display: none; }
+      .cta-band-inner { padding: 48px 28px; }
+      .modal-box { padding: 36px 24px; }
+      .hero { padding: 72px 0 64px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { letter-spacing: -1px; }
+    }
+
+    /* ── CIRCUIT CANVAS ── */
+    #circuit-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    nav, .hero, #inside, #how-it-works, .cta-band, footer, .modal-overlay {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="circuit-canvas" aria-hidden="true"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">K.</a>
+      <a href="../index.html" class="nav-back">&#8592; Back to Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">FREE RESOURCE</div>
+      <h1>My Battle-Tested<br>GHL Lead Nurture Snapshot</h1>
+      <p class="hero-sub">7 pre-built workflows ready to import into your GoHighLevel account. From first lead touch to closed deal — automated.</p>
+      <button class="btn-primary" id="hero-cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Free Snapshot
+      </button>
+      <p class="trust-line"><span>✓</span> Used in production. Zero fluff.</p>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section id="inside">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">7 Workflows Included</span>
+        <h2 class="section-title">What's Inside the Snapshot</h2>
+        <p class="section-sub">Every workflow I use for Solution13 clients — from the first form fill to onboarding and re-engagement.</p>
+      </div>
+
+      <div class="workflows-grid">
+
+        <!-- 001 -->
+        <div class="wf-card reveal">
+          <div class="wf-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="wf-body">
+            <span class="wf-num mono">001.</span>
+            <div class="wf-name">New Lead Intake</div>
+            <p class="wf-desc">Fires the instant a form is submitted. Instant follow-up email + internal Slack/email notification so no lead sits cold.</p>
+          </div>
+        </div>
+
+        <!-- 002 -->
+        <div class="wf-card reveal">
+          <div class="wf-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="wf-body">
+            <span class="wf-num mono">002.</span>
+            <div class="wf-name">Lead Contacted</div>
+            <p class="wf-desc">Auto-updates the pipeline stage the moment a lead replies. No manual stage-moving, no dropped balls.</p>
+          </div>
+        </div>
+
+        <!-- 003 -->
+        <div class="wf-card reveal">
+          <div class="wf-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="wf-body">
+            <span class="wf-num mono">003.</span>
+            <div class="wf-name">Lead Qualified</div>
+            <p class="wf-desc">Moves the opportunity to Qualified, tags the contact, and notifies the team when a lead meets your criteria.</p>
+          </div>
+        </div>
+
+        <!-- 004 -->
+        <div class="wf-card reveal">
+          <div class="wf-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div class="wf-body">
+            <span class="wf-num mono">004.</span>
+            <div class="wf-name">Strategy Call Booked</div>
+            <p class="wf-desc">Confirmation email + automated 24hr and 1hr reminders. Drastically cuts no-show rates.</p>
+          </div>
+        </div>
+
+        <!-- 004b -->
+        <div class="wf-card reveal">
+          <div class="wf-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38"/></svg>
+          </div>
+          <div class="wf-body">
+            <span class="wf-num mono">004b.</span>
+            <div class="wf-name">No-Show Recovery</div>
+            <p class="wf-desc">3-touch re-engagement sequence over 5 days when a lead misses the call. Recovers 30–40% of no-shows.</p>
+          </div>
+        </div>
+
+        <!-- 005 -->
+        <div class="wf-card reveal">
+          <div class="wf-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <div class="wf-body">
+            <span class="wf-num mono">005.</span>
+            <div class="wf-name">Closed Won</div>
+            <p class="wf-desc">Triggers onboarding email sequence, alerts the team, and creates a follow-up task the moment a deal closes.</p>
+          </div>
+        </div>
+
+        <!-- 006 -->
+        <div class="wf-card reveal" style="grid-column: 1 / -1;">
+          <div class="wf-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          </div>
+          <div class="wf-body">
+            <span class="wf-num mono">006.</span>
+            <div class="wf-name">Closed Lost — 30-Day Re-engagement Loop</div>
+            <p class="wf-desc">Waits 30 days, sends a value email, then checks if the contact has since re-engaged. If yes — recycles them back into the lead pipeline. If no — clean exit. Most CRMs leave money on the table here.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Setup in Minutes</span>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-sub">No dev needed. If you have a GHL account, you're 3 steps away from a fully automated pipeline.</p>
+      </div>
+
+      <div class="steps-row">
+
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <div class="step-title">Enter Your Email</div>
+          <p class="step-body">Drop your first name and email into the form. We'll send the snapshot download link straight to your inbox.</p>
+          <span class="step-code mono">Takes 10 seconds</span>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <div class="step-title">Download the Snapshot</div>
+          <p class="step-body">You'll get a <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--primary-light);">.json</code> file — the GHL snapshot format. No account required to download.</p>
+          <span class="step-code mono">~180KB file</span>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <div class="step-title">Import into GHL</div>
+          <p class="step-body">In your GHL account go to <strong>Settings → Snapshots → Import Snapshot</strong>. Upload the file. All 7 workflows appear instantly.</p>
+          <span class="step-code mono">Settings → Snapshots</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA BAND -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-inner reveal">
+        <div class="badge" style="margin-bottom:20px;">100% FREE — NO CATCH</div>
+        <h2>Your pipeline is leaking.<br>Let's fix that today.</h2>
+        <p>7 workflows. Instant import. Working before lunch.</p>
+        <button class="btn-primary" id="footer-cta-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Free Snapshot
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Keyvin Abillon &middot; <a href="https://keyvin-abillon.netlify.app">keyvin-abillon.netlify.app</a></p>
+  </footer>
+
+  <!-- EMAIL GATE MODAL -->
+  <div id="ghl-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">&#215;</button>
+
+      <!-- Step 1: Form -->
+      <form id="modal-form-step" name="ghl-snapshot-download" data-netlify="true">
+        <input type="hidden" name="form-name" value="ghl-snapshot-download" />
+
+        <div class="modal-label mono">Free Download</div>
+        <h2 class="modal-title" id="modal-title">Get the GHL Snapshot</h2>
+        <p class="modal-sub">Enter your details and we'll email you the snapshot download link — along with a quick setup guide.</p>
+
+        <div class="form-field">
+          <label for="snap-name">First Name</label>
+          <input type="text" id="snap-name" name="first_name" placeholder="e.g. Maria" autocomplete="given-name" required />
+        </div>
+
+        <div class="form-field">
+          <label for="snap-email">Email Address</label>
+          <input type="email" id="snap-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+
+        <button type="submit" class="btn-submit" id="snap-submit">Send Me the Snapshot</button>
+        <p class="modal-privacy mono">No spam. Unsubscribe anytime.</p>
+      </form>
+
+      <!-- Step 2: Thank you + Download -->
+      <div id="modal-thanks-step" class="modal-thanks">
+        <span class="thanks-icon">&#9889;</span>
+        <h2 class="thanks-title">Check your inbox!</h2>
+        <p class="thanks-sub">We've sent the snapshot download link to your email. While you wait — grab it directly below.</p>
+        <a href="../assets/ghl-snapshot.json" class="btn-download" download>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Snapshot (.json)
+        </a>
+        <div class="import-instructions">
+          <p class="mono">How to import</p>
+          <ul>
+            <li>Go to <strong>Settings → Snapshots</strong> in your GHL account</li>
+            <li>Click <strong>Import Snapshot</strong> and upload the .json file</li>
+            <li>All 7 workflows will appear — activate each one and update your custom values</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ── Scroll Reveal ─────────────────────────────────────────
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+    // Fallback: force all visible after 600ms (covers anchor links + slow scroll)
+    setTimeout(function() {
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }, 600);
+
+    // ── Modal ─────────────────────────────────────────────────
+    var modal      = document.getElementById('ghl-modal');
+    var formStep   = document.getElementById('modal-form-step');
+    var thanksStep = document.getElementById('modal-thanks-step');
+    var modalClose = document.getElementById('modal-close');
+    var snapForm   = document.getElementById('modal-form-step');
+    var submitBtn  = document.getElementById('snap-submit');
+
+    function openModal() {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('snap-name').focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('hero-cta-btn').addEventListener('click', openModal);
+    document.getElementById('footer-cta-btn').addEventListener('click', openModal);
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    snapForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var name  = document.getElementById('snap-name').value.trim();
+      var email = document.getElementById('snap-email').value.trim();
+      if (!name || !email) return;
+
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      var body = new URLSearchParams({
+        'form-name': 'ghl-snapshot-download',
+        first_name: name,
+        email: email
+      });
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString()
+      })
+        .then(function() {
+          formStep.style.display = 'none';
+          thanksStep.style.display = 'block';
+        })
+        .catch(function() {
+          // Still show thank-you on network error — Netlify may have captured it
+          formStep.style.display = 'none';
+          thanksStep.style.display = 'block';
+        });
+    });
+  </script>
+
+  <!-- ── Circuit Board Background ── -->
+  <script>
+  (function() {
+    var canvas = document.getElementById('circuit-canvas');
+    var ctx = canvas.getContext('2d');
+    var traces = [];
+    var nodes = [];
+    var pulses = [];
+    var PULSE_COUNT = 10;
+    var animId;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      generatePattern();
+    }
+
+    function generatePattern() {
+      traces = [];
+      nodes = [];
+      pulses = [];
+
+      var w = canvas.width;
+      var h = canvas.height;
+      var isMobile = w < 768;
+      var spacing = isMobile ? 80 : 50;
+      var traceCount = isMobile ? 30 : 70;
+
+      // Build a set of grid-snapped nodes first
+      var gridNodes = [];
+      var cols = Math.floor(w / spacing);
+      var rows = Math.floor(h / spacing);
+
+      for (var c = 0; c <= cols; c++) {
+        for (var r = 0; r <= rows; r++) {
+          // Only place ~40% of possible nodes for organic feel
+          if (Math.random() < 0.4) {
+            gridNodes.push({ x: c * spacing, y: r * spacing });
+          }
+        }
+      }
+
+      // Generate traces connecting nearby nodes with 90-degree paths
+      var usedPairs = {};
+      for (var t = 0; t < traceCount && gridNodes.length > 1; t++) {
+        var startIdx = Math.floor(Math.random() * gridNodes.length);
+        var start = gridNodes[startIdx];
+
+        // Find a nearby node (within 3-6 grid cells)
+        var candidates = [];
+        for (var j = 0; j < gridNodes.length; j++) {
+          if (j === startIdx) continue;
+          var dx = Math.abs(gridNodes[j].x - start.x);
+          var dy = Math.abs(gridNodes[j].y - start.y);
+          var dist = dx + dy; // Manhattan distance
+          if (dist >= spacing && dist <= spacing * 6) {
+            candidates.push(gridNodes[j]);
+          }
+        }
+        if (candidates.length === 0) continue;
+
+        var end = candidates[Math.floor(Math.random() * candidates.length)];
+        var pairKey = Math.min(start.x, end.x) + ',' + Math.min(start.y, end.y) + '-' + Math.max(start.x, end.x) + ',' + Math.max(start.y, end.y);
+        if (usedPairs[pairKey]) continue;
+        usedPairs[pairKey] = true;
+
+        // Build an L-shaped or Z-shaped 90-degree path
+        var path = [{ x: start.x, y: start.y }];
+
+        if (Math.random() < 0.5) {
+          // L-shape: horizontal then vertical
+          path.push({ x: end.x, y: start.y });
+          path.push({ x: end.x, y: end.y });
+        } else {
+          // L-shape: vertical then horizontal
+          path.push({ x: start.x, y: end.y });
+          path.push({ x: end.x, y: end.y });
+        }
+
+        // Calculate total path length
+        var totalLen = 0;
+        for (var s = 1; s < path.length; s++) {
+          totalLen += Math.abs(path[s].x - path[s - 1].x) + Math.abs(path[s].y - path[s - 1].y);
+        }
+
+        traces.push({ path: path, length: totalLen });
+      }
+
+      // Collect unique node positions from all trace endpoints and corners
+      var nodeMap = {};
+      for (var i = 0; i < traces.length; i++) {
+        var p = traces[i].path;
+        for (var k = 0; k < p.length; k++) {
+          var key = p[k].x + ',' + p[k].y;
+          nodeMap[key] = p[k];
+        }
+      }
+      for (var nk in nodeMap) {
+        if (nodeMap.hasOwnProperty(nk)) {
+          nodes.push(nodeMap[nk]);
+        }
+      }
+
+      // Spawn initial pulses
+      var count = isMobile ? 6 : PULSE_COUNT;
+      for (var pi = 0; pi < count; pi++) {
+        spawnPulse();
+      }
+    }
+
+    function spawnPulse() {
+      if (traces.length === 0) return;
+      var trace = traces[Math.floor(Math.random() * traces.length)];
+      var speed = 40 + Math.random() * 60; // pixels per second
+      var forward = Math.random() < 0.5;
+      pulses.push({
+        trace: trace,
+        dist: forward ? 0 : trace.length,
+        speed: forward ? speed : -speed,
+        size: 2 + Math.random() * 1.5
+      });
+    }
+
+    function drawStatic() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw traces
+      ctx.strokeStyle = 'rgba(16,185,129,0.06)';
+      ctx.lineWidth = 1;
+      for (var i = 0; i < traces.length; i++) {
+        var p = traces[i].path;
+        ctx.beginPath();
+        ctx.moveTo(p[0].x, p[0].y);
+        for (var j = 1; j < p.length; j++) {
+          ctx.lineTo(p[j].x, p[j].y);
+        }
+        ctx.stroke();
+      }
+
+      // Draw nodes
+      ctx.fillStyle = 'rgba(16,185,129,0.1)';
+      for (var n = 0; n < nodes.length; n++) {
+        ctx.beginPath();
+        ctx.arc(nodes[n].x, nodes[n].y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Pre-render static layer to offscreen canvas
+    var staticCanvas = document.createElement('canvas');
+    var staticCtx = staticCanvas.getContext('2d');
+
+    function cacheStatic() {
+      staticCanvas.width = canvas.width;
+      staticCanvas.height = canvas.height;
+      var origCtx = ctx;
+      ctx = staticCtx;
+      drawStatic();
+      ctx = origCtx;
+    }
+
+    function getPosOnTrace(trace, dist) {
+      var traveled = 0;
+      var p = trace.path;
+      for (var i = 1; i < p.length; i++) {
+        var segLen = Math.abs(p[i].x - p[i - 1].x) + Math.abs(p[i].y - p[i - 1].y);
+        if (traveled + segLen >= dist) {
+          var t = (dist - traveled) / segLen;
+          return {
+            x: p[i - 1].x + (p[i].x - p[i - 1].x) * t,
+            y: p[i - 1].y + (p[i].y - p[i - 1].y) * t
+          };
+        }
+        traveled += segLen;
+      }
+      var last = p[p.length - 1];
+      return { x: last.x, y: last.y };
+    }
+
+    var lastTime = 0;
+
+    function animate(time) {
+      animId = requestAnimationFrame(animate);
+      if (!lastTime) { lastTime = time; return; }
+      var dt = (time - lastTime) / 1000;
+      lastTime = time;
+      if (dt > 0.1) dt = 0.1; // cap delta
+
+      // Draw cached static layer
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(staticCanvas, 0, 0);
+
+      // Update and draw pulses
+      for (var i = pulses.length - 1; i >= 0; i--) {
+        var p = pulses[i];
+        p.dist += p.speed * dt;
+
+        // Respawn if pulse finished its trace
+        if (p.dist < 0 || p.dist > p.trace.length) {
+          pulses.splice(i, 1);
+          spawnPulse();
+          continue;
+        }
+
+        var pos = getPosOnTrace(p.trace, p.dist);
+
+        // Glow
+        ctx.shadowColor = '#10B981';
+        ctx.shadowBlur = 12;
+        ctx.fillStyle = '#10B981';
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Bright core
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = 'rgba(52,211,153,0.9)';
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, p.size * 0.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Reset shadow
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+    }
+
+    // Init
+    resize();
+    cacheStatic();
+    animId = requestAnimationFrame(animate);
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        resize();
+        cacheStatic();
+        lastTime = 0;
+      }, 200);
+    });
+  })();
+  </script>
+</body>
+</html>

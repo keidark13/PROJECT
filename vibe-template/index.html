@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="[YOUR NAME] — [YOUR ROLE 1], [YOUR ROLE 2] & [YOUR ROLE 3].">
+  <meta property="og:title" content="[YOUR NAME] — [YOUR ROLE 1] | [YOUR ROLE 2] | [YOUR ROLE 3]">
+  <meta property="og:description" content="[YOUR VALUE PROPOSITION]">
+  <title>[YOUR NAME] — [YOUR ROLE 1] | [YOUR ROLE 2] | [YOUR ROLE 3]</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <!-- Anti-flash: apply theme before CSS paints -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+    NAVIGATION
+    ► Change: nav-logo text (your initial), nav links if needed
+  ============================================================ -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo" aria-label="[YOUR NAME] - Home">Y.</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
+    <button class="mobile-nav-close" id="mobile-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-links" role="list">
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================================================
+      HERO SECTION
+      ► Change: eyebrow, name, roles array in main.js, tagline,
+                stats numbers + labels, button text, photo
+    ============================================================ -->
+    <section id="hero" aria-label="Hero section">
+      <div class="aura" aria-hidden="true">
+        <div class="aura-blob aura-blob--primary"></div>
+        <div class="aura-blob aura-blob--rose"></div>
+        <div class="aura-blob aura-blob--deep"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <p class="hero-eyebrow">[YOUR PAIN POINT HOOK]. Let's fix that.</p>
+            <h1 class="glitch-text" data-text="[YOUR NAME].">[YOUR NAME].</h1>
+            <span class="role-text" id="role-text" aria-label="[YOUR ROLE 1], [YOUR ROLE 2], [YOUR ROLE 3]"></span>
+            <p class="hero-tagline">[YOUR VALUE PROPOSITION — what you do and who you do it for.]</p>
+            <div class="hero-stats" aria-label="Quick stats">
+              <div class="hero-stat">
+                <span class="hero-stat-number">[X]+</span>
+                <span class="hero-stat-label">[STAT 1<br>LABEL]</span>
+              </div>
+              <div class="hero-stat-divider" aria-hidden="true"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-number">[X]+</span>
+                <span class="hero-stat-label">[STAT 2<br>LABEL]</span>
+              </div>
+              <div class="hero-stat-divider" aria-hidden="true"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-number">[X]%</span>
+                <span class="hero-stat-label">[STAT 3<br>LABEL]</span>
+              </div>
+            </div>
+            <div class="btn-group">
+              <a href="#contact" class="btn btn-primary">[YOUR CTA — e.g. Let's Work Together]</a>
+              <a href="#projects" class="btn btn-outline">[SECONDARY CTA — e.g. See My Work]</a>
+            </div>
+          </div>
+
+          <!-- ► Replace placeholder-avatar.svg with your own photo (remove background recommended) -->
+          <div class="hero-photo" aria-hidden="true">
+            <div class="hero-photo-frame">
+              <div class="todo-card todo-card--1" aria-hidden="true">
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+                <div class="todo-item">○ [In progress task]</div>
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+              </div>
+              <div class="todo-card todo-card--2" aria-hidden="true">
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+                <div class="todo-item">○ [In progress task]</div>
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+              </div>
+              <div class="todo-card todo-card--3" aria-hidden="true">
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+                <div class="todo-item">○ [In progress task]</div>
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+              </div>
+              <div class="todo-card todo-card--r1" aria-hidden="true">
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+                <div class="todo-item">○ [In progress task]</div>
+              </div>
+              <div class="todo-card todo-card--r2" aria-hidden="true">
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+                <div class="todo-item">○ [In progress task]</div>
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+              </div>
+              <div class="todo-card todo-card--r3" aria-hidden="true">
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+                <div class="todo-item">○ [In progress task]</div>
+                <div class="todo-item todo-done">✓ [Completed task]</div>
+              </div>
+              <img src="assets/placeholder-avatar.svg" alt="[YOUR NAME]" class="hero-avatar">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      TOOLS MARQUEE
+      ► Change: tool names and icons to match your stack
+    ============================================================ -->
+    <section class="tools-strip" aria-label="Tools I use">
+      <div class="tools-track">
+        <!-- set 1 — replace with your actual tools -->
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>[Tool 1]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>[Tool 2]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>[Tool 3]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>[Tool 4]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>[Tool 5]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>[Tool 6]</span>
+        <span class="tool-sep">|</span>
+        <!-- set 2 — duplicate for seamless loop -->
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>[Tool 1]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>[Tool 2]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>[Tool 3]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>[Tool 4]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>[Tool 5]</span>
+        <span class="tool-sep">|</span>
+        <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>[Tool 6]</span>
+        <span class="tool-sep">|</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      SKILLS SECTION
+      ► Change: card titles, descriptions, and icons
+    ============================================================ -->
+    <section id="skills" class="fade-section section-pad" aria-labelledby="skills-heading">
+      <div class="container">
+        <h2 id="skills-heading" class="section-heading">What I Do</h2>
+        <p class="section-subheading">[YOUR SKILLS SECTION TAGLINE]</p>
+        <div class="skills-carousel-wrapper">
+          <button class="skills-arrow skills-arrow--prev" id="skills-prev" aria-label="Previous skills">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+          </button>
+          <div class="skills-track" id="skills-track">
+
+            <article class="skill-card">
+              <div class="skill-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <h3 class="skill-card-title">[Skill 1 Title]</h3>
+              <p class="skill-card-desc">[Describe what you do for this skill and what result the client gets. 2-3 sentences max.]</p>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <h3 class="skill-card-title">[Skill 2 Title]</h3>
+              <p class="skill-card-desc">[Describe what you do for this skill and what result the client gets. 2-3 sentences max.]</p>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+              </div>
+              <h3 class="skill-card-title">[Skill 3 Title]</h3>
+              <p class="skill-card-desc">[Describe what you do for this skill and what result the client gets. 2-3 sentences max.]</p>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="6" height="18" rx="1"/><rect x="9" y="8" width="6" height="13" rx="1"/><rect x="16" y="13" width="6" height="8" rx="1"/></svg>
+              </div>
+              <h3 class="skill-card-title">[Skill 4 Title]</h3>
+              <p class="skill-card-desc">[Describe what you do for this skill and what result the client gets. 2-3 sentences max.]</p>
+            </article>
+
+          </div>
+          <button class="skills-arrow skills-arrow--next" id="skills-next" aria-label="Next skills">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"/></svg>
+          </button>
+        </div>
+        <div class="skills-dots" id="skills-dots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      ABOUT SECTION
+      ► Change: heading, paragraphs, skill badges, photo
+    ============================================================ -->
+    <section id="about" class="fade-section section-pad" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <h2 id="about-heading">About Me</h2>
+            <p>[Your story — X years doing Y, what you've learned, what makes you different. Keep it client-focused: what problems have you seen and solved? 2-3 sentences.]</p>
+            <p style="margin-top: 1rem;">[Second paragraph — what the client gets when they work with you. Your promise.]</p>
+            <div class="skill-badges" role="list" aria-label="Skills">
+              <span class="skill-badge" role="listitem">[Skill Badge 1]</span>
+              <span class="skill-badge" role="listitem">[Skill Badge 2]</span>
+              <span class="skill-badge" role="listitem">[Skill Badge 3]</span>
+              <span class="skill-badge" role="listitem">[Skill Badge 4]</span>
+              <span class="skill-badge" role="listitem">[Skill Badge 5]</span>
+              <span class="skill-badge" role="listitem">[Skill Badge 6]</span>
+            </div>
+          </div>
+          <div class="about-visual">
+            <!-- ► Replace with your own photo or illustration -->
+            <img src="assets/placeholder-avatar.svg" alt="[YOUR NAME]" class="avatar-photo">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      PROJECTS SECTION
+      ► Change: project titles, descriptions, tags, links
+      ► status-badge: use "status-live" for live projects, "status-soon" for coming soon
+    ============================================================ -->
+    <section id="projects" class="fade-section section-pad" aria-labelledby="projects-heading">
+      <div class="container">
+        <h2 id="projects-heading" class="section-heading">Projects</h2>
+        <p class="section-subheading">[YOUR PROJECTS SECTION TAGLINE]</p>
+        <div class="projects-grid">
+
+          <article class="project-card stagger-item">
+            <div class="card-image" data-label="[CATEGORY / TYPE]"></div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>[Project 1 Title]</h3>
+              <p>[Describe what you built, what problem it solves, and what result it achieved. 2-3 sentences.]</p>
+              <div class="tags">
+                <span class="tag">[Tech 1]</span>
+                <span class="tag">[Tech 2]</span>
+                <span class="tag">[Tech 3]</span>
+              </div>
+              <a href="#" class="card-link">View Project →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item">
+            <div class="card-image" data-label="[CATEGORY / TYPE]"></div>
+            <div class="card-body">
+              <span class="status-badge status-live">● LIVE</span>
+              <h3>[Project 2 Title]</h3>
+              <p>[Describe what you built, what problem it solves, and what result it achieved. 2-3 sentences.]</p>
+              <div class="tags">
+                <span class="tag">[Tech 1]</span>
+                <span class="tag">[Tech 2]</span>
+                <span class="tag">[Tech 3]</span>
+              </div>
+              <a href="#" class="card-link">View Project →</a>
+            </div>
+          </article>
+
+          <article class="project-card stagger-item">
+            <div class="card-image" data-label="[CATEGORY / TYPE]"></div>
+            <div class="card-body">
+              <span class="status-badge status-soon">COMING SOON</span>
+              <h3>[Project 3 Title]</h3>
+              <p>[Describe what you're building and what it will do. 2-3 sentences.]</p>
+              <div class="tags">
+                <span class="tag">[Tech 1]</span>
+                <span class="tag">[Tech 2]</span>
+                <span class="tag">[Tech 3]</span>
+              </div>
+              <a href="#" class="card-link">View Project →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      CONTACT SECTION
+      ► Change: heading, subheading, social links
+      ► Wire the form: see TODO comment in the form
+    ============================================================ -->
+    <section id="contact" class="fade-section section-pad" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading" class="section-heading">[YOUR CONTACT HEADING]</h2>
+        <p class="section-subheading">[YOUR CONTACT SUBHEADING]</p>
+        <div class="contact-grid">
+          <form class="contact-form" id="contact-form" novalidate aria-label="Contact form">
+            <!-- TODO: Wire to a real endpoint before launch.
+                 Options:
+                 - Formspree: add action="https://formspree.io/f/YOUR_ID" method="POST"
+                 - Web3Forms: fetch POST to https://api.web3forms.com/submit
+                 - EmailJS: emailjs.send('service_id', 'template_id', {...})
+            -->
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your project..." required rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          </form>
+
+          <div class="social-dock" role="list" aria-label="Social media links">
+            <div class="social-dock__gradient" aria-hidden="true"></div>
+
+            <!-- ► Replace href="#" with your real profile URLs -->
+            <a href="#" class="social-dock__item" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <span class="social-dock__bg" aria-hidden="true"></span>
+              <span class="social-dock__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </span>
+              <span class="social-dock__bar" aria-hidden="true"></span>
+              <span class="social-dock__tooltip">GitHub<span class="social-dock__arrow" aria-hidden="true"></span></span>
+            </a>
+
+            <a href="#" class="social-dock__item" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <span class="social-dock__bg" aria-hidden="true"></span>
+              <span class="social-dock__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </span>
+              <span class="social-dock__bar" aria-hidden="true"></span>
+              <span class="social-dock__tooltip">LinkedIn<span class="social-dock__arrow" aria-hidden="true"></span></span>
+            </a>
+
+            <a href="#" class="social-dock__item" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+              <span class="social-dock__bg" aria-hidden="true"></span>
+              <span class="social-dock__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.213 5.567 5.95-5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </span>
+              <span class="social-dock__bar" aria-hidden="true"></span>
+              <span class="social-dock__tooltip">Twitter / X<span class="social-dock__arrow" aria-hidden="true"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ► Change footer text -->
+  <footer class="footer" role="contentinfo">
+    <p>© [YEAR] [YOUR NAME]. [YOUR ROLE 1] · [YOUR ROLE 2] · [YOUR ROLE 3]</p>
+    <a href="#hero" class="back-to-top" aria-label="Back to top">↑ Back to top</a>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

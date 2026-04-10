@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO Audit Dashboard — Keyvin Abillon</title>
+  <meta name="description" content="See exactly where your site is bleeding rankings. Free SEO audit powered by Keyvin Abillon — Automation & SEO Specialist." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0F0D;
+      --surface: #111A16;
+      --surface-2: #1A2E1F;
+      --primary: #10B981;
+      --primary-light: #34D399;
+      --cta: #F59E0B;
+      --green: #10B981;
+      --amber: #F59E0B;
+      --red: #EF4444;
+      --text: #D1D5DB;
+      --text-muted: #9CA3AF;
+      --text-faint: #475569;
+      --border: rgba(16,185,129,0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Archivo', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; line-height: 1.2; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    nav { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .nav-back { font-size: 14px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--text); }
+
+    /* HERO */
+    .hero { padding: 80px 0 60px; text-align: center; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 54px); color: #F1F0FF; margin-bottom: 20px; }
+    .hero h1 span { background: linear-gradient(135deg, var(--primary) 0%, var(--cta) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 18px; color: var(--text-muted); max-width: 560px; margin: 0 auto 36px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: linear-gradient(135deg, var(--primary), var(--cta)); border: none; border-radius: 8px; color: #fff; font-size: 16px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; cursor: pointer; text-decoration: none; }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: transparent; border: 1.5px solid var(--border); border-radius: 8px; color: var(--text-muted); font-size: 15px; font-weight: 600; font-family: 'Space Grotesk', sans-serif; cursor: pointer; text-decoration: none; margin-left: 12px; }
+    .btn-outline:hover { border-color: var(--primary); color: var(--text); }
+
+    /* DEMO SECTION */
+    .demo-section { padding: 60px 0 80px; }
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+    .section-title { font-size: clamp(24px, 3vw, 36px); color: #F1F0FF; margin-bottom: 12px; }
+    .section-sub { font-size: 16px; color: var(--text-muted); max-width: 520px; }
+    .section-header { margin-bottom: 40px; }
+
+    /* DEMO BADGE */
+    .demo-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 700; color: var(--amber); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 28px; }
+    .demo-badge::before { content: ''; width: 6px; height: 6px; background: var(--amber); border-radius: 50%; animation: blink 1.4s ease infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* DASHBOARD CARD */
+    .dashboard { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+
+    /* Dashboard topbar */
+    .dash-topbar { background: var(--surface-2); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .dash-url { display: flex; align-items: center; gap: 10px; }
+    .dash-url .mono { font-size: 13px; color: var(--text-muted); }
+    .dash-url-badge { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 700; color: var(--green); }
+    .dash-meta { font-size: 12px; color: var(--text-faint); }
+
+    /* Score row */
+    .score-row { display: grid; grid-template-columns: 200px 1fr; gap: 0; border-bottom: 1px solid var(--border); }
+    .overall-score { padding: 32px 24px; border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+    .score-ring { position: relative; width: 100px; height: 100px; }
+    .score-ring svg { transform: rotate(-90deg); }
+    .score-ring .ring-bg { fill: none; stroke: rgba(16,185,129,0.15); stroke-width: 8; }
+    .score-ring .ring-fill { fill: none; stroke: url(#scoreGrad); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 283; stroke-dashoffset: 91; transition: stroke-dashoffset 1.5s ease; }
+    .score-number { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .score-number span { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; color: #F1F0FF; line-height: 1; }
+    .score-number small { font-size: 11px; color: var(--text-faint); }
+    .score-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+    .score-domain { font-size: 11px; color: var(--text-faint); }
+
+    .category-scores { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start; }
+    .cat-item { display: flex; flex-direction: column; gap: 6px; }
+    .cat-header { display: flex; justify-content: space-between; align-items: center; }
+    .cat-name { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+    .cat-score { font-size: 13px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+    .cat-score.good { color: var(--green); }
+    .cat-score.warn { color: var(--amber); }
+    .cat-score.bad { color: var(--red); }
+    .bar-track { height: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 999px; }
+    .bar-fill.good { background: var(--green); }
+    .bar-fill.warn { background: var(--amber); }
+    .bar-fill.bad { background: var(--red); }
+
+    /* Issues list */
+    .issues-section { padding: 24px; border-top: 1px solid var(--border); }
+    .issues-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+    .issues-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .issues-filters { display: flex; gap: 6px; }
+    .filter-pill { padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; border: 1px solid transparent; cursor: pointer; }
+    .filter-pill.critical { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: var(--red); }
+    .filter-pill.warning { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--amber); }
+    .filter-pill.info { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: var(--primary-light); }
+
+    .issue-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .issue-item:last-child { border-bottom: none; }
+    .issue-badge { flex-shrink: 0; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
+    .issue-badge.critical { background: rgba(239,68,68,0.15); color: var(--red); }
+    .issue-badge.warning { background: rgba(245,158,11,0.12); color: var(--amber); }
+    .issue-badge.info { background: rgba(16,185,129,0.12); color: var(--primary-light); }
+    .issue-body { flex: 1; }
+    .issue-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .issue-desc { font-size: 12px; color: var(--text-muted); }
+    .issue-impact { font-size: 11px; color: var(--text-faint); margin-top: 4px; font-weight: 600; }
+    .issue-icon { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-top: 1px; }
+
+    /* Blur overlay on demo */
+    .dash-blur-wrap { position: relative; }
+    .dash-blur { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(15,15,35,0.95) 75%); border-radius: 0 0 16px 16px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px; z-index: 10; }
+    .dash-blur-inner { text-align: center; }
+    .dash-blur-inner p { font-size: 15px; color: var(--text-muted); margin-bottom: 16px; }
+
+    /* WHAT WE CHECK */
+    .checks-section { padding: 60px 0; border-top: 1px solid var(--border); }
+    .checks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+    .check-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .check-icon { font-size: 28px; margin-bottom: 12px; }
+    .check-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .check-list li { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+    .check-list li::before { content: '→'; color: var(--primary); font-size: 11px; flex-shrink: 0; }
+
+    /* FINAL CTA */
+    .final-cta { padding: 80px 0; text-align: center; }
+    .final-cta-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 60px 40px; max-width: 600px; margin: 0 auto; position: relative; overflow: hidden; }
+    .final-cta-inner::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%); border-radius: 50%; }
+    .final-cta h2 { font-size: 32px; color: #F1F0FF; margin-bottom: 12px; }
+    .final-cta p { color: var(--text-muted); margin-bottom: 28px; }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(10,10,30,0.88); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 24px; }
+    .modal-box { background: var(--surface); border: 1px solid rgba(16,185,129,0.35); border-radius: 16px; max-width: 440px; width: 100%; padding: 40px 36px; position: relative; box-shadow: 0 24px 80px rgba(0,0,0,0.6); }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; line-height: 1; }
+    .modal-label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+    .modal-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+    .form-group { margin-bottom: 14px; }
+    .form-label { display: block; font-size: 13px; font-weight: 600; color: #CBD5E1; margin-bottom: 6px; }
+    .form-input { width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid rgba(16,185,129,0.3); border-radius: 8px; color: var(--text); font-size: 15px; font-family: inherit; outline: none; }
+    .form-input:focus { border-color: var(--primary); }
+    .form-submit { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--primary), var(--cta)); border: none; border-radius: 8px; color: #fff; font-size: 16px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; cursor: pointer; margin-top: 8px; }
+    .form-note { font-size: 11px; color: var(--text-faint); text-align: center; margin-top: 10px; }
+    .modal-thanks { display: none; text-align: center; }
+    .modal-thanks .emoji { font-size: 48px; margin-bottom: 16px; }
+    .modal-thanks h2 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .modal-thanks p { font-size: 14px; color: var(--text-muted); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 28px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-faint); }
+    .footer-link { font-size: 13px; color: var(--text-muted); text-decoration: none; }
+    .footer-link:hover { color: var(--text); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RADAR SWEEP BACKGROUND */
+    .radar-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .radar-bg::before {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      background: rgba(16,185,129,0.25);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow:
+        -20px 0 0 rgba(16,185,129,0.06),
+        20px 0 0 rgba(16,185,129,0.06),
+        0 -20px 0 rgba(16,185,129,0.06),
+        0 20px 0 rgba(16,185,129,0.06);
+    }
+
+    .radar-ring {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      border-radius: 50%;
+      border: 1px solid rgba(16,185,129,0.08);
+      transform: translate(-50%, -50%);
+    }
+    .radar-ring:nth-child(1) { width: 200px; height: 200px; }
+    .radar-ring:nth-child(2) { width: 400px; height: 400px; }
+    .radar-ring:nth-child(3) { width: 600px; height: 600px; }
+    .radar-ring:nth-child(4) { width: 800px; height: 800px; }
+
+    .radar-sweep {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      transform: translate(-50%, -50%);
+      animation: radarSpin 6s linear infinite;
+    }
+
+    .radar-sweep::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        rgba(16,185,129,0.12) 0deg,
+        transparent 60deg,
+        transparent 360deg
+      );
+    }
+
+    @keyframes radarSpin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Ensure all page content sits above radar */
+    nav, section, footer, .modal-overlay {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .score-row { grid-template-columns: 1fr; }
+      .overall-score { border-right: none; border-bottom: 1px solid var(--border); }
+      .category-scores { grid-template-columns: 1fr; }
+      .checks-grid { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: 8px; }
+      .radar-bg { opacity: 0.4; }
+      .radar-sweep { width: 250px; height: 250px; }
+      .radar-ring:nth-child(3),
+      .radar-ring:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Radar sweep background -->
+  <div class="radar-bg" aria-hidden="true">
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-sweep"></div>
+  </div>
+
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo">K.</a>
+        <a href="../index.html" class="nav-back">&#8592; Back to Portfolio</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">SEO Audit Dashboard — Free Tool</div>
+      <h1>Your site is bleeding<br><span>rankings.</span> Let's find out why.</h1>
+      <p class="hero-sub">A full SEO audit of your site — technical issues, on-page gaps, and quick wins — ranked by impact. Not a generic report. A real one.</p>
+      <div>
+        <button class="btn-primary" id="hero-cta">Get My Free Audit &#8599;</button>
+        <a href="#demo" class="btn-outline">See a Sample &#8595;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO DASHBOARD -->
+  <section class="demo-section" id="demo">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Sample Audit</div>
+        <h2 class="section-title">What your audit looks like</h2>
+        <p class="section-sub">Here's a real audit output. Every issue ranked by impact, with a fix recommendation attached.</p>
+      </div>
+
+      <div class="demo-badge">Demo Mode — Sample Data</div>
+
+      <div class="dashboard reveal">
+        <!-- Topbar -->
+        <div class="dash-topbar">
+          <div class="dash-url">
+            <span class="mono">example-business.com.ph</span>
+            <span class="dash-url-badge">Scanned</span>
+          </div>
+          <div class="dash-meta">Audited Apr 7, 2026 &nbsp;·&nbsp; 142 pages crawled</div>
+        </div>
+
+        <!-- Score Row -->
+        <div class="score-row">
+          <div class="overall-score">
+            <div class="score-ring">
+              <svg width="100" height="100" viewBox="0 0 100 100">
+                <defs>
+                  <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#10B981"/>
+                    <stop offset="100%" style="stop-color:#F59E0B"/>
+                  </linearGradient>
+                </defs>
+                <circle class="ring-bg" cx="50" cy="50" r="45"/>
+                <circle class="ring-fill" cx="50" cy="50" r="45"/>
+              </svg>
+              <div class="score-number">
+                <span>68</span>
+                <small>/100</small>
+              </div>
+            </div>
+            <div class="score-label">Overall Score</div>
+            <div class="score-domain">Needs Work</div>
+          </div>
+
+          <div class="category-scores">
+            <div class="cat-item">
+              <div class="cat-header">
+                <span class="cat-name">Technical SEO</span>
+                <span class="cat-score warn">72</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill warn" style="width:72%"></div></div>
+            </div>
+            <div class="cat-item">
+              <div class="cat-header">
+                <span class="cat-name">On-Page</span>
+                <span class="cat-score bad">55</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill bad" style="width:55%"></div></div>
+            </div>
+            <div class="cat-item">
+              <div class="cat-header">
+                <span class="cat-name">Performance</span>
+                <span class="cat-score bad">48</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill bad" style="width:48%"></div></div>
+            </div>
+            <div class="cat-item">
+              <div class="cat-header">
+                <span class="cat-name">Content Quality</span>
+                <span class="cat-score good">81</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill good" style="width:81%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Issues -->
+        <div class="dash-blur-wrap">
+          <div class="issues-section">
+            <div class="issues-header">
+              <div class="issues-title">Issues Found — 14 total</div>
+              <div class="issues-filters">
+                <span class="filter-pill critical">3 Critical</span>
+                <span class="filter-pill warning">7 Warnings</span>
+                <span class="filter-pill info">4 Info</span>
+              </div>
+            </div>
+
+            <div class="issue-item">
+              <div class="issue-icon" style="background:rgba(239,68,68,0.1)">🔴</div>
+              <div class="issue-body">
+                <div class="issue-title">Missing meta descriptions on 23 pages</div>
+                <div class="issue-desc">Google is auto-generating descriptions — you're losing click-through rate to competitors who control this.</div>
+                <div class="issue-impact">Impact: High &nbsp;·&nbsp; Fix: Write unique 150–160 char descriptions per page</div>
+              </div>
+              <span class="issue-badge critical">Critical</span>
+            </div>
+
+            <div class="issue-item">
+              <div class="issue-icon" style="background:rgba(239,68,68,0.1)">🔴</div>
+              <div class="issue-body">
+                <div class="issue-title">Core Web Vitals failing — LCP 5.8s</div>
+                <div class="issue-desc">Largest Contentful Paint is 2.3× above Google's threshold. This directly suppresses ranking in mobile search.</div>
+                <div class="issue-impact">Impact: High &nbsp;·&nbsp; Fix: Compress hero image, defer non-critical JS</div>
+              </div>
+              <span class="issue-badge critical">Critical</span>
+            </div>
+
+            <div class="issue-item">
+              <div class="issue-icon" style="background:rgba(239,68,68,0.1)">🔴</div>
+              <div class="issue-body">
+                <div class="issue-title">No structured data (Schema.org)</div>
+                <div class="issue-desc">Missing LocalBusiness and Service schema. Competitors with schema markup are getting rich snippets — you're not.</div>
+                <div class="issue-impact">Impact: High &nbsp;·&nbsp; Fix: Add JSON-LD schema to homepage and service pages</div>
+              </div>
+              <span class="issue-badge critical">Critical</span>
+            </div>
+
+            <div class="issue-item">
+              <div class="issue-icon" style="background:rgba(245,158,11,0.1)">🟡</div>
+              <div class="issue-body">
+                <div class="issue-title">H1 tags missing on 8 pages</div>
+                <div class="issue-desc">Google uses H1 as the primary signal for page topic. These pages are ranking for nothing.</div>
+                <div class="issue-impact">Impact: Medium &nbsp;·&nbsp; Fix: Add one keyword-targeted H1 per page</div>
+              </div>
+              <span class="issue-badge warning">Warning</span>
+            </div>
+
+            <div class="issue-item">
+              <div class="issue-icon" style="background:rgba(245,158,11,0.1)">🟡</div>
+              <div class="issue-body">
+                <div class="issue-title">Duplicate title tags on 5 pages</div>
+                <div class="issue-desc">Identical titles confuse Google on which page to rank. You're splitting authority instead of concentrating it.</div>
+                <div class="issue-impact">Impact: Medium &nbsp;·&nbsp; Fix: Unique, keyword-rich titles per page</div>
+              </div>
+              <span class="issue-badge warning">Warning</span>
+            </div>
+          </div>
+
+          <!-- Blur + CTA -->
+          <div class="dash-blur">
+            <div class="dash-blur-inner">
+              <p>9 more issues hidden — get your full audit to see everything.</p>
+              <button class="btn-primary" id="dash-cta">Get My Free Audit &#8599;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE CHECK -->
+  <section class="checks-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Coverage</div>
+        <h2 class="section-title">What we audit</h2>
+        <p class="section-sub">Every area that determines whether Google ranks you — or buries you.</p>
+      </div>
+
+      <div class="checks-grid">
+        <div class="check-card reveal">
+          <div class="check-icon">⚙️</div>
+          <div class="check-title">Technical SEO</div>
+          <ul class="check-list">
+            <li>Crawlability & indexation</li>
+            <li>XML sitemap & robots.txt</li>
+            <li>Canonical tags</li>
+            <li>Broken links & redirects</li>
+            <li>HTTPS & SSL</li>
+          </ul>
+        </div>
+        <div class="check-card reveal">
+          <div class="check-icon">📄</div>
+          <div class="check-title">On-Page Optimization</div>
+          <ul class="check-list">
+            <li>Title tags & meta descriptions</li>
+            <li>H1–H3 heading structure</li>
+            <li>Keyword targeting gaps</li>
+            <li>Image alt text coverage</li>
+            <li>Internal linking structure</li>
+          </ul>
+        </div>
+        <div class="check-card reveal">
+          <div class="check-icon">⚡</div>
+          <div class="check-title">Core Web Vitals</div>
+          <ul class="check-list">
+            <li>LCP (Largest Contentful Paint)</li>
+            <li>CLS (Cumulative Layout Shift)</li>
+            <li>FID / INP (Interactivity)</li>
+            <li>Mobile performance score</li>
+            <li>Desktop performance score</li>
+          </ul>
+        </div>
+        <div class="check-card reveal">
+          <div class="check-icon">🏗️</div>
+          <div class="check-title">Schema & Rich Snippets</div>
+          <ul class="check-list">
+            <li>LocalBusiness schema</li>
+            <li>FAQ / How-To markup</li>
+            <li>Product & Review schema</li>
+            <li>Breadcrumb structured data</li>
+            <li>Rich snippet eligibility</li>
+          </ul>
+        </div>
+        <div class="check-card reveal">
+          <div class="check-icon">📝</div>
+          <div class="check-title">Content Quality</div>
+          <ul class="check-list">
+            <li>Thin content detection</li>
+            <li>Keyword cannibalization</li>
+            <li>Content-to-keyword match</li>
+            <li>Duplicate content check</li>
+            <li>E-E-A-T signals</li>
+          </ul>
+        </div>
+        <div class="check-card reveal">
+          <div class="check-icon">🔗</div>
+          <div class="check-title">Authority & Links</div>
+          <ul class="check-list">
+            <li>Backlink profile overview</li>
+            <li>Domain authority baseline</li>
+            <li>Toxic link detection</li>
+            <li>Internal link equity flow</li>
+            <li>Competitor gap analysis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="final-cta-inner reveal">
+        <h2>Ready to stop guessing?</h2>
+        <p>Request your free audit. I'll review your site manually and send you a prioritized report — no automated fluff.</p>
+        <button class="btn-primary" id="final-cta">Request Free Audit &#8599;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-copy">&copy; 2026 Keyvin &middot; SEO Audit Dashboard</span>
+        <a href="../index.html" class="footer-link">&#8592; Back to Portfolio</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="audit-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close">&#215;</button>
+
+      <div id="modal-form">
+        <div class="modal-label">Free SEO Audit</div>
+        <h2 class="modal-title">Let's audit your site</h2>
+        <p class="modal-sub">I'll review your site manually and send a prioritized report within 48 hours. No fluff, no upsell spam.</p>
+
+        <form name="seo-audit-request" method="POST" data-netlify="true" id="audit-form" novalidate>
+          <input type="hidden" name="form-name" value="seo-audit-request">
+          <div class="form-group">
+            <label class="form-label" for="audit-name">Your Name</label>
+            <input class="form-input" type="text" id="audit-name" name="name" required placeholder="Juan dela Cruz">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="audit-email">Email Address</label>
+            <input class="form-input" type="email" id="audit-email" name="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="audit-url">Website URL</label>
+            <input class="form-input" type="url" id="audit-url" name="website" required placeholder="https://yourbusiness.com">
+          </div>
+          <button class="form-submit" type="submit" id="audit-submit">Send My Audit Request &#8599;</button>
+          <p class="form-note">Free, no obligation. I'll respond within 48 hours.</p>
+        </form>
+      </div>
+
+      <div class="modal-thanks" id="modal-thanks">
+        <div class="emoji">&#127881;</div>
+        <h2>Request received!</h2>
+        <p>I'll audit your site and send you a full report within 48 hours. Check your inbox.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Scroll reveal
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+    // Modal
+    var modal = document.getElementById('audit-modal');
+    var modalClose = document.getElementById('modal-close');
+    var auditForm = document.getElementById('audit-form');
+    var modalFormEl = document.getElementById('modal-form');
+    var modalThanks = document.getElementById('modal-thanks');
+
+    function openModal() {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      document.getElementById('audit-name').focus();
+    }
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    ['hero-cta', 'dash-cta', 'final-cta'].forEach(function(id) {
+      var btn = document.getElementById(id);
+      if (btn) btn.addEventListener('click', openModal);
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    auditForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var submit = document.getElementById('audit-submit');
+      submit.textContent = 'Sending...';
+      submit.disabled = true;
+
+      var data = new URLSearchParams({
+        'form-name': 'seo-audit-request',
+        name: document.getElementById('audit-name').value,
+        email: document.getElementById('audit-email').value,
+        website: document.getElementById('audit-url').value
+      });
+
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() })
+        .then(function() { modalFormEl.style.display = 'none'; modalThanks.style.display = 'block'; })
+        .catch(function() { modalFormEl.style.display = 'none'; modalThanks.style.display = 'block'; });
+    });
+  </script>
+</body>
+</html>

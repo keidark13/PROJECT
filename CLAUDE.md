@@ -21,12 +21,13 @@ legion/halls/           Active state (goals, session, parked)
 .mempalace/             ChromaDB index — search via: mempalace search "<query>"
 ```
 
-## Design System
-- **Background**: `#0F0F23` (dark navy)
-- **Primary accent**: `#7C3AED` (electric violet)
-- **CTA / highlight**: `#F43F5E` (rose red)
-- **Aesthetic**: Dark neon cyberpunk
-- **Typography**: Google Fonts loaded via `<link>` in `<head>`
+## Design System (Emerald System — updated 2026-04-09)
+- **Background**: `#0A0F0D` (deep dark green)
+- **Surface**: `#111A16` (dark green surface)
+- **Primary accent**: `#10B981` (emerald green)
+- **CTA / highlight**: `#F59E0B` (amber)
+- **Aesthetic**: Dark neon emerald
+- **Typography**: Space Grotesk (headings), Archivo (body), JetBrains Mono (code/accents) — Google Fonts via `<link>`
 
 ## Rules — Do Not Violate
 - **No frameworks ever** — plain HTML/CSS/JS only
@@ -35,16 +36,17 @@ legion/halls/           Active state (goals, session, parked)
 - **No build step** — if it requires compiling or bundling, it's wrong for this project
 - Do not hardcode form submissions to a placeholder endpoint — form backend is pending
 
-## Pending Work (as of 2026-04-06)
-- [ ] Form backend — GHL webhook URL not wired, submissions go nowhere
+## Pending Work (as of 2026-04-11)
+- [x] Form backend — dual submit to GHL (Cloudflare Worker) + Netlify Forms (2026-04-11)
 - [ ] `og:image` meta tag — social link previews will not render without this
-- [ ] Project 3 link — still a placeholder, needs real URL
-- [ ] First git commit — site has never been committed
+- [ ] Add real case study page for Solution13.online
+- [ ] Set up GA or Plausible for traffic tracking
+- [x] First git commit + GitHub push (2026-04-09/10) — github.com/keidark13/PROJECT
+- [x] GitHub Pages backup hosting (2026-04-10)
+- [x] All 6 sub-page animated backgrounds (2026-04-10)
+- [x] Emerald palette swap from purple/rose (2026-04-09)
+- [x] 10 project card backgrounds redesigned (2026-04-09)
 - [x] Deploy to production — LIVE https://keyvin-abillon.netlify.app (2026-04-07)
-- [x] Headshot added (2026-04-04)
-- [x] Full copy rewrite — BrewedOps formula (2026-04-04)
-- [x] Animated social dock (2026-04-04)
-- [x] About section polish (2026-04-04)
 
 ---
 

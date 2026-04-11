@@ -3,11 +3,12 @@
 > Visual system, aesthetic decisions, component ADRs.
 > Updated when design decisions are made or reversed.
 
-## Design System
-- Background: `#0F0F23` (dark navy)
-- Primary accent: `#7C3AED` (electric violet)
-- CTA / highlight: `#F43F5E` (rose red)
-- Aesthetic: Dark neon cyberpunk
+## Design System (Emerald System — updated 2026-04-09)
+- Background: `#0A0F0D` (deep dark green)
+- Surface: `#111A16` (dark green surface)
+- Primary accent: `#10B981` (emerald green)
+- CTA / highlight: `#F59E0B` (amber)
+- Aesthetic: Dark neon emerald
 - Typography: Space Grotesk (headings), Archivo (body), JetBrains Mono (code/accents)
 - Fonts loaded via Google Fonts `<link>` in `<head>`
 
@@ -29,12 +30,12 @@
 - **Tradeoff:** Less visible signal of technical breadth
 
 ### 2026-04-04 — Headshot: drop-shadow glow only, no border card
-- **Decision:** `filter: drop-shadow(0 0 28px rgba(124,58,237,0.6))` — no card/border
-- **Why:** Card felt like generic template UI. Glow is consistent with cyberpunk aesthetic.
+- **Decision:** `filter: drop-shadow()` with emerald glow — no card/border
+- **Why:** Card felt like generic template UI. Glow is consistent with neon aesthetic.
 - **Tradeoff:** Relies on transparent PNG cutout being clean
 
 ### 2026-04-04 — About section bg = page bg (not surface)
-- **Decision:** About section bg changed from `--bg-surface` (#16162A) to `--bg` (#0F0F23)
+- **Decision:** About section bg changed from `--bg-surface` (#111A16) to `--bg` (#0A0F0D)
 - **Why:** Surface color created jarring block effect
 - **Tradeoff:** Section boundaries less distinct — relies on spacing/typography
 
@@ -44,7 +45,7 @@
 - **Tradeoff:** Manual port, no upstream inheritance
 
 ### 2026-04-07 — Favicon: lightning bolt over "K" letter
-- **Decision:** Lightning bolt SVG, purple `#7C3AED` → rose `#F43F5E` gradient on `#0F0F23` bg
+- **Decision:** Lightning bolt SVG, emerald `#10B981` → amber `#F59E0B` gradient on `#0A0F0D` bg
 - **Why:** More distinctive, brand-aligned, stronger at small sizes
 - **Tradeoff:** None significant
 

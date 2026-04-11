@@ -7,7 +7,7 @@ Last updated: 2026-04-10
 ## Now (Active Sprint)
 
 ### Remaining cleanup
-- [ ] Update kei project CLAUDE.md — replace purple/rose references with emerald/amber
+- [x] 2026-04-11 — Update kei project CLAUDE.md + legion rooms — emerald/amber palette refs
 - [ ] Add a real case study page for Solution13.online
 - [ ] Set up Google Analytics or Plausible for traffic tracking
 
@@ -16,6 +16,9 @@ Last updated: 2026-04-10
 - [ ] Vibe Coding card accent — update from lavender/pink to emerald variant
 
 ## Done ✓
+- [x] 2026-04-10 — Pushed to GitHub (keidark13/PROJECT) + GitHub Pages live
+- [x] 2026-04-10 — Generated 3 tailored GHL CVs (bookkeeping, solar, automation expert) as PDF
+- [x] 2026-04-10 — Built and deployed Gmail Organizer (Google Apps Script, 10 labels, auto-run)
 - [x] 2026-04-10 — All 6 sub-page animated backgrounds (radar sweep, funnel particles, circuit traces, sonar pulse, constellation nodes, map pin pulse)
 - [x] 2026-04-09 — Full color palette swap: purple/rose → Emerald System (#0A0F0D / #10B981 / #F59E0B)
 - [x] 2026-04-09 — Redesigned all 10 project card backgrounds (browser frames + screenshots + glow card)

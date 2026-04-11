@@ -434,14 +434,14 @@ const initForm = () => {
     submitBtn.disabled = true;
 
     try {
-      const formData = new FormData(form);
-      const response = await fetch('/', {
+      // Send to GHL via Cloudflare Worker
+      const response = await fetch('https://kei-ghl-contact.abillon13.workers.dev/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
       });
 
-      if (!response.ok) throw new Error('Network response was not ok');
+      if (!response.ok) throw new Error('Submission failed');
 
       submitBtn.textContent = '✓ Sent!';
       submitBtn.classList.add('btn--success');

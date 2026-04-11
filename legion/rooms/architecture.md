@@ -15,7 +15,7 @@ css/style.css       ← Design system (tokens, layout, components)
 css/animations.css  ← Keyframes + scroll reveal animations
 js/main.js          ← Particle canvas, typewriter, nav, parallax, contact form
 assets/             ← Images, icons, fonts
-favicon.svg         ← Lightning bolt, purple→rose gradient, #0F0F23 bg
+favicon.svg         ← Lightning bolt, emerald→amber gradient, #0A0F0D bg
 legion/             ← Memory palace (this system)
 ghl-snapshot/       ← Sub-page: free GHL snapshot download
 ghl-audit/          ← Sub-page: 20-question GHL audit tool
@@ -40,15 +40,15 @@ ghl-audit/          ← Sub-page: 20-question GHL audit tool
 
 ## Env & Config
 - Site root: `C:/Users/User/Documents/Claude Project/kei project/`
-- Color system: bg `#0F0F23`, primary `#7C3AED`, cta `#F43F5E`
+- Color system: bg `#0A0F0D`, primary `#10B981` (emerald), cta `#F59E0B` (amber)
 - **Live URL**: https://keyvin-abillon.netlify.app
 - **Netlify siteId**: `c2a2a018-37f7-46fb-a81c-cc2f456e2bab`
 - **Deploy command**: `cd "kei project" && npx netlify deploy --dir . --prod`
-- No git commits made as of 2026-04-08 (site deployed but never committed)
+- Git repo initialized 2026-04-09, pushed to github.com/keidark13/PROJECT (2026-04-10)
+- GitHub Pages backup: https://keidark13.github.io/PROJECT/
 
 ## Known Gotchas
-- Form backend not wired — all `<form>` submissions go nowhere until GHL webhook added
-- Social links (`GitHub`, `LinkedIn`, `Twitter`) now have real URLs (keidark13 / abillon13)
+- Contact form dual-submits to GHL (via Cloudflare Worker) + Netlify Forms (backup)
+- Social links have real URLs (keidark13 / abillon13)
 - `og:image` meta tag missing — link previews won't render a card image
-- Project 3 card link still `href="#"` — needs real URL
 - All sub-pages reference `../favicon.svg` (relative path — correct)

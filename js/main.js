@@ -424,13 +424,22 @@ const initForm = () => {
     const email = form.querySelector('#email').value.trim();
     const message = form.querySelector('#message').value.trim();
 
-    // Basic validation
+    // Inline error display
+    let errorEl = form.querySelector('.form-error');
+    if (!errorEl) {
+      errorEl = document.createElement('p');
+      errorEl.className = 'form-error';
+      errorEl.setAttribute('role', 'alert');
+      submitBtn.parentNode.insertBefore(errorEl, submitBtn);
+    }
+    errorEl.textContent = '';
+
     if (!name || !email || !message) {
-      alert('Please fill in all fields.');
+      errorEl.textContent = 'Please fill in all fields.';
       return;
     }
     if (!email.includes('@')) {
-      alert('Please enter a valid email address.');
+      errorEl.textContent = 'Please enter a valid email address.';
       return;
     }
 
@@ -442,7 +451,10 @@ const initForm = () => {
       const response = await fetch('https://kei-ghl-contact.abillon13.workers.dev/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({
+          name, email, message,
+          'cf-turnstile-response': form.querySelector('[name="cf-turnstile-response"]')?.value || '',
+        }),
       });
 
       if (!response.ok) throw new Error('Submission failed');
@@ -459,7 +471,7 @@ const initForm = () => {
     } catch (err) {
       submitBtn.textContent = 'Send Message';
       submitBtn.disabled = false;
-      alert('Something went wrong. Please try again or email me directly.');
+      errorEl.textContent = 'Something went wrong. Please try again or email me directly.';
     }
   });
 };

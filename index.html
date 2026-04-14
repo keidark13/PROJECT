@@ -36,6 +36,10 @@
     }
   }
   </script>
+  <!-- Turnstile CAPTCHA -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <!-- preload hero image -->
+  <link rel="preload" as="image" type="image/webp" href="assets/keyvin-headshot-nobg.webp">
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,8 +50,10 @@
   <script>
     (function () {
       var saved = localStorage.getItem('theme');
+      var valid = ['light', 'dark'];
       var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      var theme = (valid.indexOf(saved) !== -1) ? saved : (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 </head>
@@ -186,54 +192,54 @@
     <section class="tools-strip" aria-label="Tools I use">
       <div class="tools-track">
         <!-- set 1 -->
-        <span class="tool-item"><img src="https://thesvg.org/icons/openai/light.svg" class="tool-icon" alt="OpenAI">ChatGPT</span>
+        <span class="tool-item"><img src="assets/icons/openai.svg" class="tool-icon" alt="OpenAI">ChatGPT</span>
         <span class="tool-sep">|</span>
         <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M13.5 2L4 13.5H11L9 22L20 10.5H13L13.5 2z" fill="#F9F64A"/></svg>GoHighLevel</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/google-ads/default.svg" class="tool-icon" alt="Google Ads">Google Ads</span>
+        <span class="tool-item"><img src="assets/icons/google-ads.svg" class="tool-icon" alt="Google Ads">Google Ads</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/anthropic/light.svg" class="tool-icon" alt="Anthropic">Claude AI</span>
+        <span class="tool-item"><img src="assets/icons/anthropic.svg" class="tool-icon" alt="Anthropic">Claude AI</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/python/default.svg" class="tool-icon" alt="Python">Python</span>
+        <span class="tool-item"><img src="assets/icons/python.svg" class="tool-icon" alt="Python">Python</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/playwright/default.svg" class="tool-icon" alt="Playwright">Playwright</span>
+        <span class="tool-item"><img src="assets/icons/playwright.svg" class="tool-icon" alt="Playwright">Playwright</span>
         <span class="tool-sep">|</span>
         <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6" stroke="#34D399" stroke-width="2"/><polyline points="8,6 2,12 8,18" stroke="#34D399" stroke-width="2"/><line x1="14" y1="3" x2="10" y2="21" stroke="#F472B6" stroke-width="1.5"/></svg>Vibe Coding</span>
         <span class="tool-sep">|</span>
         <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#10B981" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Claude Code</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/meta/default.svg" class="tool-icon" alt="Meta">Meta Ads</span>
+        <span class="tool-item"><img src="assets/icons/meta.svg" class="tool-icon" alt="Meta">Meta Ads</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/google-analytics/default.svg" class="tool-icon" alt="Google Analytics">Google Analytics</span>
+        <span class="tool-item"><img src="assets/icons/google-analytics.svg" class="tool-icon" alt="Google Analytics">Google Analytics</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/cursor/light.svg" class="tool-icon" alt="Cursor">Cursor</span>
+        <span class="tool-item"><img src="assets/icons/cursor.svg" class="tool-icon" alt="Cursor">Cursor</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/ffmpeg/default.svg" class="tool-icon" alt="FFmpeg">FFmpeg</span>
+        <span class="tool-item"><img src="assets/icons/ffmpeg.svg" class="tool-icon" alt="FFmpeg">FFmpeg</span>
         <span class="tool-sep">|</span>
         <!-- set 2 (duplicate for seamless loop) -->
-        <span class="tool-item"><img src="https://thesvg.org/icons/openai/light.svg" class="tool-icon" alt="OpenAI">ChatGPT</span>
+        <span class="tool-item"><img src="assets/icons/openai.svg" class="tool-icon" alt="OpenAI">ChatGPT</span>
         <span class="tool-sep">|</span>
         <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M13.5 2L4 13.5H11L9 22L20 10.5H13L13.5 2z" fill="#F9F64A"/></svg>GoHighLevel</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/google-ads/default.svg" class="tool-icon" alt="Google Ads">Google Ads</span>
+        <span class="tool-item"><img src="assets/icons/google-ads.svg" class="tool-icon" alt="Google Ads">Google Ads</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/anthropic/light.svg" class="tool-icon" alt="Anthropic">Claude AI</span>
+        <span class="tool-item"><img src="assets/icons/anthropic.svg" class="tool-icon" alt="Anthropic">Claude AI</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/python/default.svg" class="tool-icon" alt="Python">Python</span>
+        <span class="tool-item"><img src="assets/icons/python.svg" class="tool-icon" alt="Python">Python</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/playwright/default.svg" class="tool-icon" alt="Playwright">Playwright</span>
+        <span class="tool-item"><img src="assets/icons/playwright.svg" class="tool-icon" alt="Playwright">Playwright</span>
         <span class="tool-sep">|</span>
         <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6" stroke="#34D399" stroke-width="2"/><polyline points="8,6 2,12 8,18" stroke="#34D399" stroke-width="2"/><line x1="14" y1="3" x2="10" y2="21" stroke="#F472B6" stroke-width="1.5"/></svg>Vibe Coding</span>
         <span class="tool-sep">|</span>
         <span class="tool-item"><svg class="tool-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#10B981" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Claude Code</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/meta/default.svg" class="tool-icon" alt="Meta">Meta Ads</span>
+        <span class="tool-item"><img src="assets/icons/meta.svg" class="tool-icon" alt="Meta">Meta Ads</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/google-analytics/default.svg" class="tool-icon" alt="Google Analytics">Google Analytics</span>
+        <span class="tool-item"><img src="assets/icons/google-analytics.svg" class="tool-icon" alt="Google Analytics">Google Analytics</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/cursor/light.svg" class="tool-icon" alt="Cursor">Cursor</span>
+        <span class="tool-item"><img src="assets/icons/cursor.svg" class="tool-icon" alt="Cursor">Cursor</span>
         <span class="tool-sep">|</span>
-        <span class="tool-item"><img src="https://thesvg.org/icons/ffmpeg/default.svg" class="tool-icon" alt="FFmpeg">FFmpeg</span>
+        <span class="tool-item"><img src="assets/icons/ffmpeg.svg" class="tool-icon" alt="FFmpeg">FFmpeg</span>
         <span class="tool-sep">|</span>
       </div>
     </section>
@@ -338,27 +344,27 @@
     <section class="powered-strip" aria-label="Tools and platforms I work with">
       <div class="powered-strip__track">
         <!-- set 1 -->
-        <img src="https://thesvg.org/icons/google-ads/default.svg" alt="Google Ads" title="Google Ads">
-        <img src="https://thesvg.org/icons/meta/default.svg" alt="Meta" title="Meta Ads">
-        <img src="https://thesvg.org/icons/google-analytics/default.svg" alt="Google Analytics" title="Google Analytics">
-        <img src="https://thesvg.org/icons/anthropic/light.svg" alt="Anthropic" title="Claude AI">
-        <img src="https://thesvg.org/icons/openai/light.svg" alt="OpenAI" title="ChatGPT">
-        <img src="https://thesvg.org/icons/python/default.svg" alt="Python" title="Python">
-        <img src="https://thesvg.org/icons/netlify/default.svg" alt="Netlify" title="Netlify">
-        <img src="https://thesvg.org/icons/cloudflare/default.svg" alt="Cloudflare" title="Cloudflare">
-        <img src="https://thesvg.org/icons/github/light.svg" alt="GitHub" title="GitHub">
-        <img src="https://thesvg.org/icons/stripe/default.svg" alt="Stripe" title="Stripe">
+        <img src="assets/icons/google-ads.svg" alt="Google Ads" title="Google Ads">
+        <img src="assets/icons/meta.svg" alt="Meta" title="Meta Ads">
+        <img src="assets/icons/google-analytics.svg" alt="Google Analytics" title="Google Analytics">
+        <img src="assets/icons/anthropic.svg" alt="Anthropic" title="Claude AI">
+        <img src="assets/icons/openai.svg" alt="OpenAI" title="ChatGPT">
+        <img src="assets/icons/python.svg" alt="Python" title="Python">
+        <img src="assets/icons/netlify.svg" alt="Netlify" title="Netlify">
+        <img src="assets/icons/cloudflare.svg" alt="Cloudflare" title="Cloudflare">
+        <img src="assets/icons/github.svg" alt="GitHub" title="GitHub">
+        <img src="assets/icons/stripe.svg" alt="Stripe" title="Stripe">
         <!-- set 2 (duplicate for seamless loop) -->
-        <img src="https://thesvg.org/icons/google-ads/default.svg" alt="" aria-hidden="true">
-        <img src="https://thesvg.org/icons/meta/default.svg" alt="" aria-hidden="true">
-        <img src="https://thesvg.org/icons/google-analytics/default.svg" alt="" aria-hidden="true">
-        <img src="https://thesvg.org/icons/anthropic/light.svg" alt="" aria-hidden="true">
-        <img src="https://thesvg.org/icons/openai/light.svg" alt="" aria-hidden="true">
-        <img src="https://thesvg.org/icons/python/default.svg" alt="" aria-hidden="true">
-        <img src="https://thesvg.org/icons/netlify/default.svg" alt="" aria-hidden="true">
-        <img src="https://thesvg.org/icons/cloudflare/default.svg" alt="" aria-hidden="true">
-        <img src="https://thesvg.org/icons/github/light.svg" alt="" aria-hidden="true">
-        <img src="https://thesvg.org/icons/stripe/default.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/google-ads.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/meta.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/google-analytics.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/anthropic.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/openai.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/python.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/netlify.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/cloudflare.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/github.svg" alt="" aria-hidden="true">
+        <img src="assets/icons/stripe.svg" alt="" aria-hidden="true">
       </div>
     </section>
 
@@ -379,7 +385,7 @@
                 <div class="aurora-blob aurora-blob--2"></div>
                 <div class="aurora-blob aurora-blob--3"></div>
                 <div class="hero-card__icon">
-                  <img src="https://thesvg.org/icons/google-ads/default.svg" alt="" width="32" height="32">
+                  <img src="assets/icons/google-ads.svg" alt="" width="32" height="32">
                   <span class="hero-card__plus">+</span>
                   <svg width="32" height="32" viewBox="0 0 24 24"><path d="M13.5 2L4 13.5H11L9 22L20 10.5H13L13.5 2z" fill="#F9F64A"/></svg>
                   <span class="hero-card__plus">+</span>
@@ -578,6 +584,7 @@
               <label for="message">Message</label>
               <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your project..." required rows="5"></textarea>
             </div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC9akxfD0JJsKRt8" data-theme="dark"></div>
             <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
           </form>
 
@@ -648,35 +655,35 @@
       <div class="wf-slideshow">
         <div class="wf-slides">
           <div class="wf-slide active">
-            <img src="assets/workflows/wf-001-new-lead.png" alt="Workflow 001 — New Lead" class="wf-img" loading="lazy">
+            <img src="assets/workflows/wf-001-new-lead.webp" alt="Workflow 001 — New Lead" class="wf-img" loading="lazy">
             <div class="wf-caption"><span class="workflow-num">001</span> New Lead</div>
           </div>
           <div class="wf-slide">
-            <img src="assets/workflows/wf-002-contacted.png" alt="Workflow 002 — Contacted" class="wf-img" loading="lazy">
+            <img src="assets/workflows/wf-002-contacted.webp" alt="Workflow 002 — Contacted" class="wf-img" loading="lazy">
             <div class="wf-caption"><span class="workflow-num">002</span> Contacted</div>
           </div>
           <div class="wf-slide">
-            <img src="assets/workflows/wf-003-qualified.png" alt="Workflow 003 — Qualified" class="wf-img" loading="lazy">
+            <img src="assets/workflows/wf-003-qualified.webp" alt="Workflow 003 — Qualified" class="wf-img" loading="lazy">
             <div class="wf-caption"><span class="workflow-num">003</span> Qualified</div>
           </div>
           <div class="wf-slide">
-            <img src="assets/workflows/wf-004-booked.png" alt="Workflow 004 — Strategy Booked" class="wf-img" loading="lazy">
+            <img src="assets/workflows/wf-004-booked.webp" alt="Workflow 004 — Strategy Booked" class="wf-img" loading="lazy">
             <div class="wf-caption"><span class="workflow-num">004</span> Strategy Call Booked</div>
           </div>
           <div class="wf-slide">
-            <img src="assets/workflows/wf-004b-noshow.png" alt="Workflow 004b — No Show Recovery" class="wf-img" loading="lazy">
+            <img src="assets/workflows/wf-004b-noshow.webp" alt="Workflow 004b — No Show Recovery" class="wf-img" loading="lazy">
             <div class="wf-caption"><span class="workflow-num">004b</span> No-Show Recovery</div>
           </div>
           <div class="wf-slide">
-            <img src="assets/workflows/wf-005-won.png" alt="Workflow 005 — Closed Won" class="wf-img" loading="lazy">
+            <img src="assets/workflows/wf-005-won.webp" alt="Workflow 005 — Closed Won" class="wf-img" loading="lazy">
             <div class="wf-caption"><span class="workflow-num">005</span> Closed Won</div>
           </div>
           <div class="wf-slide">
-            <img src="assets/workflows/wf-006-lost.png" alt="Workflow 006 — Closed Lost" class="wf-img" loading="lazy">
+            <img src="assets/workflows/wf-006-lost.webp" alt="Workflow 006 — Closed Lost" class="wf-img" loading="lazy">
             <div class="wf-caption"><span class="workflow-num">006</span> Closed Lost — Re-engagement</div>
           </div>
           <div class="wf-slide">
-            <img src="assets/workflows/wf-007-nuture.png" alt="Workflow 007 — Nurture" class="wf-img" loading="lazy">
+            <img src="assets/workflows/wf-007-nuture.webp" alt="Workflow 007 — Nurture" class="wf-img" loading="lazy">
             <div class="wf-caption"><span class="workflow-num">007</span> Nurture Sequence</div>
           </div>
         </div>

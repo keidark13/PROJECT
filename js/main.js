@@ -32,8 +32,11 @@ const scrollReveal = () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         // Add visible class to all stagger items — CSS nth-child handles delay
-        const items = entry.target.closest('.projects-grid')
-          ? entry.target.closest('.projects-grid').querySelectorAll('.stagger-item')
+        const grid = entry.target.closest('.projects-grid')
+          || entry.target.closest('.projects-featured')
+          || entry.target.closest('.projects-compact');
+        const items = grid
+          ? grid.querySelectorAll('.stagger-item')
           : [entry.target];
 
         items.forEach(item => item.classList.add('visible'));
@@ -45,10 +48,11 @@ const scrollReveal = () => {
     rootMargin: '0px 0px -40px 0px'
   });
 
-  // Observe only first stagger item to trigger all
-  if (staggerItems.length > 0) {
-    staggerObserver.observe(staggerItems[0]);
-  }
+  // Observe first stagger item in each grid to trigger reveal per group
+  document.querySelectorAll('.projects-grid, .projects-featured, .projects-compact').forEach(grid => {
+    const firstItem = grid.querySelector('.stagger-item');
+    if (firstItem) staggerObserver.observe(firstItem);
+  });
 };
 
 /* ────────────────────────────────────────────────────────────

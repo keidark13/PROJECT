@@ -57,7 +57,10 @@ No `tools/` or `workflows/` directory for this project. All changes are direct H
 
 ## Memory Palace (Auto-loaded)
 > These files are auto-imported every session — main Claude + all subagents see this context.
+> No need to run kei-morning manually — all context loads automatically.
 
 @legion/PALACE.md
 @legion/rooms/architecture.md
 @legion/halls/goals.md
+@legion/halls/session.md
+@legion/halls/parked.md

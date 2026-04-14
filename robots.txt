@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://keidark13.github.io/PROJECT/sitemap.xml

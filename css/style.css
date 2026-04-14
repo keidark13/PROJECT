@@ -1600,6 +1600,11 @@ p em {
   min-height: 140px;
   font-family: var(--font-body);
 }
+.cf-turnstile {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
 .form-error {
   color: #ef4444;
   font-size: 0.875rem;

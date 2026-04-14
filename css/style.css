@@ -28,31 +28,31 @@
 
 /* ── Light Mode Overrides ── */
 [data-theme="light"] {
-  --bg: #F0FDF4;
-  --bg-surface: #DCFCE7;
+  --bg: #F8FAFC;
+  --bg-surface: #F1F5F9;
   --primary: #059669;
   --cta: #D97706;
-  --text: #14532D;
-  --text-muted: #047857;
-  --border: #A7F3D0;
-  --glow: rgba(5, 150, 105, 0.18);
-  --glow-cta: rgba(217, 119, 6, 0.18);
+  --text: #0F172A;
+  --text-muted: #475569;
+  --border: #E2E8F0;
+  --glow: rgba(5, 150, 105, 0.12);
+  --glow-cta: rgba(217, 119, 6, 0.12);
 }
 /* Nav scrolled — override hardcoded dark rgba */
 [data-theme="light"] .nav.nav-scrolled {
-  background: rgba(240, 253, 244, 0.95);
+  background: rgba(248, 250, 252, 0.95);
 }
-/* Aura blobs — softer on light bg */
-[data-theme="light"] .aura-blob:nth-child(1) { background: radial-gradient(ellipse, rgba(5,150,105,0.25) 0%, transparent 70%); }
-[data-theme="light"] .aura-blob:nth-child(2) { background: radial-gradient(ellipse, rgba(217,119,6,0.18) 0%, transparent 70%); }
-[data-theme="light"] .aura-blob:nth-child(3) { background: radial-gradient(ellipse, rgba(5,150,105,0.15) 0%, transparent 70%); }
+/* Aura blobs — subtle on cool slate bg */
+[data-theme="light"] .aura-blob:nth-child(1) { background: radial-gradient(ellipse, rgba(5,150,105,0.12) 0%, transparent 70%); }
+[data-theme="light"] .aura-blob:nth-child(2) { background: radial-gradient(ellipse, rgba(217,119,6,0.08) 0%, transparent 70%); }
+[data-theme="light"] .aura-blob:nth-child(3) { background: radial-gradient(ellipse, rgba(5,150,105,0.08) 0%, transparent 70%); }
 /* Todo cards — visible on light bg */
 [data-theme="light"] .todo-card {
-  background: rgba(5, 150, 105, 0.06);
-  border-color: rgba(5, 150, 105, 0.15);
-  color: rgba(20, 83, 45, 0.35);
+  background: rgba(15, 23, 42, 0.04);
+  border-color: rgba(15, 23, 42, 0.08);
+  color: rgba(15, 23, 42, 0.3);
 }
-[data-theme="light"] .todo-done { color: rgba(5, 150, 105, 0.45); }
+[data-theme="light"] .todo-done { color: rgba(5, 150, 105, 0.5); }
 
 /* ── Reset ── */
 *, *::before, *::after {

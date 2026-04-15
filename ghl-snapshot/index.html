@@ -944,8 +944,7 @@
       <button class="modal-close" id="modal-close" aria-label="Close modal">&#215;</button>
 
       <!-- Step 1: Form -->
-      <form id="modal-form-step" name="ghl-snapshot-download" data-netlify="true">
-        <input type="hidden" name="form-name" value="ghl-snapshot-download" />
+      <form id="modal-form-step">
 
         <div class="modal-label mono">Free Download</div>
         <h2 class="modal-title" id="modal-title">Get the GHL Snapshot</h2>
@@ -1043,25 +1042,31 @@
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
 
-      var body = new URLSearchParams({
-        'form-name': 'ghl-snapshot-download',
-        first_name: name,
-        email: email
-      });
-
-      fetch('/', {
+      fetch('https://kei-ghl-contact.abillon13.workers.dev/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString()
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: 'GHL Snapshot download request'
+        })
       })
-        .then(function() {
+        .then(function(res) {
+          if (!res.ok) throw new Error('fail');
           formStep.style.display = 'none';
           thanksStep.style.display = 'block';
         })
         .catch(function() {
-          // Still show thank-you on network error — Netlify may have captured it
-          formStep.style.display = 'none';
-          thanksStep.style.display = 'block';
+          submitBtn.textContent = 'Send Me the Snapshot';
+          submitBtn.disabled = false;
+          var err = snapForm.querySelector('.form-error');
+          if (!err) {
+            err = document.createElement('p');
+            err.className = 'form-error';
+            err.style.cssText = 'color:#EF4444;font-size:13px;margin-top:8px;text-align:center';
+            submitBtn.parentNode.insertBefore(err, submitBtn.nextSibling);
+          }
+          err.textContent = 'Something went wrong. Please try again.';
         });
     });
   </script>

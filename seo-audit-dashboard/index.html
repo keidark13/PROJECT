@@ -561,8 +561,7 @@
         <h2 class="modal-title">Let's audit your site</h2>
         <p class="modal-sub">I'll review your site manually and send a prioritized report within 48 hours. No fluff, no upsell spam.</p>
 
-        <form name="seo-audit-request" method="POST" data-netlify="true" id="audit-form" novalidate>
-          <input type="hidden" name="form-name" value="seo-audit-request">
+        <form id="audit-form" novalidate>
           <div class="form-group">
             <label class="form-label" for="audit-name">Your Name</label>
             <input class="form-input" type="text" id="audit-name" name="name" required placeholder="Juan dela Cruz">
@@ -626,19 +625,41 @@
     auditForm.addEventListener('submit', function(e) {
       e.preventDefault();
       var submit = document.getElementById('audit-submit');
+      var name = document.getElementById('audit-name').value.trim();
+      var email = document.getElementById('audit-email').value.trim();
+      var website = document.getElementById('audit-url').value.trim();
+
+      if (!name || !email || !website) return;
+
       submit.textContent = 'Sending...';
       submit.disabled = true;
 
-      var data = new URLSearchParams({
-        'form-name': 'seo-audit-request',
-        name: document.getElementById('audit-name').value,
-        email: document.getElementById('audit-email').value,
-        website: document.getElementById('audit-url').value
-      });
-
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() })
-        .then(function() { modalFormEl.style.display = 'none'; modalThanks.style.display = 'block'; })
-        .catch(function() { modalFormEl.style.display = 'none'; modalThanks.style.display = 'block'; });
+      fetch('https://kei-ghl-contact.abillon13.workers.dev/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: 'SEO Audit request for: ' + website
+        })
+      })
+        .then(function(res) {
+          if (!res.ok) throw new Error('fail');
+          modalFormEl.style.display = 'none';
+          modalThanks.style.display = 'block';
+        })
+        .catch(function() {
+          submit.textContent = 'Send My Audit Request ↗';
+          submit.disabled = false;
+          var err = auditForm.querySelector('.form-error');
+          if (!err) {
+            err = document.createElement('p');
+            err.className = 'form-error';
+            err.style.cssText = 'color:#EF4444;font-size:13px;margin-top:8px;text-align:center';
+            submit.parentNode.insertBefore(err, submit.nextSibling);
+          }
+          err.textContent = 'Something went wrong. Please try again or email me directly.';
+        });
     });
   </script>
 </body>

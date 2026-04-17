@@ -1,6 +1,6 @@
 """
 Generate cro-checklist.pdf from cro-checklist.html using Playwright.
-Output: kei project/landing-page-cro-kit/cro-checklist.pdf
+Output: kei website portfolio/landing-page-cro-kit/cro-checklist.pdf
 """
 import asyncio
 from pathlib import Path

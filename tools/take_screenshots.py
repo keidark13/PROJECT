@@ -1,4 +1,4 @@
-"""Take 16:9 screenshots of all kei project sub-pages for card thumbnails."""
+"""Take 16:9 screenshots of all kei website portfolio sub-pages for card thumbnails."""
 import asyncio
 from pathlib import Path
 from playwright.async_api import async_playwright

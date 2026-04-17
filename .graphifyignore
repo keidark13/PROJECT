@@ -1,0 +1,7 @@
+adsradar/
+graphify-out/
+dev/
+node_modules/
+.git/
+*.min.css
+*.min.js

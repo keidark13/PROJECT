@@ -39,11 +39,11 @@ ghl-audit/          ← Sub-page: 20-question GHL audit tool
 - **Tradeoff:** Small setup overhead. Falls back to plain markdown if MCP unavailable.
 
 ## Env & Config
-- Site root: `C:/Users/User/Documents/Claude Project/kei project/`
+- Site root: `C:/Users/User/Documents/Claude Project/kei website portfolio/`
 - Color system: bg `#0A0F0D`, primary `#10B981` (emerald), cta `#F59E0B` (amber)
 - **Live URL**: https://keyvin-abillon.netlify.app
 - **Netlify siteId**: `c2a2a018-37f7-46fb-a81c-cc2f456e2bab`
-- **Deploy command**: `cd "kei project" && npx netlify deploy --dir . --prod`
+- **Deploy command**: `cd "kei website portfolio" && npx netlify deploy --dir . --prod`
 - Git repo initialized 2026-04-09, pushed to github.com/keidark13/PROJECT (2026-04-10)
 - GitHub Pages backup: https://keidark13.github.io/PROJECT/
 

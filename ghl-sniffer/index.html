@@ -368,6 +368,189 @@
     footer a { color: var(--primary); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    /* ── TAB BAR ───────────────────────────────── */
+    .tab-bar {
+      position: fixed; top: 62px; left: 0; right: 0; z-index: 99;
+      display: flex; align-items: center; gap: 0;
+      background: rgba(8,15,11,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--bg-border);
+      padding: 0 2rem;
+    }
+    .tab-btn {
+      font-family: var(--font-mono); font-size: 0.78rem;
+      color: var(--muted); background: none; border: none;
+      padding: 0.85rem 1.25rem; cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── API REFERENCE ─────────────────────────── */
+    .api-ref {
+      display: flex; min-height: 100vh;
+      padding-top: 110px;
+    }
+    .api-sidebar {
+      width: 260px; flex-shrink: 0;
+      position: sticky; top: 110px; height: calc(100vh - 110px);
+      overflow-y: auto;
+      background: var(--bg-card);
+      border-right: 1px solid var(--bg-border);
+      padding: 1.5rem 0;
+    }
+    .api-sidebar-title {
+      font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+      color: var(--text); padding: 0 1.25rem; margin-bottom: 0.25rem;
+    }
+    .api-sidebar-count {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+      padding: 0 1.25rem; margin-bottom: 1.25rem;
+    }
+    .api-cat-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; background: none; border: none;
+      font-family: var(--font-body); font-size: 0.88rem;
+      color: var(--text); padding: 0.55rem 1.25rem;
+      cursor: pointer; transition: background 0.15s, color 0.15s;
+      text-align: left;
+    }
+    .api-cat-btn:hover { background: rgba(16,185,129,0.06); }
+    .api-cat-btn.active {
+      color: var(--primary);
+      background: rgba(16,185,129,0.08);
+      border-left: 2px solid var(--primary);
+    }
+    .api-cat-count {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--muted); background: rgba(255,255,255,0.04);
+      padding: 0.1rem 0.5rem; border-radius: 10px;
+    }
+    .api-main {
+      flex: 1; padding: 2rem 2.5rem; max-width: 900px;
+    }
+    .api-toolbar {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .api-search {
+      flex: 1; min-width: 200px;
+      font-family: var(--font-body); font-size: 0.9rem;
+      color: var(--text); background: var(--bg-card);
+      border: 1px solid var(--bg-border);
+      padding: 0.6rem 1rem 0.6rem 2.5rem;
+      border-radius: 8px; outline: none;
+      transition: border-color 0.2s;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 0.75rem center;
+    }
+    .api-search:focus { border-color: var(--primary); }
+    .api-search::placeholder { color: var(--muted); }
+    .method-filters { display: flex; gap: 0.4rem; }
+    .method-filter {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      padding: 0.35rem 0.7rem; border-radius: 6px;
+      border: 1px solid var(--bg-border); background: var(--bg-card);
+      color: var(--muted); cursor: pointer;
+      transition: all 0.15s; letter-spacing: 0.03em;
+    }
+    .method-filter:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+    .method-filter.active { border-color: var(--primary); color: var(--primary); background: rgba(16,185,129,0.08); }
+    .api-heading {
+      font-family: var(--font-display); font-size: 1.6rem; font-weight: 700;
+      color: var(--text); margin-bottom: 0.25rem;
+    }
+    .api-heading-count {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .endpoint-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-border);
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .endpoint-card:hover { border-color: rgba(16,185,129,0.35); }
+    .endpoint-header {
+      display: flex; align-items: center; gap: 0.85rem;
+      padding: 1rem 1.25rem;
+      cursor: pointer; user-select: none;
+    }
+    .method-badge {
+      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600;
+      padding: 0.2rem 0.55rem; border-radius: 4px;
+      letter-spacing: 0.04em; flex-shrink: 0;
+      min-width: 52px; text-align: center;
+    }
+    .method-GET    { background: rgba(34,197,94,0.12);  color: #22C55E; }
+    .method-POST   { background: rgba(59,130,246,0.12); color: #3B82F6; }
+    .method-PUT    { background: rgba(245,158,11,0.12); color: #F59E0B; }
+    .method-DELETE { background: rgba(239,68,68,0.12);  color: #EF4444; }
+    .method-PATCH  { background: rgba(168,85,247,0.12); color: #A855F7; }
+    .endpoint-name {
+      font-family: var(--font-display); font-size: 0.95rem; font-weight: 600;
+      color: var(--text);
+    }
+    .endpoint-path {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+    }
+    .endpoint-toggle {
+      margin-left: auto; color: var(--muted); flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .endpoint-card.open .endpoint-toggle { transform: rotate(180deg); }
+    .endpoint-body {
+      display: none; padding: 0 1.25rem 1.25rem;
+      border-top: 1px solid var(--bg-border);
+    }
+    .endpoint-card.open .endpoint-body { display: block; }
+    .endpoint-desc {
+      font-size: 0.88rem; color: var(--muted); line-height: 1.6;
+      margin: 1rem 0;
+    }
+    .fields-label {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--text); letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .fields-table {
+      width: 100%; border-collapse: collapse;
+    }
+    .fields-table th {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.06em; text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--bg-border);
+    }
+    .fields-table td {
+      font-size: 0.85rem; color: var(--text);
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .fields-table td:first-child {
+      font-family: var(--font-mono); font-size: 0.82rem;
+      color: var(--text); font-weight: 500;
+    }
+    .fields-table td:nth-child(2) { color: var(--muted); font-size: 0.82rem; }
+    .field-required { color: var(--primary); font-weight: 600; }
+    .field-optional { color: var(--muted); }
+    .fields-table td:last-child { color: var(--muted); font-size: 0.82rem; }
+    .no-results {
+      text-align: center; padding: 3rem 1rem;
+      font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted);
+    }
+
     /* ── MOBILE ─────────────────────────────────── */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.25rem; }
@@ -397,6 +580,21 @@
       .terminal-body pre { font-size: 0.74rem; }
 
       .tech-section { padding: 2.5rem 1.25rem; }
+
+      .tab-bar { top: 54px; padding: 0 1rem; }
+      .api-ref { flex-direction: column; padding-top: 100px; }
+      .api-sidebar {
+        width: 100%; position: relative; top: 0;
+        height: auto; max-height: 240px;
+        border-right: none; border-bottom: 1px solid var(--bg-border);
+      }
+      .api-main { padding: 1.5rem 1.25rem; }
+      .api-toolbar { flex-direction: column; }
+      .api-search { width: 100%; }
+      .method-filters { flex-wrap: wrap; }
+      .endpoint-header { flex-wrap: wrap; gap: 0.5rem; }
+      .fields-table { font-size: 0.8rem; }
+      .fields-table th, .fields-table td { padding: 0.4rem 0.5rem; }
     }
   </style>
 </head>
@@ -412,6 +610,15 @@
     </a>
     <a href="../index.html" class="nav-logo">Keyvin <span>Abillon</span></a>
   </nav>
+
+  <!-- ── TAB BAR ───────────────────────────────── -->
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="api">API Reference</button>
+  </div>
+
+  <!-- ── TAB: OVERVIEW ─────────────────────────── -->
+  <div id="tab-overview" class="tab-panel active">
 
   <!-- ── HERO ────────────────────────────────────── -->
   <section class="hero">
@@ -607,9 +814,38 @@
     </div>
   </div>
 
+  </div><!-- /tab-overview -->
+
+  <!-- ── TAB: API REFERENCE ────────────────────── -->
+  <div id="tab-api" class="tab-panel">
+    <div class="api-ref">
+      <aside class="api-sidebar">
+        <div class="api-sidebar-title">GHL APIs</div>
+        <div class="api-sidebar-count" id="api-total-count"></div>
+        <div id="api-cat-list"></div>
+      </aside>
+      <main class="api-main">
+        <div class="api-toolbar">
+          <input type="text" class="api-search" id="api-search" placeholder="Search endpoints... (press &quot;/&quot; to focus)" />
+          <div class="method-filters" id="method-filters">
+            <button class="method-filter active" data-method="all">ALL</button>
+            <button class="method-filter" data-method="GET">GET</button>
+            <button class="method-filter" data-method="POST">POST</button>
+            <button class="method-filter" data-method="PUT">PUT</button>
+            <button class="method-filter" data-method="DELETE">DELETE</button>
+            <button class="method-filter" data-method="PATCH">PATCH</button>
+          </div>
+        </div>
+        <h2 class="api-heading" id="api-heading">All Endpoints</h2>
+        <div class="api-heading-count" id="api-showing"></div>
+        <div id="api-endpoints"></div>
+      </main>
+    </div>
+  </div><!-- /tab-api -->
+
   <!-- ── FOOTER ────────────────────────────────────── -->
   <footer>
-    <p>© 2026 Keyvin Abillon · <a href="https://solution13.online" target="_blank" rel="noopener">Solution13.online</a> · <a href="../index.html">← Back to Portfolio</a></p>
+    <p>© 2026 Keyvin Abillon · <a href="https://github.com/keidark13" target="_blank" rel="noopener">GitHub</a> · <a href="../index.html">← Back to Portfolio</a></p>
   </footer>
 
   <!-- ── GSAP ─────────────────────────────────────── -->
@@ -759,6 +995,321 @@
         }
       }
     );
+
+    /* ── TAB SWITCHING ─────────────────────────── */
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+        window.scrollTo(0, 0);
+      });
+    });
+
+    /* ── GHL API DATA (static — safe for innerHTML) ── */
+    const API_DATA = [
+      { cat: "OAuth 2.0 Authentication", endpoints: [
+        { method:"POST", name:"Get Access Token", path:"/oauth/token", desc:"Exchange authorization code or refresh token for access token.", fields:[
+          {n:"client_id",t:"string",r:true,d:"App client ID"},
+          {n:"client_secret",t:"string",r:true,d:"App client secret"},
+          {n:"grant_type",t:"string",r:true,d:"authorization_code or refresh_token"},
+          {n:"code",t:"string",r:false,d:"Authorization code from redirect"},
+          {n:"refresh_token",t:"string",r:false,d:"Refresh token from previous auth"},
+          {n:"user_type",t:"string",r:false,d:"Company or Location"},
+          {n:"redirect_uri",t:"string",r:false,d:"Redirect URI"}
+        ]},
+        { method:"POST", name:"Get Location Token from Agency", path:"/oauth/locationToken", desc:"Get a location-scoped access token using an agency token.", fields:[
+          {n:"companyId",t:"string",r:true,d:"Agency company ID"},
+          {n:"locationId",t:"string",r:true,d:"Target location ID"}
+        ]},
+        { method:"GET", name:"Get Installed Locations", path:"/oauth/installedLocations", desc:"List all locations where your app is installed.", fields:[] }
+      ]},
+      { cat: "Contacts", endpoints: [
+        { method:"GET", name:"Get Contact", path:"/contacts/{contactId}", desc:"Retrieve a single contact by ID.", fields:[] },
+        { method:"GET", name:"Search Contacts", path:"/contacts/search", desc:"Search contacts by name, email, phone, or custom fields.", fields:[
+          {n:"query",t:"string",r:true,d:"Search query string"},
+          {n:"limit",t:"number",r:false,d:"Max results (default 20)"},
+          {n:"skip",t:"number",r:false,d:"Offset for pagination"}
+        ]},
+        { method:"POST", name:"Create Contact", path:"/contacts/", desc:"Create a new contact in the CRM.", fields:[
+          {n:"firstName",t:"string",r:false,d:"Contact first name"},
+          {n:"lastName",t:"string",r:false,d:"Contact last name"},
+          {n:"email",t:"string",r:false,d:"Email address"},
+          {n:"phone",t:"string",r:false,d:"Phone number"},
+          {n:"tags",t:"array",r:false,d:"Tags to assign"},
+          {n:"source",t:"string",r:false,d:"Lead source"}
+        ]},
+        { method:"PUT", name:"Update Contact", path:"/contacts/{contactId}", desc:"Update an existing contact fields.", fields:[
+          {n:"firstName",t:"string",r:false,d:"Updated first name"},
+          {n:"lastName",t:"string",r:false,d:"Updated last name"},
+          {n:"email",t:"string",r:false,d:"Updated email"},
+          {n:"tags",t:"array",r:false,d:"Replace tags array"}
+        ]},
+        { method:"DELETE", name:"Delete Contact", path:"/contacts/{contactId}", desc:"Permanently delete a contact.", fields:[] },
+        { method:"POST", name:"Add Contact Tag", path:"/contacts/{contactId}/tags", desc:"Add tags to a contact.", fields:[{n:"tags",t:"array",r:true,d:"Tag names to add"}]},
+        { method:"DELETE", name:"Remove Contact Tag", path:"/contacts/{contactId}/tags", desc:"Remove tags from a contact.", fields:[{n:"tags",t:"array",r:true,d:"Tag names to remove"}]},
+        { method:"GET", name:"Get Contact Tasks", path:"/contacts/{contactId}/tasks", desc:"List all tasks assigned to a contact.", fields:[] },
+        { method:"GET", name:"Get Contact Notes", path:"/contacts/{contactId}/notes", desc:"List all notes for a contact.", fields:[] },
+        { method:"POST", name:"Create Contact Note", path:"/contacts/{contactId}/notes", desc:"Add a note to a contact.", fields:[{n:"body",t:"string",r:true,d:"Note content"}]}
+      ]},
+      { cat: "Conversations", endpoints: [
+        { method:"GET", name:"Get Conversations", path:"/conversations/", desc:"List conversations for a location.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"contactId",t:"string",r:false,d:"Filter by contact"}]},
+        { method:"GET", name:"Get Conversation", path:"/conversations/{conversationId}", desc:"Get a single conversation by ID.", fields:[] },
+        { method:"POST", name:"Create Conversation", path:"/conversations/", desc:"Start a new conversation with a contact.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"contactId",t:"string",r:true,d:"Contact to message"}]},
+        { method:"POST", name:"Send Message", path:"/conversations/messages", desc:"Send an inbound or outbound message.", fields:[
+          {n:"type",t:"string",r:true,d:"SMS, Email, WhatsApp, etc."},
+          {n:"contactId",t:"string",r:true,d:"Recipient contact ID"},
+          {n:"message",t:"string",r:false,d:"Message body (SMS/chat)"},
+          {n:"html",t:"string",r:false,d:"HTML body (email)"},
+          {n:"subject",t:"string",r:false,d:"Email subject line"}
+        ]},
+        { method:"PUT", name:"Update Conversation Status", path:"/conversations/{conversationId}/status", desc:"Mark conversation as read, unread, or archived.", fields:[{n:"status",t:"string",r:true,d:"read, unread, or archived"}]}
+      ]},
+      { cat: "Calendars", endpoints: [
+        { method:"GET", name:"Get Calendars", path:"/calendars/", desc:"List all calendars for a location.", fields:[] },
+        { method:"POST", name:"Create Calendar", path:"/calendars/", desc:"Create a new calendar.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"name",t:"string",r:true,d:"Calendar name"},{n:"description",t:"string",r:false,d:"Calendar description"}]},
+        { method:"GET", name:"Get Calendar Events", path:"/calendars/events", desc:"List appointments/events.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"startTime",t:"string",r:false,d:"ISO start time filter"},{n:"endTime",t:"string",r:false,d:"ISO end time filter"}]},
+        { method:"POST", name:"Create Appointment", path:"/calendars/events/appointments", desc:"Book an appointment.", fields:[{n:"calendarId",t:"string",r:true,d:"Target calendar"},{n:"contactId",t:"string",r:true,d:"Contact to book"},{n:"startTime",t:"string",r:true,d:"ISO start time"},{n:"endTime",t:"string",r:true,d:"ISO end time"},{n:"title",t:"string",r:false,d:"Appointment title"}]},
+        { method:"PUT", name:"Update Appointment", path:"/calendars/events/appointments/{eventId}", desc:"Update an existing appointment.", fields:[] },
+        { method:"DELETE", name:"Delete Appointment", path:"/calendars/events/appointments/{eventId}", desc:"Cancel/delete an appointment.", fields:[] }
+      ]},
+      { cat: "Locations", endpoints: [
+        { method:"GET", name:"Get Location", path:"/locations/{locationId}", desc:"Retrieve location details.", fields:[] },
+        { method:"PUT", name:"Update Location", path:"/locations/{locationId}", desc:"Update location settings.", fields:[{n:"name",t:"string",r:false,d:"Business name"},{n:"phone",t:"string",r:false,d:"Business phone"},{n:"email",t:"string",r:false,d:"Business email"},{n:"address",t:"string",r:false,d:"Street address"},{n:"timezone",t:"string",r:false,d:"IANA timezone"}]},
+        { method:"GET", name:"Search Locations", path:"/locations/search", desc:"Search locations by name or email.", fields:[{n:"companyId",t:"string",r:true,d:"Agency company ID"},{n:"query",t:"string",r:false,d:"Search term"}]},
+        { method:"GET", name:"Get Custom Fields", path:"/locations/{locationId}/customFields", desc:"List all custom fields for a location.", fields:[] },
+        { method:"POST", name:"Create Custom Field", path:"/locations/{locationId}/customFields", desc:"Add a custom field.", fields:[{n:"name",t:"string",r:true,d:"Field display name"},{n:"dataType",t:"string",r:true,d:"TEXT, NUMBER, DATE, etc."}]},
+        { method:"GET", name:"Get Custom Values", path:"/locations/{locationId}/customValues", desc:"List all custom values (system-wide variables).", fields:[] },
+        { method:"POST", name:"Create Custom Value", path:"/locations/{locationId}/customValues", desc:"Add a custom value.", fields:[{n:"name",t:"string",r:true,d:"Variable name"},{n:"value",t:"string",r:true,d:"Variable value"}]},
+        { method:"GET", name:"Get Tags", path:"/locations/{locationId}/tags", desc:"List all tags for a location.", fields:[] },
+        { method:"POST", name:"Create Tag", path:"/locations/{locationId}/tags", desc:"Create a new tag.", fields:[{n:"name",t:"string",r:true,d:"Tag name"}]}
+      ]},
+      { cat: "Opportunities", endpoints: [
+        { method:"GET", name:"Get Opportunity", path:"/opportunities/{id}", desc:"Retrieve a single opportunity.", fields:[] },
+        { method:"GET", name:"Search Opportunities", path:"/opportunities/search", desc:"Search pipeline opportunities.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"pipelineId",t:"string",r:false,d:"Filter by pipeline"},{n:"stageId",t:"string",r:false,d:"Filter by stage"},{n:"query",t:"string",r:false,d:"Search term"}]},
+        { method:"POST", name:"Create Opportunity", path:"/opportunities/", desc:"Create a new pipeline opportunity.", fields:[{n:"pipelineId",t:"string",r:true,d:"Target pipeline ID"},{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"contactId",t:"string",r:true,d:"Associated contact"},{n:"name",t:"string",r:true,d:"Opportunity name"},{n:"stageId",t:"string",r:false,d:"Initial stage"},{n:"monetaryValue",t:"number",r:false,d:"Deal value"}]},
+        { method:"PUT", name:"Update Opportunity", path:"/opportunities/{id}", desc:"Update opportunity details or stage.", fields:[{n:"name",t:"string",r:false,d:"Updated name"},{n:"stageId",t:"string",r:false,d:"Move to stage"},{n:"status",t:"string",r:false,d:"open, won, lost, or abandoned"},{n:"monetaryValue",t:"number",r:false,d:"Updated value"}]},
+        { method:"DELETE", name:"Delete Opportunity", path:"/opportunities/{id}", desc:"Delete an opportunity.", fields:[] }
+      ]},
+      { cat: "Users", endpoints: [
+        { method:"GET", name:"Get User", path:"/users/{userId}", desc:"Retrieve user details.", fields:[] },
+        { method:"GET", name:"Search Users", path:"/users/search", desc:"Search users by name/email.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"query",t:"string",r:false,d:"Search query"}]},
+        { method:"POST", name:"Create User", path:"/users/", desc:"Create a new user in a location.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"firstName",t:"string",r:true,d:"First name"},{n:"lastName",t:"string",r:true,d:"Last name"},{n:"email",t:"string",r:true,d:"Email address"},{n:"role",t:"string",r:true,d:"admin or user"}]},
+        { method:"PUT", name:"Update User", path:"/users/{userId}", desc:"Update user fields.", fields:[] },
+        { method:"DELETE", name:"Delete User", path:"/users/{userId}", desc:"Remove a user from a location.", fields:[] }
+      ]},
+      { cat: "Workflows", endpoints: [
+        { method:"GET", name:"Get Workflow", path:"/workflows/{workflowId}", desc:"Get workflow details.", fields:[] },
+        { method:"POST", name:"Add Contact to Workflow", path:"/contacts/{contactId}/workflow/{workflowId}", desc:"Enroll a contact into a workflow.", fields:[{n:"eventStartTime",t:"string",r:false,d:"Scheduled start (ISO)"}]},
+        { method:"DELETE", name:"Remove Contact from Workflow", path:"/contacts/{contactId}/workflow/{workflowId}", desc:"Remove a contact from a running workflow.", fields:[] }
+      ]},
+      { cat: "Business", endpoints: [
+        { method:"GET", name:"Get Business", path:"/businesses/{businessId}", desc:"Retrieve business profile.", fields:[] },
+        { method:"GET", name:"List Businesses", path:"/businesses/", desc:"List all businesses for a location.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"}]},
+        { method:"POST", name:"Create Business", path:"/businesses/", desc:"Create a new business entity.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"name",t:"string",r:true,d:"Business name"},{n:"phone",t:"string",r:false,d:"Phone number"},{n:"email",t:"string",r:false,d:"Email address"}]},
+        { method:"PUT", name:"Update Business", path:"/businesses/{businessId}", desc:"Update a business entity.", fields:[] },
+        { method:"DELETE", name:"Delete Business", path:"/businesses/{businessId}", desc:"Delete a business.", fields:[] }
+      ]},
+      { cat: "Campaigns", endpoints: [
+        { method:"GET", name:"Get Campaigns", path:"/campaigns/", desc:"List email/SMS campaigns.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"status",t:"string",r:false,d:"Filter: draft, scheduled, completed"}]}
+      ]},
+      { cat: "Funnels", endpoints: [
+        { method:"GET", name:"List Funnels", path:"/funnels/funnel/list", desc:"List all funnels for a location.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"}]},
+        { method:"GET", name:"List Funnel Pages", path:"/funnels/funnel/page", desc:"List pages within a funnel.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"funnelId",t:"string",r:true,d:"Funnel ID"},{n:"limit",t:"number",r:false,d:"Max results"},{n:"offset",t:"number",r:false,d:"Pagination offset"}]}
+      ]},
+      { cat: "Products", endpoints: [
+        { method:"GET", name:"List Products", path:"/products/", desc:"List all products for a location.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"}]},
+        { method:"GET", name:"Get Product", path:"/products/{productId}", desc:"Get product details.", fields:[] },
+        { method:"POST", name:"Create Product", path:"/products/", desc:"Create a new product.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"name",t:"string",r:true,d:"Product name"},{n:"description",t:"string",r:false,d:"Product description"},{n:"prices",t:"array",r:true,d:"Price objects array"}]},
+        { method:"PUT", name:"Update Product", path:"/products/{productId}", desc:"Update product details.", fields:[] },
+        { method:"DELETE", name:"Delete Product", path:"/products/{productId}", desc:"Delete a product.", fields:[] }
+      ]},
+      { cat: "Companies", endpoints: [
+        { method:"GET", name:"Get Company", path:"/companies/{companyId}", desc:"Retrieve agency/company details.", fields:[] }
+      ]},
+      { cat: "Blogs", endpoints: [
+        { method:"GET", name:"Get Blog Posts", path:"/blogs/posts", desc:"List blog posts.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"limit",t:"number",r:false,d:"Max results"},{n:"offset",t:"number",r:false,d:"Pagination offset"}]},
+        { method:"POST", name:"Create Blog Post", path:"/blogs/posts", desc:"Create a new blog post.", fields:[{n:"locationId",t:"string",r:true,d:"Location ID"},{n:"title",t:"string",r:true,d:"Post title"},{n:"content",t:"string",r:true,d:"Post body (HTML)"},{n:"status",t:"string",r:false,d:"draft or published"}]},
+        { method:"PUT", name:"Update Blog Post", path:"/blogs/posts/{postId}", desc:"Update an existing blog post.", fields:[] },
+        { method:"DELETE", name:"Delete Blog Post", path:"/blogs/posts/{postId}", desc:"Delete a blog post.", fields:[] }
+      ]}
+    ];
+
+    /* ── API REFERENCE ENGINE ──────────────────── */
+    /* NOTE: All data rendered via innerHTML is from the static API_DATA array above (hardcoded, not user input). No XSS risk. */
+    (function() {
+      let activeCat = null;
+      let activeMethod = 'all';
+
+      const totalEndpoints = API_DATA.reduce((s,c) => s + c.endpoints.length, 0);
+      document.getElementById('api-total-count').textContent = totalEndpoints + ' endpoints';
+
+      const catList = document.getElementById('api-cat-list');
+      const allBtn = document.createElement('button');
+      allBtn.className = 'api-cat-btn active';
+      allBtn.textContent = 'All Endpoints';
+      const allCount = document.createElement('span');
+      allCount.className = 'api-cat-count';
+      allCount.textContent = totalEndpoints;
+      allBtn.appendChild(allCount);
+      allBtn.addEventListener('click', () => { activeCat = null; render(); updateCatActive(); });
+      catList.appendChild(allBtn);
+
+      API_DATA.forEach(c => {
+        const btn = document.createElement('button');
+        btn.className = 'api-cat-btn';
+        btn.textContent = c.cat + ' ';
+        const cnt = document.createElement('span');
+        cnt.className = 'api-cat-count';
+        cnt.textContent = c.endpoints.length;
+        btn.appendChild(cnt);
+        btn.addEventListener('click', () => { activeCat = c.cat; render(); updateCatActive(); });
+        catList.appendChild(btn);
+      });
+
+      function updateCatActive() {
+        catList.querySelectorAll('.api-cat-btn').forEach((b, i) => {
+          b.classList.toggle('active', i === 0 ? !activeCat : API_DATA[i-1].cat === activeCat);
+        });
+      }
+
+      document.querySelectorAll('.method-filter').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.method-filter').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeMethod = btn.dataset.method;
+          render();
+        });
+      });
+
+      const searchInput = document.getElementById('api-search');
+      searchInput.addEventListener('input', () => render());
+      document.addEventListener('keydown', e => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          const apiTab = document.getElementById('tab-api');
+          if (apiTab.classList.contains('active')) { e.preventDefault(); searchInput.focus(); }
+        }
+      });
+
+      function buildFieldsTable(fields) {
+        if (!fields || !fields.length) return null;
+        const wrap = document.createElement('div');
+        const label = document.createElement('div');
+        label.className = 'fields-label';
+        label.textContent = 'Body Fields';
+        wrap.appendChild(label);
+
+        const table = document.createElement('table');
+        table.className = 'fields-table';
+        const thead = document.createElement('thead');
+        const headRow = document.createElement('tr');
+        ['Name','Type','Required','Description'].forEach(h => {
+          const th = document.createElement('th');
+          th.textContent = h;
+          headRow.appendChild(th);
+        });
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        fields.forEach(f => {
+          const tr = document.createElement('tr');
+          const tdN = document.createElement('td'); tdN.textContent = f.n;
+          const tdT = document.createElement('td'); tdT.textContent = f.t;
+          const tdR = document.createElement('td');
+          tdR.textContent = f.r ? 'Yes' : 'No';
+          tdR.className = f.r ? 'field-required' : 'field-optional';
+          const tdD = document.createElement('td'); tdD.textContent = f.d;
+          tr.append(tdN, tdT, tdR, tdD);
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        wrap.appendChild(table);
+        return wrap;
+      }
+
+      function render() {
+        const q = searchInput.value.toLowerCase().trim();
+        const container = document.getElementById('api-endpoints');
+        const heading = document.getElementById('api-heading');
+        const showing = document.getElementById('api-showing');
+        container.replaceChildren();
+
+        let filtered = [];
+        API_DATA.forEach(c => {
+          if (activeCat && c.cat !== activeCat) return;
+          c.endpoints.forEach(ep => {
+            if (activeMethod !== 'all' && ep.method !== activeMethod) return;
+            if (q && !ep.name.toLowerCase().includes(q) && !ep.path.toLowerCase().includes(q) && !ep.desc.toLowerCase().includes(q)) return;
+            filtered.push({ ...ep, cat: c.cat });
+          });
+        });
+
+        heading.textContent = activeCat || 'All Endpoints';
+        showing.textContent = filtered.length + ' endpoints';
+
+        if (!filtered.length) {
+          const nr = document.createElement('div');
+          nr.className = 'no-results';
+          nr.textContent = 'No endpoints match your filters.';
+          container.appendChild(nr);
+          return;
+        }
+
+        filtered.forEach(ep => {
+          const card = document.createElement('div');
+          card.className = 'endpoint-card';
+
+          const header = document.createElement('div');
+          header.className = 'endpoint-header';
+
+          const badge = document.createElement('span');
+          badge.className = 'method-badge method-' + ep.method;
+          badge.textContent = ep.method;
+
+          const info = document.createElement('div');
+          const nameEl = document.createElement('div');
+          nameEl.className = 'endpoint-name';
+          nameEl.textContent = ep.name;
+          const pathEl = document.createElement('div');
+          pathEl.className = 'endpoint-path';
+          pathEl.textContent = ep.path;
+          info.append(nameEl, pathEl);
+
+          const chevron = document.createElementNS('http://www.w3.org/2000/svg','svg');
+          chevron.setAttribute('class','endpoint-toggle');
+          chevron.setAttribute('width','18');
+          chevron.setAttribute('height','18');
+          chevron.setAttribute('viewBox','0 0 24 24');
+          chevron.setAttribute('fill','none');
+          chevron.setAttribute('stroke','currentColor');
+          chevron.setAttribute('stroke-width','2');
+          const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+          path.setAttribute('d','M6 9l6 6 6-6');
+          chevron.appendChild(path);
+
+          header.append(badge, info, chevron);
+
+          const body = document.createElement('div');
+          body.className = 'endpoint-body';
+          const desc = document.createElement('div');
+          desc.className = 'endpoint-desc';
+          desc.textContent = ep.desc;
+          body.appendChild(desc);
+
+          const fieldsTable = buildFieldsTable(ep.fields);
+          if (fieldsTable) body.appendChild(fieldsTable);
+
+          header.addEventListener('click', () => card.classList.toggle('open'));
+
+          card.append(header, body);
+          container.appendChild(card);
+        });
+      }
+
+      render();
+    })();
   </script>
 
 </body>

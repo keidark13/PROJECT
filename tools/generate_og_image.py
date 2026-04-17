@@ -1,6 +1,6 @@
 """
 Generate og-image.png (1200x630) from og-image.html using Playwright.
-Output: kei project/assets/og-image.png
+Output: kei website portfolio/assets/og-image.png
 """
 import asyncio
 from pathlib import Path

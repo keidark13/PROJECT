@@ -5,14 +5,14 @@
 
 ## Local Preview
 ```bash
-cd "C:/Users/User/Documents/Claude Project/kei project"
+cd "C:/Users/User/Documents/Claude Project/kei website portfolio"
 python -m http.server 8765
 ```
 Open: http://localhost:8765
 
 ## Deploy
 ```bash
-cd "C:/Users/User/Documents/Claude Project/kei project"
+cd "C:/Users/User/Documents/Claude Project/kei website portfolio"
 npx netlify deploy --dir . --prod
 ```
 Netlify siteId: `c2a2a018-37f7-46fb-a81c-cc2f456e2bab` (in `.netlify/state.json`)
@@ -26,7 +26,7 @@ Netlify siteId: `c2a2a018-37f7-46fb-a81c-cc2f456e2bab` (in `.netlify/state.json`
 - Init: `python -m mempalace init legion/`
 - Mine: `python -m mempalace mine legion/`
 - Search: `python -m mempalace search "<query>"`
-- MCP: registered at `-s local` scope for kei project
+- MCP: registered at `-s local` scope for kei website portfolio
 
 ## References
 - BrewedOps portfolio reference: `reference_brewedops_portfolio.md`

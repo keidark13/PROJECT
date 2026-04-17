@@ -1,4 +1,4 @@
-# Palace — Kei Project Wing
+# Palace — Kei Website Portfolio Wing
 
 > Wing map for Keyvin's personal brand site memory system.
 > Updated by kei-closer at end of each session.
